@@ -87,8 +87,9 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      // trigger sooner on mobile, and slightly before it enters center of screen
-      viewport={{ once, amount: 0.1, margin: "0px 0px -50px 0px" }}
+      // margin "100px" ensures it triggers well before it enters 
+      // amount 0.05 ensures it triggers even if only a tiny sliver is detected
+      viewport={{ once, amount: 0.05, margin: "0px 0px -100px 0px" }}
       variants={getVariants()}
       className={className}
     >

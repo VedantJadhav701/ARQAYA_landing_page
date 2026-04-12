@@ -40,11 +40,11 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-[100svh] w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-32 pb-48">
+    <section className="relative min-h-[100dvh] w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-24 pb-40">
       
       {/* Background Video Layer */}
       <div 
-        className="absolute w-full z-0 h-[65vh] md:h-[85vh] bottom-[30vh] md:bottom-[40vh]"
+        className="absolute w-full z-0 h-[65dvh] md:h-[85vh] bottom-[30dvh] md:bottom-[40vh]"
       >
         <VideoPlayer
           src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8"
@@ -52,12 +52,12 @@ const Hero = () => {
         />
       </div>
 
-      {/* Hero Content - Higher whitespace for premium feel */}
+      {/* Hero Content */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-20 max-w-6xl mx-auto px-6 text-center flex flex-col items-center gap-12 md:gap-16"
+        className="relative z-20 max-w-6xl mx-auto px-6 text-center flex flex-col items-center gap-10 md:gap-16"
       >
         {/* Badges */}
         <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 md:gap-5">
@@ -78,7 +78,7 @@ const Hero = () => {
         {/* Headline */}
         <motion.h1 
           variants={itemVariants}
-          className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-medium tracking-tighter leading-[0.95] text-white max-w-5xl"
+          className="text-4xl sm:text-7xl md:text-8xl lg:text-[100px] font-medium tracking-tighter leading-[1.1] md:leading-[0.95] text-white max-w-5xl"
         >
           Unlock the Power <br className="hidden md:block" /> 
           of AI for Business
@@ -87,14 +87,14 @@ const Hero = () => {
         {/* Subtext */}
         <motion.p 
           variants={itemVariants}
-          className="text-lg md:text-2xl text-white/60 max-w-3xl leading-relaxed px-4"
+          className="text-base md:text-2xl text-white/60 max-w-3xl leading-relaxed px-4"
         >
           We build agentic AI systems, domain-specific models, and intelligent 
           automation platforms that transform how modern companies operate.
         </motion.p>
 
-        {/* Buttons - Improved spacing from Marquee */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto px-8 sm:px-0 mb-12">
+        {/* Buttons */}
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto px-8 sm:px-0 mb-10">
           <button className="bg-white text-black px-12 py-5 rounded-full font-bold transition-all active:scale-95 hover:bg-white/90 shadow-2xl shadow-white/10">
             Get Started for Free
           </button>
@@ -104,22 +104,22 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Infinite Scrolling Marquee - Fixed positioning at absolute bottom */}
-      <div className="absolute bottom-8 md:bottom-12 w-full overflow-hidden grayscale opacity-40 z-10">
+      {/* Infinite Scrolling Marquee - Fixed with dvh/absolute bottom safe area */}
+      <div className="absolute bottom-6 md:bottom-12 w-full overflow-hidden grayscale opacity-60 z-10">
         <div className="flex w-fit whitespace-nowrap animate-marquee">
           <div className="flex items-center gap-16 md:gap-24 px-8">
             {marqueeItems.map((item, i) => (
               <div key={i} className="flex items-center gap-4">
-                <item.icon className="h-6 w-6 md:h-7 md:w-7" />
-                <span className="font-bold text-lg md:text-xl tracking-tighter uppercase">{item.text}</span>
+                <item.icon className="h-5 w-5 md:h-7 md:w-7" />
+                <span className="font-bold text-base md:text-xl tracking-tighter uppercase">{item.text}</span>
               </div>
             ))}
           </div>
           <div className="flex items-center gap-16 md:gap-24 px-8">
             {marqueeItems.map((item, i) => (
               <div key={`dup-${i}`} className="flex items-center gap-4">
-                <item.icon className="h-6 w-6 md:h-7 md:w-7" />
-                <span className="font-bold text-lg md:text-xl tracking-tighter uppercase">{item.text}</span>
+                <item.icon className="h-5 w-5 md:h-7 md:w-7" />
+                <span className="font-bold text-base md:text-xl tracking-tighter uppercase">{item.text}</span>
               </div>
             ))}
           </div>
