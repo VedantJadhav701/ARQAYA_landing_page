@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Cpu, Zap, Globe, Layers, Shield, Database, Workflow, Activity } from "lucide-react";
+import { Cpu, Layers, Shield, Database, Workflow, Activity } from "lucide-react";
 import VideoPlayer from "@/components/VideoPlayer";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +19,7 @@ const Hero = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20, filter: "blur(10px)" }, // Reduced y for mobile feel
+    hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
     visible: {
       opacity: 1,
       y: 0,
@@ -40,11 +40,11 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-24 pb-32">
+    <section className="relative min-h-[100svh] w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-32 pb-48">
       
-      {/* Cinematic Background Video Layer */}
+      {/* Background Video Layer */}
       <div 
-        className="absolute w-full z-0 h-[60vh] md:h-[80vh] bottom-[30vh] md:bottom-[35vh]"
+        className="absolute w-full z-0 h-[65vh] md:h-[85vh] bottom-[30vh] md:bottom-[40vh]"
       >
         <VideoPlayer
           src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8"
@@ -52,76 +52,74 @@ const Hero = () => {
         />
       </div>
 
-      {/* Hero Content */}
+      {/* Hero Content - Higher whitespace for premium feel */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-10 md:gap-14"
+        className="relative z-20 max-w-6xl mx-auto px-6 text-center flex flex-col items-center gap-12 md:gap-16"
       >
         {/* Badges */}
-        <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 md:gap-4">
-          <div className="glass px-3 py-1.5 md:px-4 md:py-2 rounded-full flex items-center gap-2 text-[10px] md:text-xs font-medium text-white/80">
-            <Cpu className="h-3 w-3 md:h-3.5 md:w-3.5" />
+        <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 md:gap-5">
+          <div className="glass px-4 py-2 rounded-full flex items-center gap-2.5 text-[10px] md:text-sm font-medium text-white/80">
+            <Cpu className="h-4 w-4 text-blue-400" />
             Agentic AI Systems
           </div>
-          <div className="glass px-3 py-1.5 md:px-4 md:py-2 rounded-full flex items-center gap-2 text-[10px] md:text-xs font-medium text-white/80">
-            <Layers className="h-3 w-3 md:h-3.5 md:w-3.5" />
+          <div className="glass px-4 py-2 rounded-full flex items-center gap-2.5 text-[10px] md:text-sm font-medium text-white/80">
+            <Layers className="h-4 w-4 text-purple-400" />
             Domain Models
           </div>
-          <div className="glass px-3 py-1.5 md:px-4 md:py-2 rounded-full flex items-center gap-2 text-[10px] md:text-xs font-medium text-white/80">
-            <Shield className="h-3 w-3 md:h-3.5 md:w-3.5" />
-            Reliable Systems
+          <div className="glass px-4 py-2 rounded-full flex items-center gap-2.5 text-[10px] md:text-sm font-medium text-white/80">
+            <Shield className="h-4 w-4 text-green-400" />
+            System Monitoring
           </div>
         </motion.div>
 
-        {/* Headline - Responsive Font Sizes */}
+        {/* Headline */}
         <motion.h1 
           variants={itemVariants}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-[80px] font-medium tracking-tighter leading-[1.1] text-white max-w-4xl"
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-medium tracking-tighter leading-[0.95] text-white max-w-5xl"
         >
           Unlock the Power <br className="hidden md:block" /> 
           of AI for Business
         </motion.h1>
 
-        {/* Subtext - Better Mobile Width */}
+        {/* Subtext */}
         <motion.p 
           variants={itemVariants}
-          className="text-base md:text-xl text-white/60 max-w-2xl leading-relaxed px-4"
+          className="text-lg md:text-2xl text-white/60 max-w-3xl leading-relaxed px-4"
         >
           We build agentic AI systems, domain-specific models, and intelligent 
           automation platforms that transform how modern companies operate.
         </motion.p>
 
-        {/* Buttons - Stacked on Mobile */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-6 sm:px-0">
-          <button className="bg-white text-black px-10 py-4 rounded-full font-semibold transition-all active:scale-95 hover:bg-white/90">
-            Get Started
+        {/* Buttons - Improved spacing from Marquee */}
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto px-8 sm:px-0 mb-12">
+          <button className="bg-white text-black px-12 py-5 rounded-full font-bold transition-all active:scale-95 hover:bg-white/90 shadow-2xl shadow-white/10">
+            Get Started for Free
           </button>
-          <button className="glass text-white px-10 py-4 rounded-full font-semibold transition-all active:scale-95 hover:bg-white/10">
+          <button className="glass text-white px-12 py-5 rounded-full font-semibold transition-all active:scale-95 hover:bg-white/10">
             Let&apos;s Get Connected
           </button>
         </motion.div>
       </motion.div>
 
-      {/* Infinite Scrolling Marquee */}
-      <div className="absolute bottom-10 md:bottom-12 w-full overflow-hidden grayscale opacity-40">
+      {/* Infinite Scrolling Marquee - Fixed positioning at absolute bottom */}
+      <div className="absolute bottom-8 md:bottom-12 w-full overflow-hidden grayscale opacity-40 z-10">
         <div className="flex w-fit whitespace-nowrap animate-marquee">
-          {/* First set of items */}
-          <div className="flex items-center gap-12 md:gap-20 px-6">
+          <div className="flex items-center gap-16 md:gap-24 px-8">
             {marqueeItems.map((item, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <item.icon className="h-5 w-5 md:h-6 md:w-6" />
-                <span className="font-bold text-base md:text-lg tracking-tighter uppercase">{item.text}</span>
+              <div key={i} className="flex items-center gap-4">
+                <item.icon className="h-6 w-6 md:h-7 md:w-7" />
+                <span className="font-bold text-lg md:text-xl tracking-tighter uppercase">{item.text}</span>
               </div>
             ))}
           </div>
-          {/* Duplicate set for seamless loop */}
-          <div className="flex items-center gap-12 md:gap-20 px-6">
+          <div className="flex items-center gap-16 md:gap-24 px-8">
             {marqueeItems.map((item, i) => (
-              <div key={`dup-${i}`} className="flex items-center gap-3">
-                <item.icon className="h-5 w-5 md:h-6 md:w-6" />
-                <span className="font-bold text-base md:text-lg tracking-tighter uppercase">{item.text}</span>
+              <div key={`dup-${i}`} className="flex items-center gap-4">
+                <item.icon className="h-6 w-6 md:h-7 md:w-7" />
+                <span className="font-bold text-lg md:text-xl tracking-tighter uppercase">{item.text}</span>
               </div>
             ))}
           </div>

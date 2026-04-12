@@ -3,6 +3,7 @@
 import React from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Bot, Network, ShieldCheck, Zap } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const solutions = [
   {
@@ -33,20 +34,20 @@ const solutions = [
 
 const Solution = () => {
   return (
-    <section className="py-24 md:py-32 bg-black overflow-hidden">
+    <section id="solution" className="py-32 md:py-48 bg-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <ScrollReveal variant="fade-up" className="text-center mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tighter mb-6">
+        <ScrollReveal variant="fade-up" className="text-center mb-24 md:mb-32">
+          <h2 className="text-4xl md:text-6xl lg:text-[80px] font-medium tracking-tighter mb-10 leading-[1.05]">
             We Build AI That Actually <br />
-            <span className="text-white/40 italic font-serif">Works in Production</span>
+            <span className="text-white/30 italic">Works in Production</span>
           </h2>
-          <p className="text-white/50 text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/50 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
             From workflow automation to enterprise-grade AI monitoring, 
             ARQAYA helps you deploy reliable, scalable, and high-impact solutions.
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           {solutions.map((item, index) => (
             <ScrollReveal 
               key={index} 
@@ -54,18 +55,18 @@ const Solution = () => {
               delay={index * 0.15}
               className="h-full"
             >
-              <div className="group h-full p-8 rounded-[32px] glass hover:bg-white/10 transition-all hover:-translate-y-3">
+              <div className="group h-full p-10 rounded-[40px] glass hover:bg-white/5 transition-all hover:-translate-y-4 border-white/5 hover:border-white/20">
                 <div className={cn(
-                  "h-14 w-14 rounded-2xl mb-8 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6",
+                  "h-16 w-16 rounded-2xl mb-10 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]",
                   item.color === "blue" && "bg-blue-500/10 text-blue-400",
                   item.color === "purple" && "bg-purple-500/10 text-purple-400",
                   item.color === "yellow" && "bg-yellow-500/10 text-yellow-400",
                   item.color === "green" && "bg-green-500/10 text-green-400",
                 )}>
-                  <item.icon className="h-7 w-7" />
+                  <item.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-2xl font-medium mb-4">{item.title}</h3>
-                <p className="text-white/50 text-base leading-relaxed">
+                <h3 className="text-2xl font-medium mb-5">{item.title}</h3>
+                <p className="text-white/50 text-base md:text-lg leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -78,8 +79,3 @@ const Solution = () => {
 };
 
 export default Solution;
-
-// Needed helper for conditional styles if not in utils
-function cn(...inputs: any[]) {
-  return inputs.filter(Boolean).join(" ");
-}

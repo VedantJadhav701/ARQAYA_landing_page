@@ -29,22 +29,27 @@ const painPoints = [
 
 const Problem = () => {
   return (
-    <section className="py-24 md:py-32 bg-black border-t border-white/5 overflow-hidden">
+    <section className="py-32 md:py-48 bg-black border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
-          <div className="lg:w-1/3 sticky top-32">
+        <div className="flex flex-col lg:flex-row gap-20 items-start">
+          {/* Header Area - Cleanly separated from cards */}
+          <div className="lg:w-2/5 lg:sticky lg:top-40 mb-12 lg:mb-0">
             <ScrollReveal variant="fade-right">
-              <h2 className="text-3xl md:text-5xl font-medium leading-tight mb-8">
+              <h2 className="text-4xl md:text-6xl font-medium leading-tight mb-10 tracking-tighter">
                 AI is Powerful — <br />
-                <span className="text-white/40">But Hard to Deploy</span>
+                <span className="text-white/30 italic">But Hard to Deploy</span>
               </h2>
-              <p className="text-white/40 text-lg md:text-xl italic font-serif">
-                “AI isn’t just about models — it’s about systems.”
-              </p>
+              {/* Quote - Fixed alignment to avoid overlap with cards */}
+              <div className="pl-6 border-l-2 border-white/10">
+                <p className="text-white/40 text-xl md:text-2xl italic font-serif leading-relaxed">
+                  “AI isn’t just about models — it’s about systems.”
+                </p>
+              </div>
             </ScrollReveal>
           </div>
           
-          <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+          {/* Cards Area */}
+          <div className="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
             {painPoints.map((point, index) => (
               <ScrollReveal 
                 key={index} 
@@ -52,11 +57,11 @@ const Problem = () => {
                 delay={index * 0.1}
                 className="h-full"
               >
-                <div className="h-full p-8 rounded-[32px] bg-white/5 border border-white/10 hover:border-white/20 transition-all hover:-translate-y-2 group relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <point.icon className="h-8 w-8 text-white/40 mb-6 group-hover:text-white transition-colors" />
-                  <h3 className="text-2xl font-medium mb-3">{point.title}</h3>
-                  <p className="text-white/50 text-base leading-relaxed">
+                <div className="h-full p-10 rounded-[40px] glass border-white/5 hover:border-white/20 transition-all hover:bg-white/5 group relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <point.icon className="h-10 w-10 text-white/30 mb-8 group-hover:text-white transition-colors" />
+                  <h3 className="text-2xl font-medium mb-4">{point.title}</h3>
+                  <p className="text-white/50 text-base md:text-lg leading-relaxed">
                     {point.description}
                   </p>
                 </div>

@@ -25,39 +25,42 @@ const differentiators = [
 
 const Differentiation = () => {
   return (
-    <section className="py-24 md:py-32 bg-black overflow-hidden">
+    <section id="differentiation" className="py-32 md:py-48 bg-black overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 md:gap-32 items-center">
           <ScrollReveal variant="fade-right">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tighter mb-8 max-w-md">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter mb-10 leading-[0.95]">
               Why <br />
-              <span className="text-white/40 italic font-serif">ARQAYA?</span>
+              <span className="text-white/30 italic">ARQAYA?</span>
             </h2>
-            <p className="text-white/50 text-base md:text-xl leading-relaxed mb-10 max-w-lg">
+            <p className="text-white/50 text-xl md:text-2xl leading-relaxed mb-12 max-w-lg font-normal">
               We bridge the gap between AI hype and business reality with 
               systems that are reliable, secure, and deeply integrated.
             </p>
-            <div className="flex gap-4">
-               <button className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:opacity-90 transition-opacity">
+            <div className="flex gap-6">
+               <button className="bg-white text-black px-10 py-5 rounded-full font-bold hover:bg-white/90 transition-all active:scale-95 shadow-xl shadow-white/5">
+                 Get Started
+               </button>
+               <button className="glass text-white px-10 py-5 rounded-full font-semibold hover:bg-white/10 transition-all">
                  Our Framework
                </button>
             </div>
           </ScrollReveal>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             {differentiators.map((item, index) => (
               <ScrollReveal 
                 key={index} 
                 variant="fade-up" 
                 delay={index * 0.15}
               >
-                <div className="p-8 rounded-[32px] glass hover:bg-white/5 flex gap-6 group transition-colors">
-                  <div className="mt-1">
-                    <CheckCircle2 className="h-6 w-6 text-blue-500 group-hover:scale-110 transition-transform" />
+                <div className="p-10 rounded-[40px] glass border-white/5 hover:border-white/20 flex gap-8 group transition-all duration-500 hover:bg-white/5">
+                  <div className="mt-1 flex-shrink-0">
+                    <CheckCircle2 className="h-8 w-8 text-blue-500 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" />
                   </div>
                   <div>
-                    <h3 className="text-xl md:text-2xl font-medium mb-3">{item.title}</h3>
-                    <p className="text-white/50 text-base md:text-lg leading-relaxed">
+                    <h3 className="text-2xl md:text-3xl font-medium mb-4 group-hover:text-white transition-colors tracking-tight">{item.title}</h3>
+                    <p className="text-white/50 text-base md:text-xl leading-relaxed">
                       {item.description}
                     </p>
                   </div>
