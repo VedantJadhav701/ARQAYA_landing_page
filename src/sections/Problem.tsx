@@ -32,14 +32,12 @@ const Problem = () => {
     <section className="py-32 md:py-48 bg-black border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row gap-20 items-start">
-          {/* Header Area - Cleanly separated from cards */}
           <div className="lg:w-2/5 lg:sticky lg:top-40 mb-12 lg:mb-0">
             <ScrollReveal variant="fade-right">
               <h2 className="text-4xl md:text-6xl font-medium leading-tight mb-10 tracking-tighter">
-                AI is Powerful — <br />
+                AI is Powerful, <br />
                 <span className="text-white/30 italic">But Hard to Deploy</span>
               </h2>
-              {/* Quote - Fixed alignment to avoid overlap with cards */}
               <div className="pl-6 border-l-2 border-white/10">
                 <p className="text-white/40 text-xl md:text-2xl italic font-serif leading-relaxed">
                   “AI isn’t just about models — it’s about systems.”
@@ -48,7 +46,6 @@ const Problem = () => {
             </ScrollReveal>
           </div>
           
-          {/* Cards Area */}
           <div className="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
             {painPoints.map((point, index) => (
               <ScrollReveal 

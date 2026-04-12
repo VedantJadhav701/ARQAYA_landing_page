@@ -42,9 +42,9 @@ const Hero = () => {
   return (
     <section className="relative min-h-[100dvh] w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-24 pb-40">
       
-      {/* Background Video Layer */}
+      {/* Background Video Layer - Shifted UP on mobile to align with badges */}
       <div 
-        className="absolute w-full z-0 h-[65dvh] md:h-[85vh] bottom-[30dvh] md:bottom-[40vh]"
+        className="absolute w-full z-0 h-[65dvh] md:h-[85vh] bottom-[45dvh] sm:bottom-[30dvh] md:bottom-[40vh]"
       >
         <VideoPlayer
           src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8"
@@ -104,7 +104,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Infinite Scrolling Marquee - Fixed with dvh/absolute bottom safe area */}
+      {/* Infinite Scrolling Marquee */}
       <div className="absolute bottom-6 md:bottom-12 w-full overflow-hidden grayscale opacity-60 z-10">
         <div className="flex w-fit whitespace-nowrap animate-marquee">
           <div className="flex items-center gap-16 md:gap-24 px-8">
