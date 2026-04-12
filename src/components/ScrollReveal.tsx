@@ -39,7 +39,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         transition: {
           duration,
           delay,
-          ease: [0.21, 0.47, 0.32, 0.98] as any, // Cast to any to bypass strict Easing type check
+          ease: [0.21, 0.47, 0.32, 0.98] as any,
           staggerChildren,
         }
       },
@@ -87,7 +87,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount: 0.2 }}
+      // trigger sooner on mobile, and slightly before it enters center of screen
+      viewport={{ once, amount: 0.1, margin: "0px 0px -50px 0px" }}
       variants={getVariants()}
       className={className}
     >
