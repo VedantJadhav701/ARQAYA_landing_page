@@ -9,6 +9,8 @@ interface SplitTextProps {
   className?: string;
   delay?: number;
   stagger?: number;
+  duration?: number;
+  y?: number;
 }
 
 const SplitText: React.FC<SplitTextProps> = ({
@@ -16,6 +18,8 @@ const SplitText: React.FC<SplitTextProps> = ({
   className,
   delay = 0,
   stagger = 0.08,
+  duration = 0.6,
+  y = 40,
 }) => {
   const words = text.split(" ");
 
@@ -33,17 +37,15 @@ const SplitText: React.FC<SplitTextProps> = ({
   const child = {
     visible: {
       opacity: 1,
-      filter: "blur(0px)",
       y: 0,
       transition: {
-        duration: 0.6, // Exactly as per specification
-        ease: "easeOut" as const,
+        duration,
+        ease: [0.22, 1, 0.36, 1] as any, // Premium ease
       },
     },
     hidden: {
       opacity: 0,
-      filter: "blur(10px)",
-      y: 40,
+      y,
     },
   };
 
@@ -52,7 +54,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       variants={container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+      viewport={{ once: true, amount: 0.1 }}
     >
       <div className={cn("flex flex-wrap", className)}>
         {words.map((word, index) => (

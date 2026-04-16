@@ -2,130 +2,88 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Cpu, Layers, Shield, Database, Workflow, Activity } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import VideoPlayer from "@/components/VideoPlayer";
+import BlurIn from "@/components/BlurIn";
+import SplitText from "@/components/SplitText";
 import { cn } from "@/lib/utils";
 
 const Hero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: { 
-        duration: 0.8, 
-        ease: [0.21, 0.47, 0.32, 0.98] as any 
-      },
-    },
-  };
-
-  const marqueeItems = [
-    { icon: Database, text: "Infrastructure" },
-    { icon: Workflow, text: "Automation" },
-    { icon: Activity, text: "Intelligence" },
-    { icon: Shield, text: "Reliability" },
-    { icon: Layers, text: "Scalability" },
-  ];
-
   return (
-    <section className="relative min-h-[100dvh] w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-24 pb-40">
-      
-      {/* Background Video Layer - Shifted UP on mobile to align with badges */}
-      <div 
-        className="absolute w-full z-0 h-[65dvh] md:h-[85vh] bottom-[45dvh] sm:bottom-[30dvh] md:bottom-[40vh]"
-      >
+    <section className="relative h-screen w-full overflow-hidden bg-[#070612] flex items-center">
+      {/* Background Video Component */}
+      <div className="absolute inset-0 z-0 flex items-center">
         <VideoPlayer
-          src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8"
-          className="h-full w-full object-cover opacity-100"
+          src="https://stream.mux.com/s8pMcOvMQXc4GD6AX4e1o01xFogFxipmuKltNfSYza0200.m3u8"
+          className="h-full w-full object-cover origin-left scale-125 ml-0 lg:ml-[200px]"
         />
+        {/* Bottom Fade Gradient */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#070612] via-transparent to-transparent h-40 bottom-0" />
       </div>
 
-      {/* Hero Content */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-20 max-w-6xl mx-auto px-6 text-center flex flex-col items-center gap-10 md:gap-16"
-      >
-        {/* Badges */}
-        <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 md:gap-5">
-          <div className="glass px-4 py-2 rounded-full flex items-center gap-2.5 text-[10px] md:text-sm font-medium text-white/80">
-            <Cpu className="h-4 w-4 text-blue-400" />
-            Agentic AI Systems
-          </div>
-          <div className="glass px-4 py-2 rounded-full flex items-center gap-2.5 text-[10px] md:text-sm font-medium text-white/80">
-            <Layers className="h-4 w-4 text-purple-400" />
-            Domain Models
-          </div>
-          <div className="glass px-4 py-2 rounded-full flex items-center gap-2.5 text-[10px] md:text-sm font-medium text-white/80">
-            <Shield className="h-4 w-4 text-green-400" />
-            System Monitoring
-          </div>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1 
-          variants={itemVariants}
-          className="text-4xl sm:text-7xl md:text-8xl lg:text-[100px] font-medium tracking-tighter leading-[1.1] md:leading-[0.95] text-white max-w-5xl"
-        >
-          Unlock the Power <br className="hidden md:block" /> 
-          of AI for Business
-        </motion.h1>
-
-        {/* Subtext */}
-        <motion.p 
-          variants={itemVariants}
-          className="text-base md:text-2xl text-white/60 max-w-3xl leading-relaxed px-4"
-        >
-          We build agentic AI systems, domain-specific models, and intelligent 
-          automation platforms that transform how modern companies operate.
-        </motion.p>
-
-        {/* Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto px-8 sm:px-0 mb-10">
-          <button className="bg-white text-black px-12 py-5 rounded-full font-bold transition-all active:scale-95 hover:bg-white/90 shadow-2xl shadow-white/10">
-            Get Started for Free
-          </button>
-          <button className="glass text-white px-12 py-5 rounded-full font-semibold transition-all active:scale-95 hover:bg-white/10">
-            Let&apos;s Get Connected
-          </button>
-        </motion.div>
-      </motion.div>
-
-      {/* Infinite Scrolling Marquee */}
-      <div className="absolute bottom-6 md:bottom-12 w-full overflow-hidden grayscale opacity-60 z-10">
-        <div className="flex w-fit whitespace-nowrap animate-marquee">
-          <div className="flex items-center gap-16 md:gap-24 px-8">
-            {marqueeItems.map((item, i) => (
-              <div key={i} className="flex items-center gap-4">
-                <item.icon className="h-5 w-5 md:h-7 md:w-7" />
-                <span className="font-bold text-base md:text-xl tracking-tighter uppercase">{item.text}</span>
+      {/* Hero Content Container */}
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-12">
+        <div className="flex flex-col gap-12 max-w-4xl">
+          {/* Badge & Heading Group */}
+          <div className="flex flex-col gap-6">
+            {/* Badge */}
+            <BlurIn duration={0.6} delay={0}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 backdrop-blur-sm bg-white/5">
+                <Sparkles className="w-3 h-3 text-white/80" />
+                <span className="text-sm font-medium text-white/80 uppercase tracking-wider">
+                  New AI Automation Ally
+                </span>
               </div>
-            ))}
-          </div>
-          <div className="flex items-center gap-16 md:gap-24 px-8">
-            {marqueeItems.map((item, i) => (
-              <div key={`dup-${i}`} className="flex items-center gap-4">
-                <item.icon className="h-5 w-5 md:h-7 md:w-7" />
-                <span className="font-bold text-base md:text-xl tracking-tighter uppercase">{item.text}</span>
+            </BlurIn>
+
+            {/* Main Heading - Complex Multi-line Structure */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-white leading-tight lg:leading-[1.2]">
+              <SplitText 
+                text="Unlock the Power of AI" 
+                className="block mb-2" 
+                stagger={0.08}
+              />
+              <div className="flex flex-wrap items-baseline gap-x-[0.25em]">
+                <SplitText 
+                  text="for Your" 
+                  delay={0.4} // Staggered to start after Line 1 is well underway
+                  stagger={0.08}
+                />
+                <SplitText 
+                  text="Business." 
+                  className="font-serif italic italic text-white/90" 
+                  delay={0.56} // Staggered entry for final word
+                  stagger={0.08}
+                />
               </div>
-            ))}
+            </h1>
+            
+            {/* Subtitle */}
+            <BlurIn delay={0.4} duration={0.6} className="max-w-xl">
+              <p className="text-white/80 text-lg font-normal leading-relaxed">
+                Our cutting-edge AI platform automates, analyzes, and accelerates 
+                your workflows so you can focus on what really matters.
+              </p>
+            </BlurIn>
           </div>
+
+          {/* CTA Buttons */}
+          <BlurIn delay={0.6} duration={0.6}>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="/book-call"
+                className="inline-flex items-center gap-3 bg-white text-[#070612] px-5 py-3 rounded-full font-bold transition-transform active:scale-95 hover:scale-105"
+              >
+                Book A Free Call
+                <ArrowRight className="h-5 w-5" />
+              </a>
+              <button className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-full font-semibold transition-transform active:scale-95 hover:bg-white/30">
+                Learn now
+              </button>
+            </div>
+          </BlurIn>
         </div>
       </div>
-
     </section>
   );
 };

@@ -3,21 +3,22 @@
 @theme {
   --font-sans: "Inter", sans-serif;
   --font-serif: "Playfair Display", serif;
-  --color-background: #000000;
+  /* Updated to match the new dark purple-black theme spec */
+  --color-background: #070612;
   --color-foreground: #ffffff;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
+    --background: #070612;
     --foreground: 0 0% 100%;
   }
 
   html, body {
-    background-color: #000000;
+    background-color: #070612;
     color: #ffffff;
     max-width: 100vw;
-    overflow-x: hidden; /* Prevent horizontal scroll confusing animations */
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
@@ -52,7 +53,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #070612;
 }
 
 ::-webkit-scrollbar-thumb {
