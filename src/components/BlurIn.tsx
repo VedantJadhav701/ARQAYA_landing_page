@@ -9,6 +9,7 @@ interface BlurInProps extends HTMLMotionProps<"div"> {
   duration?: number;
   y?: number;
   className?: string;
+  immediate?: boolean;
 }
 
 const BlurIn: React.FC<BlurInProps> = ({
@@ -17,12 +18,22 @@ const BlurIn: React.FC<BlurInProps> = ({
   duration = 0.6,
   y = 20,
   className,
+  immediate = false,
   ...props
 }) => {
+  const variants = {
+    hidden: { opacity: 0, filter: "blur(10px)", y },
+    visible: { opacity: 1, filter: "blur(0px)", y: 0 },
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, filter: "blur(10px)", y }}
-      whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+      variants={variants}
+      initial="hidden"
+      // Use animate for immediate triggers (Above the Fold)
+      // Use whileInView for scroll-revealed triggers
+      animate={immediate ? "visible" : undefined}
+      whileInView={!immediate ? "visible" : undefined}
       viewport={{ once: true }}
       transition={{ 
         duration, 

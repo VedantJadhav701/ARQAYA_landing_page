@@ -11,6 +11,7 @@ interface SplitTextProps {
   stagger?: number;
   duration?: number;
   y?: number;
+  triggerOnce?: boolean;
 }
 
 const SplitText: React.FC<SplitTextProps> = ({
@@ -20,6 +21,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   stagger = 0.08,
   duration = 0.6,
   y = 40,
+  triggerOnce = false,
 }) => {
   const words = text.split(" ");
 
@@ -40,7 +42,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       y: 0,
       transition: {
         duration,
-        ease: [0.22, 1, 0.36, 1] as any, // Premium ease
+        ease: [0.22, 1, 0.36, 1] as any,
       },
     },
     hidden: {
@@ -53,7 +55,9 @@ const SplitText: React.FC<SplitTextProps> = ({
     <motion.div
       variants={container}
       initial="hidden"
-      whileInView="visible"
+      // If triggerOnce is true, we use animate to trigger immediately on load
+      animate={triggerOnce ? "visible" : undefined}
+      whileInView={!triggerOnce ? "visible" : undefined}
       viewport={{ once: true, amount: 0.1 }}
     >
       <div className={cn("flex flex-wrap", className)}>
