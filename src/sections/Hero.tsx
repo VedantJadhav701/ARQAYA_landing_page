@@ -14,7 +14,7 @@ const Hero = () => {
       <VideoBackground />
 
       {/* Hero Content Container */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-12 py-32 lg:py-0">
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-12 pt-40 pb-32 lg:pt-56 lg:pb-40">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Column: Content */}
