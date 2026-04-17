@@ -54,11 +54,11 @@ const Problem = () => {
                 delay={index * 0.1}
                 className="h-full"
               >
-                <div className="h-full p-10 rounded-[40px] glass border-white/5 hover:border-white/20 transition-all hover:bg-white/5 group relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <point.icon className="h-10 w-10 text-white/30 mb-8 group-hover:text-white transition-colors" />
+                <div className="h-full p-10 rounded-[40px] glass border-white/5 hover:border-white/10 transition-all hover:bg-white/5 group relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <point.icon className="h-10 w-10 text-white/20 mb-8 group-hover:text-white transition-colors" />
                   <h3 className="text-2xl font-medium mb-4">{point.title}</h3>
-                  <p className="text-white/50 text-base md:text-lg leading-relaxed">
+                  <p className="text-white/40 text-base md:text-lg leading-relaxed">
                     {point.description}
                   </p>
                 </div>

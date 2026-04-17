@@ -29,7 +29,7 @@ const industries = [
 
 const UseCases = () => {
   return (
-    <section id="use-cases" className="py-24 md:py-32 bg-black overflow-hidden">
+    <section id="use-cases" className="py-32 md:py-48 bg-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <ScrollReveal variant="fade-up" className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tighter mb-6">

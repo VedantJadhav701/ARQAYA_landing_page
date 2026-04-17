@@ -46,7 +46,7 @@ const HowItWorks = () => {
                   {step.number}
                 </div>
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl md:text-3xl font-medium mb-4 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-2xl md:text-3xl font-medium mb-4 group-hover:text-white transition-colors">
                     {step.title}
                   </h3>
                   <p className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl">
