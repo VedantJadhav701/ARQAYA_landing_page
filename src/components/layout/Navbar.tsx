@@ -29,7 +29,7 @@ const Navbar = () => {
         {/* ARQAYA Logo */}
         <a href="/" className="flex flex-col group relative">
           <span className="text-xl md:text-2xl font-medium tracking-tighter text-white group-hover:text-white/80 transition-colors">ARQAYA</span>
-          <span className="text-[9px] font-medium tracking-[0.4em] text-white/30 uppercase -mt-1 group-hover:text-white/50 transition-colors">Intelligence LLP</span>
+          <span className="text-[9px] font-medium tracking-[0.4em] text-white/30 uppercase -mt-1 group-hover:text-white/50 transition-colors">Intelligence Pvt Ltd</span>
         </a>
 
         {/* Links */}

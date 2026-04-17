@@ -56,7 +56,7 @@ const Footer = () => {
           <div className="space-y-4 md:space-y-6">
             <div className="flex flex-col items-center md:items-start">
               <span className="text-2xl md:text-3xl font-serif tracking-widest text-white">ARQAYA</span>
-              <span className="text-[10px] font-medium tracking-[0.3em] text-white/40 uppercase">Intelligence LLP</span>
+              <span className="text-[10px] font-medium tracking-[0.3em] text-white/40 uppercase">Intelligence Pvt Ltd</span>
             </div>
             <div className="text-white/40 text-[10px] md:text-xs leading-relaxed max-w-xs uppercase tracking-tight">
               AI Systems | Automation | Intelligence <br />
@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-16 md:mt-20 text-center text-white/20 text-[10px]">
-          © {new Date().getFullYear()} ARQAYA Intelligence LLP. All rights reserved.
+          © {new Date().getFullYear()} ARQAYA Intelligence Pvt Ltd. All rights reserved.
         </div>
       </div>
     </footer>

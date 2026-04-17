@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "ARQAYA Intelligence LLP | Unlock the Power of AI",
+  title: "ARQAYA Intelligence Pvt Ltd | Unlock the Power of AI",
   description: "We build agentic AI systems, domain-specific models, and intelligent automation platforms that transform how modern companies operate.",
 };
 
