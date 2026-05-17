@@ -273,7 +273,7 @@ Clicking a tab jumps to that slide.
     3. Parallel Model Inference (PINN + SLM + Tree-based)
     4. Weighted Ensemble Fusion
     5. Final Prediction + Uncertainty Bounds
-  - Small stat: "₹60,60,000 Project Investment" + "Sub-second Latency"
+  - Small stat: "Sub-second Latency"
 
 **Key facts strip (4 columns, tenetx-light bg):**
 ```
@@ -608,7 +608,7 @@ Col 4: Contact
 - Core product: TENETFlow Model — on-premise AI for drilling optimization
 - Key tech: Physics-Informed Neural Networks (PINNs), Small Language Models (7–8B params), Agentic AI
 - Key value: 100% air-gapped, <0.5% error rate, ₹0.08/query, SCADA/IoT integration
-- Investment: ₹60,60,000 project scope
+- Investment: Confidential project scope
 
 **TEXFLOW — Subsidiary 2 (Research Platform)**
 - Full name: TEXFLOW Automated Typesetting Compliance Platform

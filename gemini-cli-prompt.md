@@ -42,7 +42,7 @@ Product: TENETFlow Model — on-premise AI for drilling optimization
 Technology: Physics-Informed Neural Networks (PINNs), Small Language Models (7–8B params), Agentic AI
 Key stats: <0.5% error rate | ₹0.08/query | 100% air-gapped | SCADA/IoT integration
 vs competitors: Wipro Upstream AI — TENETX is domain-specific, on-premise, physics-native
-Investment scope: ₹60,60,000
+Investment scope: Confidential
 
 SUBSIDIARY 2 — TEXFLOW (Research Typesetting Platform)
 Full name: TEXFLOW Automated Typesetting Compliance Platform
