@@ -102,22 +102,22 @@ const Texflow = () => {
                 </div>
 
                 {/* Mockup Split View */}
-                <div className="grid grid-cols-2 gap-2 aspect-[4/3] bg-gray-50 rounded-lg overflow-hidden">
-                  <div className="bg-white p-4 border-r border-gray-mid flex flex-col gap-2">
-                    <div className="h-4 w-3/4 bg-gray-100 rounded" />
-                    <div className="h-4 w-full bg-gray-100 rounded" />
-                    <div className="h-4 w-5/6 bg-gray-100 rounded" />
-                    <div className="h-4 w-2/3 bg-gray-100 rounded" />
-                    <div className="mt-auto h-24 w-full bg-gray-50 rounded border border-dashed border-gray-mid flex items-center justify-center">
+                <div className="grid grid-cols-2 gap-2 aspect-video bg-gray-50 rounded-lg overflow-hidden">
+                  <div className="bg-white p-3 border-r border-gray-mid flex flex-col gap-2">
+                    <div className="h-3 w-3/4 bg-gray-100 rounded" />
+                    <div className="h-3 w-full bg-gray-100 rounded" />
+                    <div className="h-3 w-5/6 bg-gray-100 rounded" />
+                    <div className="h-3 w-2/3 bg-gray-100 rounded" />
+                    <div className="mt-auto h-12 w-full bg-gray-50 rounded border border-dashed border-gray-mid flex items-center justify-center">
                       <span className="text-[10px] text-text-muted">WORD EDITOR</span>
                     </div>
                   </div>
-                  <div className="bg-white p-4 flex flex-col gap-2">
-                    <div className="h-4 w-full bg-blue-50/50 rounded" />
-                    <div className="h-4 w-5/6 bg-blue-50/50 rounded" />
-                    <div className="h-4 w-full bg-blue-50/50 rounded" />
-                    <div className="h-4 w-3/4 bg-blue-50/50 rounded" />
-                    <div className="mt-auto h-24 w-full bg-blue-50/50 rounded border border-texflow-primary/20 flex items-center justify-center">
+                  <div className="bg-white p-3 flex flex-col gap-2">
+                    <div className="h-3 w-full bg-blue-50/50 rounded" />
+                    <div className="h-3 w-5/6 bg-blue-50/50 rounded" />
+                    <div className="h-3 w-full bg-blue-50/50 rounded" />
+                    <div className="h-3 w-3/4 bg-blue-50/50 rounded" />
+                    <div className="mt-auto h-12 w-full bg-blue-50/50 rounded border border-texflow-primary/20 flex items-center justify-center">
                       <span className="text-[10px] text-texflow-primary font-bold">LATEX OUTPUT</span>
                     </div>
                   </div>
