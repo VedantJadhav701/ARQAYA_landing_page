@@ -75,10 +75,6 @@ const Tenetx = () => {
               </div>
               <div className="flex flex-wrap gap-8 pt-4">
                 <div>
-                  <div className="font-rajdhani font-bold text-[11px] text-text-muted tracking-widest uppercase mb-1">PROJECT INVESTMENT</div>
-                  <div className="font-serif text-[20px] text-text-black">₹60,60,000</div>
-                </div>
-                <div>
                   <div className="font-rajdhani font-bold text-[11px] text-text-muted tracking-widest uppercase mb-1">LATENCY</div>
                   <div className="font-serif text-[20px] text-text-black">Sub-second</div>
                 </div>
