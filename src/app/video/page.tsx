@@ -56,9 +56,9 @@ Scene 6: THE CLOSE
           
           <div className="mb-12">
              <div className="font-rajdhani font-bold text-[11px] tracking-[0.3em] text-gold uppercase mb-4">OUR STORY (FILM)</div>
-             <h1 className="font-serif text-[42px] md:text-[64px] leading-tight text-white mb-6">The Pragmatic Systems.</h1>
+             <h1 className="font-serif text-[42px] md:text-[64px] leading-tight text-white mb-6">Intelligence by Design.</h1>
              <p className="font-sans text-white/60 text-lg md:text-[20px] max-w-2xl leading-relaxed">
-               An in-depth look at ARQAYAA Intelligence — our philosophy, our systems, and how we are engineering the future of industrial autonomy.
+               A 90-second cinematic look into our mission, our technology, and the industrial systems we are building for the future.
              </p>
           </div>
 
