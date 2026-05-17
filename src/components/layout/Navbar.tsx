@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Link, usePathname } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Search, Globe, Accessibility, ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
