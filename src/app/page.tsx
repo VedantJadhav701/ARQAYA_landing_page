@@ -17,7 +17,14 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-cream selection:bg-gold/20 selection:text-text-black">
       <Navbar />
-      
+
+      {/* Preload hero image for performance */}
+      <link
+        rel="preload"
+        as="image"
+        href="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1920&q=85&fit=crop"
+      />
+
       {/* 1. Hero Section */}
       <Hero />
 

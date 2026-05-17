@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const slides = [
@@ -9,28 +10,29 @@ const slides = [
     label: "AI INTELLIGENCE",
     headline: "Unlock the Power of AI for Your Business.",
     body: "Automating, analyzing, and accelerating workflows across industries.",
-    background: "bg-gradient-to-br from-[#0F172A] to-[#B45309]", // Indigo to Amber
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1920",
+    href: "/what-we-do"
   },
   {
     label: "TENETX — OIL & GAS",
     headline: "Physics-Native AI for Drilling Operations.",
     body: "100% data sovereignty. Error rate below 0.5%. Zero cloud dependency.",
-    background: "bg-[#141414]", // Dark industrial
-    image: "/videos/hero-bg.mp4", // Using existing video if appropriate, or just gradient
+    image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1920",
+    href: "/subsidiaries/tenetx"
   },
   {
     label: "TEXFLOW — RESEARCH",
     headline: "From Word to Publisher-Ready PDF. Instantly.",
     body: "Zero-AI deterministic typesetting for researchers, scholars, and professors.",
-    background: "bg-[#F7F5F0]", // Paper white
-    textColor: "text-text-black",
-    overlay: "bg-white/40",
+    image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=1920",
+    href: "/subsidiaries/texflow"
   },
   {
     label: "OUR MISSION",
     headline: "AI Solutions for Industry. And for Society.",
     body: "Building intelligent systems that solve real problems for real people.",
-    background: "bg-gradient-to-b from-blue-900 to-slate-900",
+    image: "https://images.unsplash.com/photo-1449156001931-82834b26e3bc?auto=format&fit=crop&q=80&w=1920",
+    href: "/about"
   },
 ];
 
@@ -53,16 +55,16 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className={cn(
-            "absolute inset-0 w-full h-full",
-            slides[currentSlide].background
-          )}
+          className="absolute inset-0 w-full h-full"
         >
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+          />
+          
           {/* Overlay */}
-          <div className={cn(
-            "absolute inset-0", 
-            slides[currentSlide].overlay || "bg-black/40"
-          )} />
+          <div className="absolute inset-0 bg-black/40" />
 
           {/* Content */}
           <div className="absolute bottom-32 left-6 md:left-24 max-w-4xl z-10">
@@ -74,25 +76,16 @@ const Hero = () => {
               <span className="font-rajdhani font-bold text-[11px] tracking-[0.2em] uppercase text-gold mb-6 block">
                 {slides[currentSlide].label}
               </span>
-              <h1 className={cn(
-                "font-serif font-light text-4xl md:text-[72px] leading-[1.1] mb-6",
-                slides[currentSlide].textColor || "text-white"
-              )}>
+              <h1 className="font-serif font-light text-4xl md:text-[72px] leading-[1.1] mb-6 text-white">
                 {slides[currentSlide].headline}
               </h1>
-              <p className={cn(
-                "font-sans text-base md:text-[16px] mb-8 max-w-xl",
-                slides[currentSlide].textColor ? "text-text-mid" : "text-white/80"
-              )}>
+              <p className="font-sans text-base md:text-[16px] mb-8 max-w-xl text-white/80">
                 {slides[currentSlide].body}
               </p>
               
-              <button className={cn(
-                "cta-circle group",
-                slides[currentSlide].textColor || "text-white"
-              )}>
+              <a href={slides[currentSlide].href} className="cta-circle group text-white">
                 <span className="text-xl group-hover:text-white">→</span>
-              </button>
+              </a>
             </motion.div>
           </div>
         </motion.div>
