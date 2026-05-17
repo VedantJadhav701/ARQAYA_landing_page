@@ -22,12 +22,12 @@ const Footer = () => {
   return (
     <footer className="bg-[#1A1A1A] text-[#AAAAAA] pt-24 pb-12 border-t border-gold">
       <div className="max-w-7xl mx-auto px-6 md:px-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
           {/* Col 1: Brand */}
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:col-span-1">
             <Link href="/" className="mb-6 inline-block">
               <div className="font-serif font-bold text-[24px] text-white leading-tight">ARQAYAA</div>
-              <div className="font-rajdhani text-[11px] font-bold tracking-[0.2em] text-gold -mt-1">INTELLIGENCE PVT LTD</div>
+              <div className="font-rajdhani text-[11px] font-bold tracking-[0.2em] text-gold -mt-1 uppercase">Intelligence</div>
             </Link>
             <p className="font-sans text-[14px] leading-relaxed mb-8">
               Building the future of autonomous enterprise. AI solutions for industries and society.
@@ -49,17 +49,29 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Col 3: Subsidiaries */}
+          {/* Col 3: Knowledge */}
           <div>
-            <h4 className="font-rajdhani font-bold text-[11px] text-white tracking-[0.2em] uppercase mb-8">SUBSIDIARIES</h4>
+            <h4 className="font-rajdhani font-bold text-[11px] text-white tracking-[0.2em] uppercase mb-8">KNOWLEDGE</h4>
             <ul className="space-y-4 font-sans text-[14px]">
-              <li><Link href="/subsidiaries/tenetx" className="hover:text-white transition-colors">TENETX — Oil & Gas AI</Link></li>
-              <li><Link href="/subsidiaries/texflow" className="hover:text-white transition-colors">TEXFLOW — Research Platform</Link></li>
-              <li><Link href="/subsidiaries" className="hover:text-white transition-colors">All Subsidiaries</Link></li>
+              <li><Link href="/insights" className="hover:text-white transition-colors">Insights</Link></li>
+              <li><Link href="/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
+              <li><Link href="/research" className="hover:text-white transition-colors">Research</Link></li>
+              <li><Link href="/publications" className="hover:text-white transition-colors">Publications</Link></li>
             </ul>
           </div>
 
-          {/* Col 4: Contact */}
+          {/* Col 4: Trust */}
+          <div>
+            <h4 className="font-rajdhani font-bold text-[11px] text-white tracking-[0.2em] uppercase mb-8">TRUST</h4>
+            <ul className="space-y-4 font-sans text-[14px]">
+              <li><Link href="/security" className="hover:text-white transition-colors">Security</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link></li>
+              <li><Link href="/compliance" className="hover:text-white transition-colors">Compliance</Link></li>
+              <li><Link href="/governance" className="hover:text-white transition-colors">Governance</Link></li>
+            </ul>
+          </div>
+
+          {/* Col 5: Contact */}
           <div>
             <h4 className="font-rajdhani font-bold text-[11px] text-white tracking-[0.2em] uppercase mb-8">CONTACT</h4>
             <ul className="space-y-4 font-sans text-[14px]">
@@ -69,7 +81,7 @@ const Footer = () => {
               </li>
               <li>India</li>
               <li>
-                <a href="https://arqaya.vercel.app/book-call" target="_blank" rel="noopener noreferrer" className="text-gold font-bold hover:text-gold-light transition-colors flex items-center gap-2">
+                <a href="/book-call" className="text-gold font-bold hover:text-gold-light transition-colors flex items-center gap-2">
                   Book A Free Call <span>→</span>
                 </a>
               </li>

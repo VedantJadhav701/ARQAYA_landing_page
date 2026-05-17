@@ -6,6 +6,9 @@ import {
   Bebas_Neue 
 } from "next/font/google";
 import "./globals.css";
+import OrganizationSchema from "@/components/seo/OrganizationSchema";
+import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
+import { Suspense } from "react";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant-garamond",
@@ -56,11 +59,16 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} ${cormorant.variable} ${rajdhani.variable} ${bebasNeue.variable} antialiased`}
       >
-        {/* Skip to main content — accessibility */}
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:bg-gold focus:text-white focus:px-4 focus:py-2 focus:rounded">
-          Skip to main content
-        </a>
-        {children}
+        <OrganizationSchema />
+        <Suspense fallback={null}>
+          <AnalyticsProvider>
+            {/* Skip to main content — accessibility */}
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:bg-gold focus:text-white focus:px-4 focus:py-2 focus:rounded">
+              Skip to main content
+            </a>
+            {children}
+          </AnalyticsProvider>
+        </Suspense>
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const slides = [
@@ -58,9 +59,14 @@ const Hero = () => {
           className="absolute inset-0 w-full h-full"
         >
           {/* Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+          <Image 
+            src={slides[currentSlide].image}
+            alt={slides[currentSlide].headline}
+            fill
+            priority={currentSlide === 0}
+            className="object-cover object-center"
+            sizes="100vw"
+            quality={90}
           />
           
           {/* Overlay */}
@@ -83,9 +89,9 @@ const Hero = () => {
                 {slides[currentSlide].body}
               </p>
               
-              <a href={slides[currentSlide].href} className="cta-circle group text-white">
+              <Link href={slides[currentSlide].href} className="cta-circle group text-white">
                 <span className="text-xl group-hover:text-white">→</span>
-              </a>
+              </Link>
             </motion.div>
           </div>
         </motion.div>

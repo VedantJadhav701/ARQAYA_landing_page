@@ -6,12 +6,18 @@ import { usePathname } from "next/navigation";
 import { Search, Globe, Accessibility, ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
+
+const CommandPalette = dynamic(() => import("./CommandPalette"), {
+  ssr: false,
+});
 
 const Navbar = () => {
   const pathname = usePathname();
   const [isSubsidiaryOpen, setIsSubsidiaryOpen] = React.useState(false);
   const [isWhatWeDoOpen, setIsWhatWeDoOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   const navLinks = [
     { name: "ABOUT US", href: "/about" },
@@ -45,8 +51,11 @@ const Navbar = () => {
       <nav className="h-16 bg-white border-b border-[#E0DDD6] flex items-center justify-between px-6 md:px-12 relative">
         {/* Left: Search icon */}
         <div className="flex-1 lg:flex-none">
-          <button className="w-9 h-9 border border-[#E0DDD6] rounded-full flex items-center justify-center text-text-dark hover:bg-gray-light transition-colors cursor-pointer">
-            <Search size={18} />
+          <button 
+            onClick={() => setIsSearchOpen(true)}
+            className="w-9 h-9 border border-[#E0DDD6] rounded-full flex items-center justify-center text-text-dark hover:bg-gray-light transition-colors cursor-pointer group"
+          >
+            <Search size={18} className="group-hover:text-gold transition-colors" />
           </button>
         </div>
 
@@ -171,6 +180,9 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Global Search Palette */}
+      <CommandPalette open={isSearchOpen} setOpen={setIsSearchOpen} />
     </header>
   );
 };
