@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause, Maximize, Volume2, VolumeX, RotateCcw } from "lucide-react";
+import { Play, Pause, Maximize, Volume2, VolumeX, RotateCcw, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CompanyVideoProps {
@@ -16,6 +16,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,8 +27,16 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     if (!video) return;
 
     const handleTimeUpdate = () => setCurrentTime(video.currentTime);
-    const handleLoadedMetadata = () => setDuration(video.duration);
-    const handlePlay = () => setIsPlaying(true);
+    const handleLoadedMetadata = () => {
+      setDuration(video.duration);
+      setIsLoading(false);
+    };
+    const handleWaiting = () => setIsLoading(true);
+    const handlePlaying = () => {
+      setIsLoading(false);
+      setIsPlaying(true);
+      setHasStarted(true);
+    };
     const handlePause = () => setIsPlaying(false);
     const handleEnded = () => {
       setIsPlaying(false);
@@ -36,21 +45,32 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
 
     video.addEventListener("timeupdate", handleTimeUpdate);
     video.addEventListener("loadedmetadata", handleLoadedMetadata);
-    video.addEventListener("play", handlePlay);
+    video.addEventListener("waiting", handleWaiting);
+    video.addEventListener("playing", handlePlaying);
     video.addEventListener("pause", handlePause);
     video.addEventListener("ended", handleEnded);
+
+    // Initial check in case it loaded before listener attached
+    if (video.readyState >= 2) {
+      setDuration(video.duration);
+      setIsLoading(false);
+    }
 
     return () => {
       video.removeEventListener("timeupdate", handleTimeUpdate);
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("waiting", handleWaiting);
+      video.removeEventListener("playing", handlePlaying);
       video.removeEventListener("pause", handlePause);
       video.removeEventListener("ended", handleEnded);
     };
   }, []);
 
-  const togglePlay = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
+  const togglePlay = (e?: React.MouseEvent | React.TouchEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (previewMode) return;
     
     const video = videoRef.current;
@@ -59,8 +79,22 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     if (isPlaying) {
       video.pause();
     } else {
-      video.play().catch(err => console.error("Playback failed:", err));
-      setHasStarted(true);
+      // Force user gesture context
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setIsPlaying(true);
+          setHasStarted(true);
+        }).catch(err => {
+          console.error("Playback failed:", err);
+          // Fallback: try muted play if audio is the blocker
+          video.muted = true;
+          setIsMuted(true);
+          video.play().then(() => {
+             setHasStarted(true);
+          });
+        });
+      }
     }
   };
 
@@ -69,10 +103,20 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     if (!containerRef.current) return;
     
     if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen();
+      if (containerRef.current.requestFullscreen) {
+        containerRef.current.requestFullscreen();
+      } else if ((containerRef.current as any).webkitRequestFullscreen) { /* Safari */
+        (containerRef.current as any).webkitRequestFullscreen();
+      } else if ((containerRef.current as any).msRequestFullscreen) { /* IE11 */
+        (containerRef.current as any).msRequestFullscreen();
+      }
       setIsFullscreen(true);
     } else {
-      document.exitFullscreen();
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if ((document as any).webkitExitFullscreen) {
+        (document as any).webkitExitFullscreen();
+      }
       setIsFullscreen(false);
     }
   };
@@ -86,7 +130,6 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
   if (previewMode) {
     return (
       <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-gold/30 group cursor-pointer shadow-2xl bg-black">
-        {/* Poster / Video Thumbnail */}
         <video 
           className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
           muted 
@@ -94,13 +137,12 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
           src="/arqayaa_film.mp4"
         />
         <div className="absolute inset-0 bg-[#000000]/40 flex items-center justify-center">
-          <div className="text-center z-10">
-            <h3 className="font-serif font-bold text-3xl md:text-4xl text-white mb-2 tracking-tight">OUR STORY</h3>
+          <div className="text-center z-10 p-4">
+            <h3 className="font-serif font-bold text-2xl md:text-4xl text-white mb-2 tracking-tight">OUR STORY</h3>
             <p className="font-rajdhani font-bold text-[10px] tracking-[0.3em] text-gold uppercase">ARQAYAA INTELLIGENCE</p>
           </div>
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
-          <div className="w-20 h-20 rounded-full border border-gold/50 flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-white transition-all duration-500 z-20">
-            <Play fill="currentColor" className="ml-1" size={32} />
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-gold/50 flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-white transition-all duration-500 z-20">
+            <Play fill="currentColor" className="ml-1" size={24} />
           </div>
         </div>
       </div>
@@ -111,7 +153,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     <div 
       ref={containerRef}
       className={cn(
-        "relative aspect-video w-full bg-[#060608] overflow-hidden group shadow-2xl touch-none",
+        "relative aspect-video w-full bg-black overflow-hidden group shadow-2xl touch-action-none",
         isFullscreen ? "h-screen aspect-auto" : "rounded-2xl"
       )}
       onClick={() => togglePlay()}
@@ -121,13 +163,24 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
         src="/arqayaa_film.mp4"
         className="w-full h-full object-contain"
         playsInline
+        webkit-playsinline="true"
+        preload="auto"
         muted={isMuted}
       />
 
+      {/* Loading Spinner */}
+      {isLoading && hasStarted && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px] z-[65]">
+           <Loader2 className="text-gold animate-spin" size={48} />
+        </div>
+      )}
+
       {/* OVERLAY BEFORE START */}
       {!hasStarted && (
-        <div className="absolute inset-0 z-[70] flex items-center justify-center cursor-pointer group/overlay" onClick={togglePlay}>
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        <div 
+          className="absolute inset-0 z-[70] flex items-center justify-center cursor-pointer group/overlay bg-black/60 backdrop-blur-sm"
+          onClick={(e) => togglePlay(e)}
+        >
           <div className="relative text-center flex flex-col items-center p-6">
             <div className="mb-4 md:mb-6 font-serif font-bold text-3xl md:text-4xl text-white tracking-tight">ARQAYAA</div>
             <div className="mb-8 md:mb-10 font-rajdhani font-bold text-xs md:text-sm tracking-[0.3em] text-gold uppercase text-center">Watch Full Film</div>
@@ -159,10 +212,13 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
           
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <button onClick={togglePlay} className="text-white hover:text-gold transition-colors p-1">
+              <button 
+                onClick={(e) => togglePlay(e)}
+                className="text-white hover:text-gold transition-colors p-1"
+              >
                 {isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}
               </button>
-              <button onClick={(e) => { e.stopPropagation(); setIsMuted(!isMuted); }} className="text-white hover:text-gold transition-colors p-1 hidden sm:block">
+              <button onClick={(e) => { e.stopPropagation(); setIsMuted(!isMuted); }} className="text-white hover:text-gold transition-colors p-1">
                 {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
               </button>
               <span className="font-rajdhani text-[11px] md:text-[12px] text-white font-medium tabular-nums tracking-widest">
