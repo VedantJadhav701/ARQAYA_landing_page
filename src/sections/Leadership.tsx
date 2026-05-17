@@ -75,14 +75,6 @@ const Leadership = () => {
                   loading="lazy"
                   className="w-full h-full object-cover object-center"
                 />
-                {/* "Photo coming soon" overlay */}
-                <div className="absolute bottom-3 left-3 right-3">
-                  <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-center">
-                    <span className="font-rajdhani font-bold text-[9px] tracking-[0.15em] text-text-muted uppercase">
-                      Photo coming soon
-                    </span>
-                  </div>
-                </div>
               </div>
 
               {/* Card Body */}

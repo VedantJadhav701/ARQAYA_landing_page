@@ -126,16 +126,6 @@ const Texflow = () => {
                 {/* Decorative elements */}
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-texflow-primary/5 rounded-full blur-3xl pointer-events-none" />
               </div>
-
-              {/* Supporting Image Card */}
-              <div className="rounded-[12px] overflow-hidden shadow-md">
-                <img
-                  src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=85&fit=crop"
-                  alt="Academic journal PDF papers stacked on desk"
-                  loading="lazy"
-                  className="w-full h-40 object-cover object-center"
-                />
-              </div>
             </motion.div>
           </div>
         </div>
