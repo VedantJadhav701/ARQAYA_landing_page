@@ -32,7 +32,7 @@ const slides = [
     label: "OUR MISSION",
     headline: "AI Solutions for Industry. And for Society.",
     body: "Building intelligent systems that solve real problems for real people.",
-    image: "https://images.unsplash.com/photo-1449156001931-82834b26e3bc?auto=format&fit=crop&q=80&w=1920",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=85&fit=crop",
     href: "/about"
   },
 ];
