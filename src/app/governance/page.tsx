@@ -1,42 +1,46 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/sections/Footer";
+import PageHero from "@/components/PageHero";
+import { Gavel, Users, BarChart, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Governance | ARQAYAA Intelligence",
-  description: "Our principles for responsible, ethical, and deterministic AI deployment.",
+  title: "Corporate Governance | ARQAYAA Intelligence",
+  description: "Our framework for scientific rigor, institutional accountability, and technical governance.",
 };
+
+const governancePillars = [
+  { icon: <Gavel />, title: "Scientific Rigor", desc: "Every model architecture is validated against established physical laws and academic standards." },
+  { icon: <Users />, title: "Institutional Oversight", desc: "Dedicated advisory board overseeing the development of high-impact industrial AI." },
+  { icon: <BarChart />, title: "Operational Accountability", desc: "Transparent reporting and Measurable ROI tracking for all pilot and production systems." },
+  { icon: <FileText />, title: "Strategic Roadmap", desc: "A long-horizon view of technology development that prioritizes sustainability and growth." }
+];
 
 export default function GovernancePage() {
   return (
-    <main id="main-content" className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-cream">
       <Navbar />
-      <div className="pt-[150px] pb-24 px-6 md:px-24">
-        <div className="max-w-4xl mx-auto prose prose-lg prose-headings:font-serif prose-headings:font-normal prose-p:font-sans prose-p:text-text-dark">
-          <h1 className="text-4xl md:text-[56px] text-text-black mb-12 border-b border-gray-200 pb-8">AI Governance & Ethics</h1>
-          
-          <p className="text-[20px] leading-relaxed mb-10 text-text-black font-medium">
-            ARQAYAA Intelligence is committed to developing AI systems that augment human capability without compromising safety, equity, or transparency.
-          </p>
+      <PageHero 
+        label="INSTITUTIONAL INTEGRITY"
+        headline="Corporate Governance"
+        image="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920"
+      />
 
-          <h2 className="text-[32px] mt-12 mb-6">Our Core Principles</h2>
-          
-          <h3 className="text-[24px] mt-8 mb-4">1. Determinism Over Probability</h3>
-          <p>
-            In critical industrial infrastructure, "close enough" is a failure state. We mandate that our systems governing physical assets rely on deterministic mathematical rules rather than pure probabilistic token prediction. If a system cannot guarantee a physically safe output, it defaults to human handover.
-          </p>
-
-          <h3 className="text-[24px] mt-8 mb-4">2. Explainability</h3>
-          <p>
-            Every decision made by an ARQAYAA agent must be traceable. Our multi-agent orchestration layers log their intermediate reasoning steps, API calls, and logic paths so that human operators can audit the exact chain of thought that led to an action.
-          </p>
-
-          <h3 className="text-[24px] mt-8 mb-4">3. Human-in-the-Loop Architecture</h3>
-          <p>
-            We design systems to accelerate human decision-making, not bypass it. High-stakes actions (e.g., altering pipeline pressure, executing financial transactions) always require explicit human authorization in the workflow.
-          </p>
+      <section className="py-24 px-6 md:px-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="section-label mb-16 text-gold after:bg-gold-rule">GOVERNANCE FRAMEWORK</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {governancePillars.map((p, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-xl border border-gray-mid shadow-sm hover:shadow-md transition-all group">
+                <div className="text-gold mb-6 group-hover:scale-110 transition-transform">{p.icon}</div>
+                <h3 className="font-serif text-[22px] text-text-black mb-4">{p.title}</h3>
+                <p className="font-sans text-text-mid text-[15px] leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
       <Footer />
     </main>
   );

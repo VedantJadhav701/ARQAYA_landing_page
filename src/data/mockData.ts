@@ -7,7 +7,7 @@ export const mockArticles = [
     date: "May 12, 2026",
     readTime: "8 min read",
     author: "Vedant Jadhav",
-    image: "https://images.unsplash.com/photo-1620825937374-87fc1d62c262?w=1200&q=85&fit=crop"
+    image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=1200&q=85&fit=crop"
   },
   {
     slug: "physics-informed-neural-networks-oil-gas",
