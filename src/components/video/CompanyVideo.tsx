@@ -187,12 +187,12 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
               ))}
             </div>
             
-            <div className="relative z-10 space-y-6">
+            <div className="relative z-10 space-y-4 md:space-y-6 px-4">
               {currentTime >= 0 && (
                 <motion.h2 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="font-serif font-light text-2xl md:text-[42px] text-white"
+                  className="font-serif font-light text-xl md:text-[42px] text-white"
                 >
                   Industries generate more data than ever before.
                 </motion.h2>
@@ -201,7 +201,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                 <motion.h2 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="font-serif font-light text-2xl md:text-[42px] text-white"
+                  className="font-serif font-light text-xl md:text-[42px] text-white"
                 >
                   But most AI promises—
                 </motion.h2>
@@ -210,7 +210,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                 <motion.h2 
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="font-serif font-bold italic text-3xl md:text-[48px] text-gold"
+                  className="font-serif font-bold italic text-2xl md:text-[48px] text-gold"
                 >
                   fail in production.
                 </motion.h2>
@@ -322,10 +322,10 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                       key={idx}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="flex items-baseline gap-4"
+                      className="flex items-baseline gap-2 md:gap-4"
                     >
-                      <span className="font-serif font-light text-4xl md:text-[60px] text-white">{s.val}</span>
-                      <span className="font-rajdhani text-[14px] text-gold uppercase tracking-wider">{s.label}</span>
+                      <span className="font-serif font-light text-2xl md:text-[60px] text-white">{s.val}</span>
+                      <span className="font-rajdhani text-[10px] md:text-[14px] text-gold uppercase tracking-wider">{s.label}</span>
                     </motion.div>
                   )
                 ))}
