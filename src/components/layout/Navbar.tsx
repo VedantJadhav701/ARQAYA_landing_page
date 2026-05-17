@@ -1,61 +1,108 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, useScroll } from "framer-motion";
+import React, { useState } from "react";
+import { Search, Globe, Accessibility, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
-  const { scrollY } = useScroll();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState("ABOUT US");
+  const [isSubsidiaryOpen, setIsSubsidiaryOpen] = useState(false);
 
-  useEffect(() => {
-    return scrollY.onChange((latest) => {
-      setIsScrolled(latest > 50);
-    });
-  }, [scrollY]);
+  const navLinks = [
+    "ABOUT US",
+    "WHAT WE DO",
+    "SUBSIDIARIES",
+    "CAREERS",
+    "CONTACT",
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-[100] px-6 py-6 md:py-8">
-      <motion.div 
-        animate={{ 
-          backgroundColor: isScrolled ? "rgba(0,0,0,0.8)" : "rgba(0,0,0,0)",
-          backdropFilter: isScrolled ? "blur(20px)" : "blur(0px)",
-        }}
-        className={cn(
-          "max-w-7xl mx-auto flex justify-between items-center rounded-[32px] border transition-all duration-500 px-6 py-3.5",
-          isScrolled ? "border-white/10 shadow-2xl shadow-black/50" : "border-transparent"
-        )}
-      >
-        {/* ARQAYA Logo */}
-        <a href="/" className="flex flex-col group relative">
-          <span className="text-xl md:text-2xl font-medium tracking-tighter text-white group-hover:text-white/80 transition-colors">ARQAYA</span>
-          <span className="text-[9px] font-medium tracking-[0.4em] text-white/30 uppercase -mt-1 group-hover:text-white/50 transition-colors">Intelligence Pvt Ltd</span>
-        </a>
+    <header className="fixed top-0 left-0 w-full z-[100]">
+      {/* Top Utility Bar */}
+      <div className="h-9 bg-[#1A1A1A] flex items-center justify-between px-6 md:px-12 text-[#AAAAAA] font-sans text-[12px]">
+        <div className="flex items-center gap-2">
+          <span>India</span>
+        </div>
+        <div className="flex items-center gap-6">
+          <button className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
+            <Globe size={14} />
+            <span>English</span>
+          </button>
+          <button className="hover:text-white transition-colors cursor-pointer">
+            <Accessibility size={14} />
+          </button>
+        </div>
+      </div>
 
-        {/* Links */}
-        <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide">
-          {["Problem", "Solution", "Process", "Case Studies", "Contact"].map((link) => (
-            <a 
+      {/* Main Nav Bar */}
+      <nav className="h-16 bg-white border-b border-[#E0DDD6] flex items-center justify-between px-6 md:px-12 relative">
+        {/* Left: Search icon */}
+        <div className="flex-1">
+          <button className="w-9 h-9 border border-[#E0DDD6] rounded-full flex items-center justify-center text-text-dark hover:bg-gray-light transition-colors cursor-pointer">
+            <Search size={18} />
+          </button>
+        </div>
+
+        {/* Center: Nav Links */}
+        <div className="hidden lg:flex items-center gap-8 h-full">
+          {navLinks.map((link) => (
+            <div
               key={link}
-              href={`#${link.toLowerCase().replace(" ", "-")}`} 
-              className="text-white/50 hover:text-white transition-all hover:scale-105 active:scale-95 uppercase tracking-widest text-[10px]"
+              className="relative h-full flex items-center"
+              onMouseEnter={() => link === "SUBSIDIARIES" && setIsSubsidiaryOpen(true)}
+              onMouseLeave={() => link === "SUBSIDIARIES" && setIsSubsidiaryOpen(false)}
             >
-              {link}
-            </a>
+              <button
+                onClick={() => setActiveLink(link)}
+                className={cn(
+                  "font-sans text-[14px] font-medium tracking-wide transition-colors cursor-pointer h-full border-b-2 flex items-center",
+                  activeLink === link
+                    ? "text-text-black border-gold"
+                    : "text-text-mid border-transparent hover:text-text-black"
+                )}
+              >
+                {link}
+                {link === "SUBSIDIARIES" && <ChevronDown size={14} className="ml-1" />}
+              </button>
+
+              {/* Mega Dropdown for Subsidiaries */}
+              {link === "SUBSIDIARIES" && isSubsidiaryOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white border border-border shadow-xl p-8 animate-fade-up">
+                  <div className="grid grid-cols-2 gap-10">
+                    <div className="group cursor-pointer">
+                      <div className="text-[11px] font-rajdhani font-bold text-tenetx-primary tracking-widest uppercase mb-1">TENETX</div>
+                      <div className="text-[15px] font-medium text-text-black mb-2">Industrial Oil & Gas AI</div>
+                      <div className="text-gold font-sans text-[13px] flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Learn more <span className="text-[18px]">→</span>
+                      </div>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="text-[11px] font-rajdhani font-bold text-texflow-primary tracking-widest uppercase mb-1">TEXFLOW</div>
+                      <div className="text-[15px] font-medium text-text-black mb-2">Automated Typesetting</div>
+                      <div className="text-gold font-sans text-[13px] flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Learn more <span className="text-[18px]">→</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center gap-4">
-          <button className="hidden sm:block text-white/60 hover:text-white text-xs md:text-sm font-medium transition-colors uppercase tracking-widest text-[10px]">
-            Login
-          </button>
-          <button className="group relative overflow-hidden bg-white text-black text-xs md:text-sm font-bold px-8 py-3 rounded-full transition-all active:scale-95 hover:bg-white/90">
-            <span className="relative z-10 uppercase tracking-widest font-bold">Get Started</span>
-          </button>
+        {/* Right: Wordmark */}
+        <div className="flex-1 flex justify-end items-center gap-3">
+          <div className="flex flex-col items-end">
+            <span className="font-serif font-bold text-[20px] leading-tight text-text-black">ARQAYAA</span>
+            <span className="font-rajdhani text-[9px] font-semibold tracking-[0.2em] text-gold -mt-0.5">INTELLIGENCE</span>
+          </div>
+          {/* Flame/Circuit Icon Placeholder */}
+          <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">
+             <div className="w-4 h-4 bg-white rounded-full opacity-80" />
+          </div>
         </div>
-      </motion.div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 
