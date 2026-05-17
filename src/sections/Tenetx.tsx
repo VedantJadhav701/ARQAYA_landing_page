@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Check } from "lucide-react";
 
 const Tenetx = () => {
@@ -65,16 +66,16 @@ const Tenetx = () => {
                 ))}
               </ul>
 
-              <button className="flex items-center gap-4 text-tenetx-primary font-rajdhani font-bold tracking-widest uppercase group border border-tenetx-primary px-8 py-4 rounded-full hover:bg-tenetx-primary hover:text-white transition-all cursor-pointer">
+              <Link href="/subsidiaries/tenetx" className="inline-flex items-center gap-4 text-tenetx-primary font-rajdhani font-bold tracking-widest uppercase group border border-tenetx-primary px-8 py-4 rounded-full hover:bg-tenetx-primary hover:text-white transition-all cursor-pointer">
                 Explore TENETX
                 <div className="w-8 h-8 border border-current rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform">
                   →
                 </div>
-              </button>
+              </Link>
             </motion.div>
           </div>
 
-          {/* Right Column: Feature Card + Image */}
+          {/* Right Column: Feature Image */}
           <div className="lg:w-1/2">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -84,38 +85,13 @@ const Tenetx = () => {
               className="relative"
             >
               {/* Feature Image */}
-              <div className="rounded-[16px] overflow-hidden mb-6 shadow-lg">
+              <div className="rounded-[16px] overflow-hidden shadow-2xl">
                 <img
                   src="https://www.sterlingtt.com/wp-content/themes/yootheme/cache/61/oil-rig-61463d65.jpeg"
                   alt="Offshore oil rig and drilling platform at sunset with industrial infrastructure"
                   loading="lazy"
-                  className="w-full h-64 object-cover object-center"
+                  className="w-full h-full object-cover object-center aspect-video lg:aspect-square max-h-[500px]"
                 />
-              </div>
-
-              {/* Pipeline Card */}
-              <div className="bg-tenetx-light rounded-[16px] p-8 md:p-12 shadow-sm border border-tenetx-primary/10">
-                <h4 className="font-serif text-[24px] text-text-black mb-8">The TENETFlow Model</h4>
-                <div className="space-y-6 mb-10">
-                  {[
-                    "Sensor Data Ingestion",
-                    "Preprocessing & Normalization",
-                    "Parallel Model Inference (PINN + SLM + Tree-based)",
-                    "Weighted Ensemble Fusion",
-                    "Final Prediction + Uncertainty Bounds",
-                  ].map((step, idx) => (
-                    <div key={idx} className="flex items-center gap-6 border-b border-tenetx-primary/10 pb-4">
-                      <span className="font-serif text-tenetx-primary text-[20px] opacity-40">0{idx + 1}</span>
-                      <span className="font-sans text-text-dark font-medium">{step}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-8 pt-4">
-                  <div>
-                    <div className="font-rajdhani font-bold text-[11px] text-text-muted tracking-widest uppercase mb-1">LATENCY</div>
-                    <div className="font-serif text-[20px] text-text-black">Sub-second</div>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>

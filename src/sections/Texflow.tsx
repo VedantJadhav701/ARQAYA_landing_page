@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Check } from "lucide-react";
 
 const Texflow = () => {
@@ -54,12 +55,12 @@ const Texflow = () => {
               </ul>
 
               <div className="flex items-center gap-6 flex-wrap">
-                <button className="flex items-center gap-4 text-texflow-primary font-rajdhani font-bold tracking-widest uppercase group border border-texflow-primary px-8 py-4 rounded-full hover:bg-texflow-primary hover:text-white transition-all cursor-pointer">
+                <Link href="/subsidiaries/texflow" className="inline-flex items-center gap-4 text-texflow-primary font-rajdhani font-bold tracking-widest uppercase group border border-texflow-primary px-8 py-4 rounded-full hover:bg-texflow-primary hover:text-white transition-all cursor-pointer">
                   Explore TEXFLOW
                   <div className="w-8 h-8 border border-current rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform">
                     →
                   </div>
-                </button>
+                </Link>
                 <div className="bg-texflow-primary/10 px-4 py-2 rounded-full">
                   <span className="font-rajdhani font-bold text-[11px] text-texflow-primary tracking-widest uppercase">From ₹299 / paper</span>
                 </div>
