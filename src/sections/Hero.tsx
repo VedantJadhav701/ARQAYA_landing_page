@@ -11,7 +11,7 @@ const slides = [
     label: "AI INTELLIGENCE",
     headline: "Unlock the Power of AI for Your Business.",
     body: "Automating, analyzing, and accelerating workflows across industries.",
-    image: "https://media.licdn.com/dms/image/v2/D4E12AQFs_3637K_1Jg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1724172508884?e=2147483647&v=beta&t=SI6ZrJ9p1110eNwYK_d5dnX1XXW07_hvbFZ0KDO9WVY",
+    image: "https://desimonthdate.com/wp-content/uploads/2026/01/A-modern-business-environment-showcasing-AI-applications.-In-the-foreground-two-diverse-1024x585.png",
     href: "/what-we-do"
   },
   {

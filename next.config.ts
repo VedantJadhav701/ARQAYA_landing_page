@@ -23,6 +23,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "media.istockphoto.com",
       },
+      {
+        protocol: "https",
+        hostname: "www.sterlingtt.com",
+      },
+      {
+        protocol: "https",
+        hostname: "desimonthdate.com",
+      },
     ],
   },
 };
