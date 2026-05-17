@@ -24,18 +24,18 @@ export default function Home() {
       <Hero />
 
       {/* 1.5 COMPANY FILM PREVIEW */}
-      <section className="py-24 bg-[#060608] px-6 md:px-24 overflow-hidden border-y border-white/5">
+      <section className="py-24 bg-cream-dark px-6 md:px-24 overflow-hidden border-y border-gray-mid">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 md:gap-24">
           <div className="lg:w-[45%]">
             <div className="section-label mb-8 text-gold after:bg-gold-rule">COMPANY FILM</div>
-            <h2 className="font-serif text-[42px] md:text-[52px] leading-tight text-white mb-8">
+            <h2 className="font-serif text-[42px] md:text-[52px] leading-tight text-text-black mb-8">
               See What We're Building.
             </h2>
-            <p className="font-sans text-white/70 text-[18px] leading-relaxed mb-10 max-w-xl">
+            <p className="font-sans text-text-mid text-[18px] leading-relaxed mb-10 max-w-xl">
               A 90-second look at ARQAYAA Intelligence — our mission, 
               our subsidiaries, and the AI systems we're building for India and beyond.
             </p>
-            <Link href="/video" className="inline-flex items-center gap-4 text-gold font-rajdhani font-bold tracking-[0.2em] text-[13px] uppercase group border border-gold/30 px-8 py-4 rounded-full hover:bg-gold hover:text-white transition-all">
+            <Link href="/video" className="inline-flex items-center gap-4 text-gold font-rajdhani font-bold tracking-[0.2em] text-[13px] uppercase group border border-gold px-8 py-4 rounded-full hover:bg-gold hover:text-white transition-all">
                Watch Full Film 
                <div className="w-8 h-8 border border-current rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform">
                  →
@@ -43,10 +43,8 @@ export default function Home() {
             </Link>
           </div>
           <div className="lg:w-[55%] w-full">
-            <Link href="/video" className="block relative group">
+            <Link href="/video" className="block relative group shadow-2xl">
                <CompanyVideo previewMode={true} />
-               {/* Hover Glow Effect */}
-               <div className="absolute inset-0 rounded-xl border border-gold/0 group-hover:border-gold/50 group-hover:shadow-[0_0_30px_rgba(184,146,42,0.2)] transition-all duration-500 pointer-events-none" />
             </Link>
           </div>
         </div>
