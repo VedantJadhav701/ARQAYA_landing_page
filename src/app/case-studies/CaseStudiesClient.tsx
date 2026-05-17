@@ -5,33 +5,7 @@ import { motion } from "framer-motion";
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-export const mockCaseStudies = [
-  {
-    slug: "national-oil-company-drilling-optimization",
-    client: "National Oil Company",
-    industry: "Oil & Gas",
-    title: "Optimizing Deepwater Drilling with TENETX",
-    impact: "Reduced non-productive time (NPT) by 22% saving $4.2M per rig annually.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&fit=crop"
-  },
-  {
-    slug: "global-research-university-typesetting",
-    client: "Tier-1 Research University",
-    industry: "Academia",
-    title: "Automating Institutional Publishing with TEXFLOW",
-    impact: "Eliminated 15,000 hours of manual LaTeX formatting for faculty researchers.",
-    image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&q=85&fit=crop"
-  },
-  {
-    slug: "multinational-logistics-supply-chain",
-    client: "Global Logistics Provider",
-    industry: "Supply Chain",
-    title: "Agentic AI for Predictive Routing",
-    impact: "Improved fleet utilization by 18% with deterministic routing agents.",
-    image: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=1200&q=85&fit=crop"
-  }
-];
+import { mockCaseStudies } from "@/data/mockData";
 
 export default function CaseStudiesClient() {
   return (

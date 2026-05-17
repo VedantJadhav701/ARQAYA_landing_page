@@ -13,7 +13,7 @@ const cards = [
   {
     category: "TENETX",
     title: "AI-native drilling intelligence for the oil and gas sector.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&fit=crop",
+    image: "https://www.sterlingtt.com/wp-content/themes/yootheme/cache/61/oil-rig-61463d65.jpeg",
     alt: "Oil rig drilling platform offshore in industrial setting",
   },
   {

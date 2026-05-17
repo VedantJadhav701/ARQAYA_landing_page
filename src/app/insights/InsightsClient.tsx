@@ -5,49 +5,7 @@ import { motion } from "framer-motion";
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
 import { Search } from "lucide-react";
-
-export const mockArticles = [
-  {
-    slug: "deterministic-ai-in-highly-regulated-industries",
-    category: "RESEARCH",
-    title: "The Case for Deterministic AI in Highly Regulated Industries",
-    excerpt: "Why stochastic probabilistic models (LLMs) fail in environments where accuracy cannot be compromised, and how hybrid deterministic systems bridge the gap.",
-    date: "May 12, 2026",
-    readTime: "8 min read",
-    author: "Vedant Jadhav",
-    image: "https://images.unsplash.com/photo-1620825937374-87fc1d62c262?w=1200&q=85&fit=crop"
-  },
-  {
-    slug: "physics-informed-neural-networks-oil-gas",
-    category: "TENETX",
-    title: "Physics-Informed Neural Networks: The Next Frontier in Oil & Gas",
-    excerpt: "Exploring how embedding Navier-Stokes equations into model architecture reduces data dependency by 90% in drilling optimization.",
-    date: "April 28, 2026",
-    readTime: "12 min read",
-    author: "Neel Khairnar",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=85&fit=crop"
-  },
-  {
-    slug: "automating-compliance-academic-publishing",
-    category: "TEXFLOW",
-    title: "Automating Compliance: The Hidden Cost of Academic Typesetting",
-    excerpt: "An analysis of the millions of hours lost annually by researchers formatting documents, and the computational approach to solving it.",
-    date: "March 15, 2026",
-    readTime: "6 min read",
-    author: "Dr. Bharat Kale",
-    image: "https://images.unsplash.com/photo-1456324504439-23fe879ce859?w=1200&q=85&fit=crop"
-  },
-  {
-    slug: "enterprise-agentic-architecture-patterns",
-    category: "ENGINEERING",
-    title: "Enterprise Agentic Architecture Patterns",
-    excerpt: "Designing stateful, recoverable, and auditable multi-agent systems for enterprise deployment.",
-    date: "February 04, 2026",
-    readTime: "15 min read",
-    author: "Vedant Jadhav",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85&fit=crop"
-  }
-];
+import { mockArticles } from "@/data/mockData";
 
 export default function InsightsClient() {
   const [searchQuery, setSearchQuery] = useState("");

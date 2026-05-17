@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { mockCaseStudies } from "../CaseStudiesClient";
+import { mockCaseStudies } from "@/data/mockData";
 import Link from "next/link";
 import { ArrowLeft, Download } from "lucide-react";
 import { motion } from "framer-motion";

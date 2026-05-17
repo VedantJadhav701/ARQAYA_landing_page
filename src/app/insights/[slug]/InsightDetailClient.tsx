@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { mockArticles } from "../InsightsClient";
+import { mockArticles } from "@/data/mockData";
 import Link from "next/link";
 import { ArrowLeft, Share2, Linkedin, Twitter } from "lucide-react";
 import { motion } from "framer-motion";

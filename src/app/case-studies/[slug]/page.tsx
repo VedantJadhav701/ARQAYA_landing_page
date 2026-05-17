@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/sections/Footer";
 import CaseStudyDetailClient from "./CaseStudyDetailClient";
-import { mockCaseStudies } from "../CaseStudiesClient";
+import { mockCaseStudies } from "@/data/mockData";
 
 type Props = {
   params: { slug: string };

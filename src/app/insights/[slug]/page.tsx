@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/sections/Footer";
 import InsightDetailClient from "./InsightDetailClient";
-import { mockArticles } from "../InsightsClient";
+import { mockArticles } from "@/data/mockData";
 
 type Props = {
   params: { slug: string };

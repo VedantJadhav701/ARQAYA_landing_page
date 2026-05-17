@@ -38,7 +38,7 @@ export default function SubsidiariesClient() {
               </div>
             </div>
             <div className="md:w-1/2 rounded-lg overflow-hidden h-[300px] md:h-auto shadow-md">
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&fit=crop" alt="TENETX Oil Rig" loading="lazy" className="w-full h-full object-cover" />
+              <img src="https://www.sterlingtt.com/wp-content/themes/yootheme/cache/61/oil-rig-61463d65.jpeg" alt="TENETX Oil Rig" loading="lazy" className="w-full h-full object-cover" />
             </div>
           </motion.div>
 

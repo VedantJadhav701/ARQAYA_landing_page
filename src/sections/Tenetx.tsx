@@ -11,7 +11,7 @@ const Tenetx = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "url(https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1600&q=85&fit=crop)",
+          backgroundImage: "url(https://www.sterlingtt.com/wp-content/themes/yootheme/cache/61/oil-rig-61463d65.jpeg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -86,7 +86,7 @@ const Tenetx = () => {
               {/* Feature Image */}
               <div className="rounded-[16px] overflow-hidden mb-6 shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&fit=crop"
+                  src="https://www.sterlingtt.com/wp-content/themes/yootheme/cache/61/oil-rig-61463d65.jpeg"
                   alt="Offshore oil rig and drilling platform at sunset with industrial infrastructure"
                   loading="lazy"
                   className="w-full h-64 object-cover object-center"

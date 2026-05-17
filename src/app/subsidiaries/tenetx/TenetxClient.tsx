@@ -35,7 +35,7 @@ export default function TenetxClient() {
       <PageHero
         label="TENETX — OIL & GAS INTELLIGENCE"
         headline="Physics-Native AI for Drilling Operations"
-        image="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1920&q=85&fit=crop"
+        image="https://www.sterlingtt.com/wp-content/themes/yootheme/cache/61/oil-rig-61463d65.jpeg"
         alt="Offshore oil rig at night"
       />
 
@@ -89,7 +89,7 @@ export default function TenetxClient() {
             </motion.div>
             <motion.div className="lg:w-1/2 w-full" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="bg-white rounded-xl shadow-lg p-6 border border-tenetx-primary/10">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&fit=crop" alt="Oil Rig Operations" className="w-full h-auto rounded-lg mb-4" />
+                <img src="https://www.sterlingtt.com/wp-content/themes/yootheme/cache/61/oil-rig-61463d65.jpeg" alt="Oil Rig Operations" className="w-full h-auto rounded-lg mb-4" />
                 <div className="text-center">
                   <div className="font-rajdhani font-bold text-tenetx-primary text-[12px] tracking-widest uppercase">Live Telemetry</div>
                   <div className="font-serif text-[24px]">Sub-second Latency</div>
