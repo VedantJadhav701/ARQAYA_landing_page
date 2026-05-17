@@ -12,7 +12,7 @@ interface CompanyVideoProps {
 const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(90); // Default 90s fallback
+  const [duration, setDuration] = useState(90); 
   const [currentScene, setCurrentScene] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -61,7 +61,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     };
   }, []);
 
-  // Manual Timer Fallback (if audio missing or error)
+  // Manual Timer Fallback
   useEffect(() => {
     if (isPlaying && audioError) {
       timerRef.current = setInterval(() => {
@@ -81,7 +81,8 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     };
   }, [isPlaying, audioError]);
 
-  const togglePlay = () => {
+  const togglePlay = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (previewMode) return;
     
     const audio = audioRef.current;
@@ -90,7 +91,8 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
       setIsPlaying(false);
     } else {
       if (audio && !audioError) {
-        audio.play().catch(() => {
+        audio.play().catch((err) => {
+          console.error("Audio playback failed:", err);
           setAudioError(true);
         });
       }
@@ -98,7 +100,8 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     }
   };
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (!containerRef.current) return;
     if (!document.fullscreenElement) {
       containerRef.current.requestFullscreen();
@@ -115,7 +118,6 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
-  // Particles for Scene 1
   const particles = useMemo(() => {
     return Array.from({ length: 80 }).map((_, i) => ({
       id: i,
@@ -148,9 +150,10 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     <div 
       ref={containerRef}
       className={cn(
-        "relative aspect-video w-full bg-[#060608] overflow-hidden group shadow-2xl",
+        "relative aspect-video w-full bg-[#060608] overflow-hidden group shadow-2xl touch-none",
         isFullscreen ? "h-screen aspect-auto" : "rounded-2xl"
       )}
+      onClick={() => togglePlay()}
     >
       <audio ref={audioRef} src="/arqayaa_voiceover.mp3" preload="metadata" muted={isMuted} />
 
@@ -166,7 +169,6 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
             transition={{ duration: 0.8 }}
             className="absolute inset-0 flex flex-col items-center justify-center text-center p-12"
           >
-            {/* Particles */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               {particles.map((p) => (
                 <motion.div
@@ -216,7 +218,6 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                 </motion.h2>
               )}
             </div>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
           </motion.div>
         )}
 
@@ -252,7 +253,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                 <motion.h2 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="font-serif font-light text-3xl md:text-[52px] text-white mb-4"
+                  className="font-serif font-light text-2xl md:text-[52px] text-white mb-4"
                 >
                   Building the AI systems that actually work.
                 </motion.h2>
@@ -265,15 +266,6 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                 >
                   For industries. For society. For India.
                 </motion.p>
-              )}
-              {currentTime >= 18 && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="absolute bottom-24 font-serif font-bold text-3xl text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-                >
-                  ARQAYAA
-                </motion.div>
               )}
             </div>
           </motion.div>
@@ -291,7 +283,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
           >
             <div 
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1920)" }}
+              style={{ backgroundImage: "url(https://media.istockphoto.com/id/2154103733/photo/oil-rig.jpg?s=612x612&w=0&k=20&c=7Qc9aCDMrjlLyPWWNgFTROvanTDok51xnEA7QapNQmU=)" }}
             />
             <div className="absolute inset-0 bg-[#0E3D6E]/65" />
             
@@ -300,18 +292,18 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                 initial={{ opacity: 0, x: -60 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="font-bebas text-7xl md:text-[96px] text-white leading-none"
+                className="font-bebas text-6xl md:text-[96px] text-white leading-none"
               >
                 TENETX
               </motion.h2>
               <motion.div 
                 initial={{ width: 0 }}
-                animate={{ width: 200 }}
+                animate={{ width: 120 }}
                 transition={{ delay: 0.5, duration: 0.4 }}
-                className="h-[2px] bg-tenetx-primary my-8"
+                className="h-[2px] bg-tenetx-primary my-6 md:my-8"
               />
               
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {[
                   { time: 26, val: "< 0.5%", label: "Error Rate" },
                   { time: 27.5, val: "₹ 0.08", label: "Per Query" },
@@ -330,16 +322,6 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                   )
                 ))}
               </div>
-              
-              {currentTime >= 31 && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="mt-12 font-rajdhani font-semibold text-sm md:text-[14px] text-gold tracking-widest uppercase"
-                >
-                  Physics-Native AI for Oil & Gas
-                </motion.div>
-              )}
             </div>
           </motion.div>
         )}
@@ -356,7 +338,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
           >
             <div 
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=1920)" }}
+              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=1920)" }}
             />
             <div className="absolute inset-0 bg-[#0F5249]/60" />
             
@@ -364,17 +346,17 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
               <motion.h2 
                 initial={{ opacity: 0, x: 60 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="font-rajdhani font-bold text-6xl md:text-[88px] text-white leading-none"
+                className="font-rajdhani font-bold text-5xl md:text-[88px] text-white leading-none"
               >
                 TEXFLOW
               </motion.h2>
               <motion.div 
                 initial={{ width: 0 }}
-                animate={{ width: 200 }}
-                className="h-[2px] bg-texflow-primary my-8"
+                animate={{ width: 120 }}
+                className="h-[2px] bg-texflow-primary my-6 md:my-8"
               />
               
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 {[
                   { time: 39.5, text: "Word → Publisher-Ready PDF" },
                   { time: 41, text: "Zero AI. Zero Hallucinations." },
@@ -385,23 +367,13 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
                       key={idx}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className="font-serif text-xl md:text-2xl text-white"
+                      className="font-serif text-lg md:text-2xl text-white"
                     >
                       {line.text}
                     </motion.div>
                   )
                 ))}
               </div>
-              
-              {currentTime >= 44 && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="mt-12 font-rajdhani font-semibold text-sm md:text-[14px] text-gold tracking-widest uppercase"
-                >
-                  Research Platform for India's Scholars
-                </motion.div>
-              )}
             </div>
           </motion.div>
         )}
@@ -427,42 +399,15 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
             />
             <div className="absolute inset-0 bg-black/50" />
             
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12 z-10 space-y-8">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12 z-10 space-y-6 md:space-y-8">
               {currentTime >= 50 && (
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-serif italic text-2xl md:text-[38px] text-white"
-                >
-                  "From oil rigs to research desks."
-                </motion.p>
-              )}
-              {currentTime >= 53 && (
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-serif italic text-2xl md:text-[38px] text-white"
-                >
-                  "From industrial operations to academic labs."
-                </motion.p>
+                <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-serif italic text-xl md:text-[38px] text-white">"From oil rigs to research desks."</motion.p>
               )}
               {currentTime >= 57 && (
-                <motion.h2 
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="font-serif font-semibold text-3xl md:text-[44px] text-gold max-w-4xl"
-                >
-                  ARQAYAA builds systems that solve real problems
-                </motion.h2>
+                <motion.h2 initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="font-serif font-semibold text-2xl md:text-[44px] text-gold max-w-4xl">ARQAYAA builds systems that solve real problems</motion.h2>
               )}
               {currentTime >= 61 && (
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-serif italic text-3xl md:text-[44px] text-white"
-                >
-                  for real people.
-                </motion.p>
+                <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="font-serif italic text-2xl md:text-[44px] text-white">for real people.</motion.p>
               )}
             </div>
           </motion.div>
@@ -478,69 +423,33 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
             transition={{ duration: 0.8 }}
             className="absolute inset-0 bg-black flex flex-col items-center justify-center text-center p-12"
           >
-            {/* Center Glow */}
             <motion.div 
-              className="absolute w-96 h-96 bg-gold/10 rounded-full blur-[100px]"
+              className="absolute w-64 h-64 md:w-96 md:h-96 bg-gold/10 rounded-full blur-[100px]"
               animate={{ opacity: [0.08, 0.18, 0.08] }}
               transition={{ duration: 3, repeat: Infinity }}
             />
             
             <div className="relative z-10 flex flex-col items-center">
               {currentTime >= 70 && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 2 }}
-                  className="font-serif font-light text-3xl md:text-[52px] text-white/60 mb-2"
-                >
-                  The future of AI
-                </motion.div>
-              )}
-              {currentTime >= 74 && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="font-serif font-light text-3xl md:text-[52px] text-white/60 mb-8"
-                >
-                  is not about models.
-                </motion.div>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-serif font-light text-2xl md:text-[52px] text-white/60 mb-2">The future of AI</motion.div>
               )}
               {currentTime >= 77 && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-serif font-bold text-4xl md:text-[60px] text-white mb-12"
-                >
-                  It is about systems.
-                </motion.div>
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="font-serif font-bold text-3xl md:text-[60px] text-white mb-8 md:mb-12">It is about systems.</motion.div>
               )}
               
-              <div className="flex gap-8 mb-16">
+              <div className="flex gap-4 md:gap-8 mb-12 md:mb-16">
                 {currentTime >= 80 && (
-                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-serif text-3xl md:text-[40px] text-gold">Reliable.</motion.span>
-                )}
-                {currentTime >= 80.5 && (
-                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-serif text-3xl md:text-[40px] text-gold">Scalable.</motion.span>
+                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-serif text-2xl md:text-[40px] text-gold">Reliable.</motion.span>
                 )}
                 {currentTime >= 81 && (
-                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="font-serif font-bold text-3xl md:text-[48px] text-white">Real.</motion.span>
+                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="font-serif font-bold text-2xl md:text-[48px] text-white">Real.</motion.span>
                 )}
               </div>
               
               {currentTime >= 85 && (
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-2">
-                  <div className="font-serif font-bold text-4xl md:text-[56px] text-white">ARQAYAA INTELLIGENCE</div>
-                  <div className="font-rajdhani font-semibold text-[16px] tracking-[0.3em] text-gold uppercase">Intelligence Pvt Ltd</div>
-                </motion.div>
-              )}
-              
-              {currentTime >= 87 && (
-                <motion.div 
-                  initial={{ opacity: 0 }} 
-                  animate={{ opacity: 1 }} 
-                  className="mt-8 font-sans text-lg text-white/50 border-b border-gold/30 pb-1 px-4"
-                >
-                  arqaya.com
+                  <div className="font-serif font-bold text-3xl md:text-[56px] text-white">ARQAYAA INTELLIGENCE</div>
+                  <div className="font-rajdhani font-semibold text-[14px] tracking-[0.2em] text-gold uppercase">Intelligence Pvt Ltd</div>
                 </motion.div>
               )}
             </div>
@@ -550,61 +459,59 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
 
       {/* OVERLAY BEFORE START */}
       {(!isPlaying && currentTime === 0) && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center cursor-pointer group/overlay" onClick={togglePlay}>
+        <div className="absolute inset-0 z-[70] flex items-center justify-center cursor-pointer group/overlay" onClick={togglePlay}>
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1920)" }}
           />
           <div className="absolute inset-0 bg-black/60" />
-          <div className="relative text-center flex flex-col items-center">
-            <div className="mb-6 font-serif font-bold text-4xl text-white tracking-tight">ARQAYAA</div>
-            <div className="mb-10 font-rajdhani font-bold text-sm tracking-[0.3em] text-gold uppercase">Play Company Film</div>
-            <div className="w-20 h-20 rounded-full border-2 border-gold flex items-center justify-center text-gold group-hover/overlay:bg-gold group-hover/overlay:text-white transition-all duration-300">
-               <Play fill="currentColor" className="ml-1" size={32} />
+          <div className="relative text-center flex flex-col items-center p-6">
+            <div className="mb-4 md:mb-6 font-serif font-bold text-3xl md:text-4xl text-white tracking-tight">ARQAYAA</div>
+            <div className="mb-8 md:mb-10 font-rajdhani font-bold text-xs md:text-sm tracking-[0.3em] text-gold uppercase text-center">Play Company Film</div>
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-gold flex items-center justify-center text-gold group-hover/overlay:bg-gold group-hover/overlay:text-white transition-all duration-300 shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+               <Play fill="currentColor" className="ml-1" size={28} />
             </div>
           </div>
         </div>
       )}
 
       {/* CONTROLS */}
-      <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-[60]">
-        <div className="flex flex-col gap-4">
-          {/* Progress Bar */}
-          <div className="relative w-full h-1 bg-white/20 cursor-pointer rounded-full overflow-hidden" onClick={(e) => {
+      <div 
+        className={cn(
+          "absolute bottom-0 left-0 w-full p-4 md:p-6 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity z-[80]",
+          "lg:opacity-0 lg:group-hover:opacity-100",
+          "opacity-100"
+        )}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex flex-col gap-3 md:gap-4">
+          <div className="relative w-full h-1.5 bg-white/20 cursor-pointer rounded-full overflow-hidden" onClick={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             const pos = (e.clientX - rect.left) / rect.width;
             if (audioRef.current && !audioError) audioRef.current.currentTime = pos * duration;
             setCurrentTime(pos * duration);
           }}>
-            <motion.div 
-              className="absolute left-0 top-0 h-full bg-gold"
-              style={{ width: `${(currentTime / duration) * 100}%` }}
-            />
+            <motion.div className="absolute left-0 top-0 h-full bg-gold shadow-[0_0_10px_rgba(201,168,76,0.8)]" style={{ width: `${(currentTime / duration) * 100}%` }} />
           </div>
           
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <button onClick={togglePlay} className="text-white hover:text-gold transition-colors">
-                {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" />}
+              <button onClick={togglePlay} className="text-white hover:text-gold transition-colors p-1">
+                {isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}
               </button>
-              <button onClick={() => setIsMuted(!isMuted)} className="text-white hover:text-gold transition-colors">
+              <button onClick={(e) => { e.stopPropagation(); setIsMuted(!isMuted); }} className="text-white hover:text-gold transition-colors p-1 hidden sm:block">
                 {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
               </button>
-              <span className="font-rajdhani text-[12px] text-white/80 tabular-nums">
+              <span className="font-rajdhani text-[11px] md:text-[12px] text-white font-medium tabular-nums tracking-widest">
                 {formatTime(currentTime)} / {formatTime(duration)}
               </span>
-              {audioError && <span className="text-[10px] text-gold/70 font-sans uppercase tracking-widest ml-2">Visual-Only Mode</span>}
             </div>
             
-            <div className="flex items-center gap-4">
-              <button onClick={() => {
-                if (audioRef.current) audioRef.current.currentTime = 0;
-                setCurrentTime(0);
-                if (!isPlaying) setIsPlaying(true);
-              }} className="text-white/60 hover:text-white transition-colors">
+            <div className="flex items-center gap-3">
+              <button onClick={(e) => { e.stopPropagation(); if (audioRef.current) audioRef.current.currentTime = 0; setCurrentTime(0); if (!isPlaying) togglePlay(); }} className="text-white/60 hover:text-white transition-colors p-1">
                 <RotateCcw size={16} />
               </button>
-              <button onClick={toggleFullscreen} className="text-white hover:text-gold transition-colors">
+              <button onClick={toggleFullscreen} className="text-white hover:text-gold transition-colors p-1">
                 <Maximize size={20} />
               </button>
             </div>
