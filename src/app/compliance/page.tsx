@@ -24,6 +24,7 @@ export default function CompliancePage() {
         label="INSTITUTIONAL RIGOR"
         headline="Compliance & Standards"
         image="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1920"
+        alt="Institutional compliance documents and professional setting"
       />
 
       <section className="py-24 px-6 md:px-24">

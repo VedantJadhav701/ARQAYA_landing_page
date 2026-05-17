@@ -24,6 +24,7 @@ export default function GovernancePage() {
         label="INSTITUTIONAL INTEGRITY"
         headline="Corporate Governance"
         image="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920"
+        alt="Modern corporate boardroom representing governance and integrity"
       />
 
       <section className="py-24 px-6 md:px-24">

@@ -20,6 +20,7 @@ export default function PublicationsPage() {
         label="CORPORATE RELEASES"
         headline="Publications"
         image="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1920"
+        alt="Corporate whitepapers and professional reports"
       />
 
       <section className="py-24 px-6 md:px-24 bg-cream">

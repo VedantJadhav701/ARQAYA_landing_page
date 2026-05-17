@@ -20,6 +20,7 @@ export default function ResearchPage() {
         label="TECHNICAL FRONTIERS"
         headline="Research & Development"
         image="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1920"
+        alt="Scientific research laboratory with advanced technology"
       />
 
       <section className="py-24 px-6 md:px-24">
