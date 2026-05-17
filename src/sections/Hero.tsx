@@ -11,14 +11,14 @@ const slides = [
     label: "AI INTELLIGENCE",
     headline: "Unlock the Power of AI for Your Business.",
     body: "Automating, analyzing, and accelerating workflows across industries.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1920",
+    image: "https://media.licdn.com/dms/image/v2/D4E12AQFs_3637K_1Jg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1724172508884?e=2147483647&v=beta&t=SI6ZrJ9p1110eNwYK_d5dnX1XXW07_hvbFZ0KDO9WVY",
     href: "/what-we-do"
   },
   {
     label: "TENETX — OIL & GAS",
     headline: "Physics-Native AI for Drilling Operations.",
     body: "100% data sovereignty. Error rate below 0.5%. Zero cloud dependency.",
-    image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1920",
+    image: "https://media.istockphoto.com/id/2154103733/photo/oil-rig.jpg?s=612x612&w=0&k=20&c=7Qc9aCDMrjlLyPWWNgFTROvanTDok51xnEA7QapNQmU=",
     href: "/subsidiaries/tenetx"
   },
   {
