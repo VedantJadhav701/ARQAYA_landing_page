@@ -27,7 +27,7 @@ export const mockArticles = [
     date: "March 15, 2026",
     readTime: "6 min read",
     author: "Dr. Bharat Kale",
-    image: "https://images.unsplash.com/photo-1456324504439-23fe879ce859?w=1200&q=85&fit=crop"
+    image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=1200&q=85&fit=crop"
   },
   {
     slug: "enterprise-agentic-architecture-patterns",

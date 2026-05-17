@@ -62,7 +62,7 @@ export default function SubsidiariesClient() {
               </div>
             </div>
             <div className="md:w-1/2 rounded-lg overflow-hidden h-[300px] md:h-auto shadow-md">
-              <img src="https://images.unsplash.com/photo-1456324504439-23fe879ce859?w=800&q=85&fit=crop" alt="TEXFLOW Interface" loading="lazy" className="w-full h-full object-cover" />
+              <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&q=85&fit=crop" alt="TEXFLOW Interface" loading="lazy" className="w-full h-full object-cover" />
             </div>
           </motion.div>
 
