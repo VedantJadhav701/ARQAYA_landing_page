@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause, Maximize, Volume2, VolumeX, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,97 +12,62 @@ interface CompanyVideoProps {
 const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(90); 
-  const [currentScene, setCurrentScene] = useState(1);
+  const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [audioError, setAudioError] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Scene Detection
+  // Sync state with video element
   useEffect(() => {
-    if (currentTime >= 0 && currentTime < 12) setCurrentScene(1);
-    else if (currentTime >= 12 && currentTime < 25) setCurrentScene(2);
-    else if (currentTime >= 25 && currentTime < 38) setCurrentScene(3);
-    else if (currentTime >= 38 && currentTime < 50) setCurrentScene(4);
-    else if (currentTime >= 50 && currentTime < 70) setCurrentScene(5);
-    else if (currentTime >= 70) setCurrentScene(6);
-  }, [currentTime]);
+    const video = videoRef.current;
+    if (!video) return;
 
-  // Audio & Timer Sync
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const handleTimeUpdate = () => {
-      setCurrentTime(audio.currentTime);
+    const handleTimeUpdate = () => setCurrentTime(video.currentTime);
+    const handleLoadedMetadata = () => setDuration(video.duration);
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setHasStarted(false);
     };
 
-    const handleLoadedMetadata = () => {
-      setDuration(audio.duration || 90);
-    };
-
-    const handleError = () => {
-      console.warn("Audio file arqayaa_voiceover.mp3 not found. Using manual timer fallback.");
-      setAudioError(true);
-    };
-
-    audio.addEventListener("timeupdate", handleTimeUpdate);
-    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
-    audio.addEventListener("error", handleError);
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
+    video.addEventListener("ended", handleEnded);
 
     return () => {
-      audio.removeEventListener("timeupdate", handleTimeUpdate);
-      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      audio.removeEventListener("error", handleError);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
+      video.removeEventListener("ended", handleEnded);
     };
   }, []);
-
-  // Manual Timer Fallback
-  useEffect(() => {
-    if (isPlaying && audioError) {
-      timerRef.current = setInterval(() => {
-        setCurrentTime((prev) => {
-          if (prev >= 90) {
-            setIsPlaying(false);
-            return 90;
-          }
-          return prev + 0.1;
-        });
-      }, 100);
-    } else {
-      if (timerRef.current) clearInterval(timerRef.current);
-    }
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isPlaying, audioError]);
 
   const togglePlay = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     if (previewMode) return;
     
-    const audio = audioRef.current;
+    const video = videoRef.current;
+    if (!video) return;
+
     if (isPlaying) {
-      if (audio && !audioError) audio.pause();
-      setIsPlaying(false);
+      video.pause();
     } else {
-      if (audio && !audioError) {
-        audio.play().catch((err) => {
-          console.error("Audio playback failed:", err);
-          setAudioError(true);
-        });
-      }
-      setIsPlaying(true);
+      video.play().catch(err => console.error("Playback failed:", err));
+      setHasStarted(true);
     }
   };
 
   const toggleFullscreen = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!containerRef.current) return;
+    
     if (!document.fullscreenElement) {
       containerRef.current.requestFullscreen();
       setIsFullscreen(true);
@@ -118,26 +83,22 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
-  const particles = useMemo(() => {
-    return Array.from({ length: 80 }).map((_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: Math.random() * 5,
-      duration: 10 + Math.random() * 20,
-    }));
-  }, []);
-
   if (previewMode) {
     return (
       <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-gold/30 group cursor-pointer shadow-2xl bg-black">
-        <div className="absolute inset-0 bg-[#000000] flex items-center justify-center">
-          <div className="absolute inset-0 bg-radial-gradient from-gold/10 to-transparent opacity-50" />
+        {/* Poster / Video Thumbnail */}
+        <video 
+          className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+          muted 
+          playsInline 
+          src="/arqayaa_film.mp4"
+        />
+        <div className="absolute inset-0 bg-[#000000]/40 flex items-center justify-center">
           <div className="text-center z-10">
-            <h3 className="font-serif font-bold text-3xl md:text-4xl text-white mb-2">ARQAYAA</h3>
-            <p className="font-rajdhani font-bold text-[10px] tracking-[0.3em] text-gold uppercase">INTELLIGENCE</p>
+            <h3 className="font-serif font-bold text-3xl md:text-4xl text-white mb-2 tracking-tight">OUR STORY</h3>
+            <p className="font-rajdhani font-bold text-[10px] tracking-[0.3em] text-gold uppercase">ARQAYAA INTELLIGENCE</p>
           </div>
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
           <div className="w-20 h-20 rounded-full border border-gold/50 flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-white transition-all duration-500 z-20">
             <Play fill="currentColor" className="ml-1" size={32} />
           </div>
@@ -155,319 +116,21 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
       )}
       onClick={() => togglePlay()}
     >
-      <audio ref={audioRef} src="/arqayaa_voiceover.mp3" preload="metadata" muted={isMuted} />
-
-      {/* SCENES */}
-      <AnimatePresence mode="wait">
-        {/* Scene 1: The Problem */}
-        {currentScene === 1 && (
-          <motion.div 
-            key="scene1"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0 flex flex-col items-center justify-center text-center p-12"
-          >
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              {particles.map((p) => (
-                <motion.div
-                  key={p.id}
-                  className="absolute w-1 h-1 bg-white rounded-full opacity-20"
-                  initial={{ x: p.left, y: p.top }}
-                  animate={{ 
-                    y: ["-10%", "110%"],
-                    opacity: [0, 0.2, 0]
-                  }}
-                  transition={{ 
-                    duration: p.duration, 
-                    repeat: Infinity, 
-                    delay: p.delay,
-                    ease: "linear"
-                  }}
-                />
-              ))}
-            </div>
-            
-            <div className="relative z-10 space-y-4 md:space-y-6 px-4">
-              {currentTime >= 0 && (
-                <motion.h2 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-serif font-light text-xl md:text-[42px] text-white"
-                >
-                  Industries generate more data than ever before.
-                </motion.h2>
-              )}
-              {currentTime >= 3 && (
-                <motion.h2 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-serif font-light text-xl md:text-[42px] text-white"
-                >
-                  But most AI promises—
-                </motion.h2>
-              )}
-              {currentTime >= 5.5 && (
-                <motion.h2 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="font-serif font-bold italic text-2xl md:text-[48px] text-gold"
-                >
-                  fail in production.
-                </motion.h2>
-              )}
-            </div>
-          </motion.div>
-        )}
-
-        {/* Scene 2: The Company */}
-        {currentScene === 2 && (
-          <motion.div 
-            key="scene2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0"
-          >
-            <motion.div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1920)" }}
-              animate={{ scale: [1, 1.08] }}
-              transition={{ duration: 13, ease: "linear" }}
-            />
-            <div className="absolute inset-0 bg-black/72" />
-            
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12 z-10">
-              {currentTime >= 12 && (
-                <motion.span 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-rajdhani font-semibold text-[13px] tracking-[0.3em] text-gold uppercase mb-6"
-                >
-                  ARQAYAA INTELLIGENCE PVT LTD
-                </motion.span>
-              )}
-              {currentTime >= 13 && (
-                <motion.h2 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-serif font-light text-2xl md:text-[52px] text-white mb-4"
-                >
-                  Building the AI systems that actually work.
-                </motion.h2>
-              )}
-              {currentTime >= 15.5 && (
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-sans text-lg md:text-[20px] text-white/75"
-                >
-                  For industries. For society. For India.
-                </motion.p>
-              )}
-            </div>
-          </motion.div>
-        )}
-
-        {/* Scene 3: TENETX */}
-        {currentScene === 3 && (
-          <motion.div 
-            key="scene3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0"
-          >
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(https://media.istockphoto.com/id/2154103733/photo/oil-rig.jpg?s=612x612&w=0&k=20&c=7Qc9aCDMrjlLyPWWNgFTROvanTDok51xnEA7QapNQmU=)" }}
-            />
-            <div className="absolute inset-0 bg-[#0E3D6E]/65" />
-            
-            <div className="absolute inset-0 flex flex-col justify-center px-12 md:px-24 z-10">
-              <motion.h2 
-                initial={{ opacity: 0, x: -60 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="font-bebas text-6xl md:text-[96px] text-white leading-none"
-              >
-                TENETX
-              </motion.h2>
-              <motion.div 
-                initial={{ width: 0 }}
-                animate={{ width: 120 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
-                className="h-[2px] bg-tenetx-primary my-6 md:my-8"
-              />
-              
-              <div className="space-y-4 md:space-y-6">
-                {[
-                  { time: 26, val: "< 0.5%", label: "Error Rate" },
-                  { time: 27.5, val: "₹ 0.08", label: "Per Query" },
-                  { time: 29, val: "100%", label: "Data Sovereignty" },
-                ].map((s, idx) => (
-                  currentTime >= s.time && (
-                    <motion.div 
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-baseline gap-2 md:gap-4"
-                    >
-                      <span className="font-serif font-light text-2xl md:text-[60px] text-white">{s.val}</span>
-                      <span className="font-rajdhani text-[10px] md:text-[14px] text-gold uppercase tracking-wider">{s.label}</span>
-                    </motion.div>
-                  )
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Scene 4: TEXFLOW */}
-        {currentScene === 4 && (
-          <motion.div 
-            key="scene4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0"
-          >
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=1920)" }}
-            />
-            <div className="absolute inset-0 bg-[#0F5249]/60" />
-            
-            <div className="absolute inset-0 flex flex-col justify-center items-end text-right px-12 md:px-24 z-10">
-              <motion.h2 
-                initial={{ opacity: 0, x: 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="font-rajdhani font-bold text-5xl md:text-[88px] text-white leading-none"
-              >
-                TEXFLOW
-              </motion.h2>
-              <motion.div 
-                initial={{ width: 0 }}
-                animate={{ width: 120 }}
-                className="h-[2px] bg-texflow-primary my-6 md:my-8"
-              />
-              
-              <div className="space-y-3 md:space-y-4">
-                {[
-                  { time: 39.5, text: "Word → Publisher-Ready PDF" },
-                  { time: 41, text: "Zero AI. Zero Hallucinations." },
-                  { time: 42.5, text: "IEEE · Springer · Elsevier" },
-                ].map((line, idx) => (
-                  currentTime >= line.time && (
-                    <motion.div 
-                      key={idx}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      className="font-serif text-lg md:text-2xl text-white"
-                    >
-                      {line.text}
-                    </motion.div>
-                  )
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Scene 5: The Vision */}
-        {currentScene === 5 && (
-          <motion.div 
-            key="scene5"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0"
-          >
-            <motion.div 
-              className="absolute inset-0 bg-cover"
-              style={{ 
-                backgroundImage: "url(https://images.unsplash.com/photo-1449156001931-82834b26e3bc?auto=format&fit=crop&q=80&w=1920)",
-                backgroundPosition: "50% 60%"
-              }}
-              animate={{ backgroundPosition: "50% 50%" }}
-              transition={{ duration: 20, ease: "linear" }}
-            />
-            <div className="absolute inset-0 bg-black/50" />
-            
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12 z-10 space-y-6 md:space-y-8">
-              {currentTime >= 50 && (
-                <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-serif italic text-xl md:text-[38px] text-white">"From oil rigs to research desks."</motion.p>
-              )}
-              {currentTime >= 57 && (
-                <motion.h2 initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="font-serif font-semibold text-2xl md:text-[44px] text-gold max-w-4xl">ARQAYAA builds systems that solve real problems</motion.h2>
-              )}
-              {currentTime >= 61 && (
-                <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="font-serif italic text-2xl md:text-[44px] text-white">for real people.</motion.p>
-              )}
-            </div>
-          </motion.div>
-        )}
-
-        {/* Scene 6: The Close */}
-        {currentScene === 6 && (
-          <motion.div 
-            key="scene6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0 bg-black flex flex-col items-center justify-center text-center p-12"
-          >
-            <motion.div 
-              className="absolute w-64 h-64 md:w-96 md:h-96 bg-gold/10 rounded-full blur-[100px]"
-              animate={{ opacity: [0.08, 0.18, 0.08] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-            
-            <div className="relative z-10 flex flex-col items-center">
-              {currentTime >= 70 && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-serif font-light text-2xl md:text-[52px] text-white/60 mb-2">The future of AI</motion.div>
-              )}
-              {currentTime >= 77 && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="font-serif font-bold text-3xl md:text-[60px] text-white mb-8 md:mb-12">It is about systems.</motion.div>
-              )}
-              
-              <div className="flex gap-4 md:gap-8 mb-12 md:mb-16">
-                {currentTime >= 80 && (
-                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-serif text-2xl md:text-[40px] text-gold">Reliable.</motion.span>
-                )}
-                {currentTime >= 81 && (
-                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="font-serif font-bold text-2xl md:text-[48px] text-white">Real.</motion.span>
-                )}
-              </div>
-              
-              {currentTime >= 85 && (
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-2">
-                  <div className="font-serif font-bold text-3xl md:text-[56px] text-white">ARQAYAA INTELLIGENCE</div>
-                  <div className="font-rajdhani font-semibold text-[14px] tracking-[0.2em] text-gold uppercase">Intelligence Pvt Ltd</div>
-                </motion.div>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <video 
+        ref={videoRef}
+        src="/arqayaa_film.mp4"
+        className="w-full h-full object-contain"
+        playsInline
+        muted={isMuted}
+      />
 
       {/* OVERLAY BEFORE START */}
-      {(!isPlaying && currentTime === 0) && (
+      {!hasStarted && (
         <div className="absolute inset-0 z-[70] flex items-center justify-center cursor-pointer group/overlay" onClick={togglePlay}>
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1920)" }}
-          />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
           <div className="relative text-center flex flex-col items-center p-6">
             <div className="mb-4 md:mb-6 font-serif font-bold text-3xl md:text-4xl text-white tracking-tight">ARQAYAA</div>
-            <div className="mb-8 md:mb-10 font-rajdhani font-bold text-xs md:text-sm tracking-[0.3em] text-gold uppercase text-center">Play Company Film</div>
+            <div className="mb-8 md:mb-10 font-rajdhani font-bold text-xs md:text-sm tracking-[0.3em] text-gold uppercase text-center">Watch Full Film</div>
             <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-gold flex items-center justify-center text-gold group-hover/overlay:bg-gold group-hover/overlay:text-white transition-all duration-300 shadow-[0_0_20px_rgba(201,168,76,0.3)]">
                <Play fill="currentColor" className="ml-1" size={28} />
             </div>
@@ -480,16 +143,16 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
         className={cn(
           "absolute bottom-0 left-0 w-full p-4 md:p-6 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity z-[80]",
           "lg:opacity-0 lg:group-hover:opacity-100",
-          "opacity-100"
+          (hasStarted) ? "opacity-100" : "opacity-0"
         )}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col gap-3 md:gap-4">
+          {/* Progress Bar */}
           <div className="relative w-full h-1.5 bg-white/20 cursor-pointer rounded-full overflow-hidden" onClick={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             const pos = (e.clientX - rect.left) / rect.width;
-            if (audioRef.current && !audioError) audioRef.current.currentTime = pos * duration;
-            setCurrentTime(pos * duration);
+            if (videoRef.current) videoRef.current.currentTime = pos * duration;
           }}>
             <motion.div className="absolute left-0 top-0 h-full bg-gold shadow-[0_0_10px_rgba(201,168,76,0.8)]" style={{ width: `${(currentTime / duration) * 100}%` }} />
           </div>
@@ -508,7 +171,7 @@ const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
             </div>
             
             <div className="flex items-center gap-3">
-              <button onClick={(e) => { e.stopPropagation(); if (audioRef.current) audioRef.current.currentTime = 0; setCurrentTime(0); if (!isPlaying) togglePlay(); }} className="text-white/60 hover:text-white transition-colors p-1">
+              <button onClick={(e) => { e.stopPropagation(); if (videoRef.current) videoRef.current.currentTime = 0; }} className="text-white/60 hover:text-white transition-colors p-1">
                 <RotateCcw size={16} />
               </button>
               <button onClick={toggleFullscreen} className="text-white hover:text-gold transition-colors p-1">
