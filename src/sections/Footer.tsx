@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Linkedin, Twitter, Mail } from "lucide-react";
+import { Linkedin, X, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -68,7 +68,7 @@ const Footer = () => {
           </p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
-            <a href="#" className="hover:text-white transition-colors"><Twitter size={20} /></a>
+            <a href="#" className="hover:text-white transition-colors"><X size={20} /></a>
           </div>
         </div>
       </div>
