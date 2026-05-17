@@ -1,151 +1,147 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import PageHero from "@/components/PageHero";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { Search, ArrowRight } from "lucide-react";
-import { PostFrontmatter } from "@/lib/mdx";
-import { cn } from "@/lib/utils";
+import { Search } from "lucide-react";
 
-interface InsightsClientProps {
-  initialPosts: PostFrontmatter[];
-}
+export const mockArticles = [
+  {
+    slug: "deterministic-ai-in-highly-regulated-industries",
+    category: "RESEARCH",
+    title: "The Case for Deterministic AI in Highly Regulated Industries",
+    excerpt: "Why stochastic probabilistic models (LLMs) fail in environments where accuracy cannot be compromised, and how hybrid deterministic systems bridge the gap.",
+    date: "May 12, 2026",
+    readTime: "8 min read",
+    author: "Vedant Jadhav",
+    image: "https://images.unsplash.com/photo-1620825937374-87fc1d62c262?w=1200&q=85&fit=crop"
+  },
+  {
+    slug: "physics-informed-neural-networks-oil-gas",
+    category: "TENETX",
+    title: "Physics-Informed Neural Networks: The Next Frontier in Oil & Gas",
+    excerpt: "Exploring how embedding Navier-Stokes equations into model architecture reduces data dependency by 90% in drilling optimization.",
+    date: "April 28, 2026",
+    readTime: "12 min read",
+    author: "Neel Khairnar",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=85&fit=crop"
+  },
+  {
+    slug: "automating-compliance-academic-publishing",
+    category: "TEXFLOW",
+    title: "Automating Compliance: The Hidden Cost of Academic Typesetting",
+    excerpt: "An analysis of the millions of hours lost annually by researchers formatting documents, and the computational approach to solving it.",
+    date: "March 15, 2026",
+    readTime: "6 min read",
+    author: "Dr. Bharat Kale",
+    image: "https://images.unsplash.com/photo-1456324504439-23fe879ce859?w=1200&q=85&fit=crop"
+  },
+  {
+    slug: "enterprise-agentic-architecture-patterns",
+    category: "ENGINEERING",
+    title: "Enterprise Agentic Architecture Patterns",
+    excerpt: "Designing stateful, recoverable, and auditable multi-agent systems for enterprise deployment.",
+    date: "February 04, 2026",
+    readTime: "15 min read",
+    author: "Vedant Jadhav",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85&fit=crop"
+  }
+];
 
-const categories = ["ALL", "INDUSTRIAL AI", "AUTONOMOUS ENTERPRISE", "RESEARCH", "SECURITY"];
-
-export default function InsightsClient({ initialPosts }: InsightsClientProps) {
-  const [search, setSearch] = useState("");
+export default function InsightsClient() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("ALL");
 
-  const filteredPosts = useMemo(() => {
-    return initialPosts.filter((post) => {
-      const matchesSearch = 
-        post.title.toLowerCase().includes(search.toLowerCase()) || 
-        post.excerpt.toLowerCase().includes(search.toLowerCase());
-      
-      const matchesCategory = activeCategory === "ALL" || post.category === activeCategory;
-      
-      return matchesSearch && matchesCategory;
-    });
-  }, [search, activeCategory, initialPosts]);
+  const categories = ["ALL", "RESEARCH", "TENETX", "TEXFLOW", "ENGINEERING"];
 
-  const featuredPost = useMemo(() => {
-    return initialPosts.find(p => p.featured) || initialPosts[0];
-  }, [initialPosts]);
+  const filteredArticles = mockArticles.filter(article => {
+    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = activeCategory === "ALL" || article.category === activeCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   return (
-    <section className="py-24 px-6 md:px-24">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* FILTERS & SEARCH */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-16 border-b border-border pb-8">
-          <div className="flex flex-wrap gap-4">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "font-rajdhani font-bold text-[11px] tracking-[0.2em] px-6 py-2 border rounded-full transition-all uppercase",
-                  activeCategory === cat 
-                    ? "bg-gold border-gold text-white" 
-                    : "border-border text-text-muted hover:border-gold hover:text-gold"
-                )}
-              >
-                {cat}
-              </button>
-            ))}
+    <>
+      <PageHero
+        label="INSIGHTS & RESEARCH"
+        headline="Editorial Perspectives on Industrial Intelligence"
+        image="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=85&fit=crop"
+        alt="Library or research facility"
+      />
+
+      <section className="py-20 bg-white px-6 md:px-24 min-h-[600px]">
+        <div className="max-w-7xl mx-auto">
+          {/* Controls */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16 border-b border-gray-mid pb-8">
+            <div className="flex flex-wrap gap-4">
+              {categories.map(cat => (
+                <button 
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`font-rajdhani font-bold text-[13px] tracking-widest uppercase px-4 py-2 rounded transition-colors ${activeCategory === cat ? 'bg-black text-white' : 'bg-cream text-text-mid hover:text-black'}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="relative w-full md:w-72">
+              <input 
+                type="text" 
+                placeholder="Search insights..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full border border-gray-300 rounded px-4 py-3 pl-10 focus:outline-none focus:border-gold font-sans bg-cream"
+              />
+              <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
+            </div>
           </div>
 
-          <div className="relative w-full lg:w-96">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted" size={18} />
-            <input
-              type="text"
-              placeholder="Search insights..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white border border-border pl-12 pr-4 py-3 rounded-lg focus:outline-none focus:border-gold font-sans"
-            />
-          </div>
+          {/* Grid */}
+          {filteredArticles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+              {filteredArticles.map((article, idx) => (
+                <motion.div 
+                  key={article.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group"
+                >
+                  <Link href={`/insights/${article.slug}`} className="block">
+                    <div className="rounded-xl overflow-hidden mb-6 aspect-video">
+                      <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="font-rajdhani font-bold text-[11px] tracking-widest text-gold uppercase">{article.category}</span>
+                      <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+                      <span className="font-sans text-[13px] text-text-muted">{article.readTime}</span>
+                    </div>
+                    <h3 className="font-serif text-[28px] leading-tight text-text-black mb-4 group-hover:text-gold transition-colors">{article.title}</h3>
+                    <p className="font-sans text-text-mid mb-6 line-clamp-2">{article.excerpt}</p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center font-serif text-[12px] text-text-black font-bold">
+                        {article.author.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div className="font-sans text-[13px]">
+                        <span className="text-text-black font-medium">{article.author}</span>
+                        <span className="text-text-muted mx-2">|</span>
+                        <span className="text-text-muted">{article.date}</span>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20">
+              <p className="font-serif text-[24px] text-text-muted">No insights found matching your search criteria.</p>
+              <button onClick={() => {setSearchQuery(''); setActiveCategory('ALL');}} className="mt-4 text-gold font-bold font-sans hover:underline">Clear filters</button>
+            </div>
+          )}
         </div>
-
-        {/* FEATURED POST (Only show if no search/category filter or if it matches) */}
-        {!search && activeCategory === "ALL" && featuredPost && (
-          <div className="mb-20">
-            <Link href={`/insights/${featuredPost.slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all bg-white border border-border">
-              <div className="aspect-[16/10] lg:aspect-auto relative overflow-hidden">
-                <img 
-                  src={featuredPost.image} 
-                  alt={featuredPost.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                />
-                <div className="absolute top-8 left-8 bg-gold text-white px-4 py-1 font-rajdhani font-bold text-[10px] tracking-widest uppercase">
-                  FEATURED
-                </div>
-              </div>
-              <div className="p-10 lg:p-16 flex flex-col justify-center">
-                <div className="font-rajdhani font-bold text-[11px] text-gold tracking-widest uppercase mb-4">
-                  {featuredPost.category} — {featuredPost.date}
-                </div>
-                <h2 className="font-serif text-[32px] md:text-[48px] text-text-black leading-tight mb-6 group-hover:text-gold transition-colors">
-                  {featuredPost.title}
-                </h2>
-                <p className="font-sans text-text-mid text-[17px] leading-relaxed mb-8">
-                  {featuredPost.excerpt}
-                </p>
-                <div className="flex items-center gap-4 text-gold font-rajdhani font-bold tracking-widest text-[13px] uppercase">
-                  Read Article <ArrowRight size={16} />
-                </div>
-              </div>
-            </Link>
-          </div>
-        )}
-
-        {/* POST GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          <AnimatePresence mode="popLayout">
-            {filteredPosts.map((post, idx) => (
-              <motion.div
-                key={post.slug}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ delay: idx * 0.05 }}
-              >
-                <Link href={`/insights/${post.slug}`} className="group block h-full">
-                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-6 shadow-sm">
-                    <img 
-                      src={post.image} 
-                      alt={post.title} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                    />
-                  </div>
-                  <div className="font-rajdhani font-bold text-[10px] text-gold tracking-widest uppercase mb-3">
-                    {post.category} · {post.readTime}
-                  </div>
-                  <h3 className="font-serif text-[24px] text-text-black leading-tight mb-4 group-hover:text-gold transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="font-sans text-text-muted text-[15px] leading-relaxed line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                </Link>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {filteredPosts.length === 0 && (
-          <div className="py-24 text-center">
-            <p className="font-serif text-[24px] text-text-muted">No insights found matching your criteria.</p>
-            <button 
-              onClick={() => { setSearch(""); setActiveCategory("ALL"); }}
-              className="mt-6 text-gold font-rajdhani font-bold tracking-widest uppercase"
-            >
-              Clear all filters
-            </button>
-          </div>
-        )}
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

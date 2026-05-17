@@ -1,25 +1,31 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import Script from "next/script";
 
-export default function AnalyticsProvider({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+export default function AnalyticsProvider() {
+  // In a real application, replace G-XXXXXXXXXX with your actual GA4 measurement ID
+  const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
 
-  useEffect(() => {
-    if (pathname) {
-      // Placeholder for GA4 / PostHog / Plausible
-      console.log(`[Institutional Analytics] Page View: ${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`);
-    }
-  }, [pathname, searchParams]);
-
-  return <>{children}</>;
+  return (
+    <>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+    </>
+  );
 }
-
-/**
- * Global tracking utility for manual events (CTA clicks, etc.)
- */
-export const trackEvent = (name: string, properties?: Record<string, any>) => {
-  console.log(`[Institutional Analytics] Event: ${name}`, properties);
-};

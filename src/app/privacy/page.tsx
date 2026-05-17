@@ -1,35 +1,47 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/sections/Footer";
-import PageHero from "@/components/layout/PageHero";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy | ARQAYAA Intelligence",
-  description: "Our institutional commitment to data privacy, GDPR compliance, and the right to intelligence sovereignty.",
+  description: "ARQAYAA Privacy Policy. GDPR-aligned data handling for enterprise AI systems.",
 };
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-white">
       <Navbar />
-      <PageHero 
-        label="LEGAL & ETHICS"
-        title="Privacy Policy"
-        image="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1920"
-      />
-      <section className="py-24 px-6 md:px-24">
-         <div className="max-w-3xl mx-auto">
-            <h2 className="font-serif text-[32px] text-text-black mb-8 border-b border-border pb-4">Institutional Privacy Commitment</h2>
-            <div className="prose font-sans text-text-mid space-y-6">
-               <p>At ARQAYAA INTELLIGENCE PVT LTD, privacy is not just a policy—it is a structural requirement of our architecture. We operate on the principle of <strong>Least-Privilege Access</strong> and <strong>Intelligence Sovereignty</strong>.</p>
-               <h3 className="font-serif text-[24px] text-text-black pt-8">1. Data Ownership</h3>
-               <p>ARQAYAA does not claim ownership of any data processed through our TENETX or TEXFLOW platforms. Your data remains your property at all times.</p>
-               <h3 className="font-serif text-[24px] text-text-black pt-8">2. Retention & Purging</h3>
-               <p>For research platforms like TEXFLOW, we implement a strict 48-hour automated purging policy. All processed documents are irreversibly deleted from our secure compilation nodes within 48 hours of processing.</p>
-               <h3 className="font-serif text-[24px] text-text-black pt-8">3. AI Training</h3>
-               <p>We do not use client-specific operational data or research manuscripts to train our base models. Any fine-tuning is performed on isolated, client-owned environments.</p>
-            </div>
-         </div>
-      </section>
+      <div className="pt-[150px] pb-24 px-6 md:px-24">
+        <div className="max-w-4xl mx-auto prose prose-lg prose-headings:font-serif prose-headings:font-normal prose-p:font-sans prose-p:text-text-dark">
+          <h1 className="text-4xl md:text-[56px] text-text-black mb-12 border-b border-gray-200 pb-8">Privacy Policy</h1>
+          
+          <p className="text-[18px] text-text-mid mb-8">
+            Last Updated: May 2026
+          </p>
+
+          <h2 className="text-[32px] mt-12 mb-6">1. Enterprise Data Handling</h2>
+          <p>
+            ARQAYAA Intelligence operates on a fundamentally different privacy model than consumer AI companies. We do not use customer data to train our foundational models unless explicitly contracted via a dedicated fine-tuning agreement in an isolated tenant environment.
+          </p>
+
+          <h2 className="text-[32px] mt-12 mb-6">2. TEXFLOW Auto-Purge Protocol</h2>
+          <p>
+            For users of the TEXFLOW academic typesetting platform, all uploaded manuscripts, XML parses, and compiled PDFs are subjected to an automated cryptographic purge exactly 48 hours after processing. No documents are retained in cold storage, ensuring compliance with pre-publication embargo rules set by major journals (Nature, Science, IEEE).
+          </p>
+
+          <h2 className="text-[32px] mt-12 mb-6">3. GDPR & Global Compliance</h2>
+          <p>
+            Our data processing agreements are fully aligned with the General Data Protection Regulation (GDPR) and the Digital Personal Data Protection Act (DPDP), India. Customers retain complete ownership of all inputs and generated outputs.
+          </p>
+
+          <div className="mt-16 p-8 bg-cream border border-gold/30 rounded-xl">
+            <h3 className="font-serif text-[24px] mb-4 mt-0">Contact the DPO</h3>
+            <p className="font-sans text-[15px] m-0">
+              For privacy-related inquiries or to exercise your data rights, please contact our Data Protection Officer at <a href="mailto:privacy@arqaya.com" className="text-gold font-bold hover:underline">privacy@arqaya.com</a>.
+            </p>
+          </div>
+        </div>
+      </div>
       <Footer />
     </main>
   );

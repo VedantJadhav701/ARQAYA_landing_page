@@ -1,10 +1,9 @@
-import { MetadataRoute } from 'next'
-import { getAllPosts } from '@/lib/mdx'
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://arqaya.com'
-  
-  const staticPages = [
+  const baseUrl = 'https://arqaya.com';
+
+  const routes = [
     '',
     '/about',
     '/what-we-do',
@@ -18,26 +17,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/case-studies',
     '/security',
     '/privacy',
-  ].map(route => ({
+    '/compliance',
+    '/governance',
+  ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
-  }))
+  }));
 
-  const insights = getAllPosts('insights').map(post => ({
-    url: `${baseUrl}/insights/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
-  const caseStudies = getAllPosts('case-studies').map(post => ({
-    url: `${baseUrl}/case-studies/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
-  return [...staticPages, ...insights, ...caseStudies]
+  return routes;
 }

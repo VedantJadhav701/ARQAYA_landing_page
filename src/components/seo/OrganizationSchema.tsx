@@ -1,21 +1,28 @@
-import React from "react";
-
 export default function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ARQAYAA INTELLIGENCE PVT LTD",
+    "@type": "Corporation",
+    "name": "ARQAYAA Intelligence",
+    "alternateName": "ARQAYAA Intelligence Pvt Ltd",
     "url": "https://arqaya.com",
     "logo": "https://arqaya.com/logo.png",
-    "email": "info@arqaya.com",
+    "sameAs": [
+      "https://www.linkedin.com/company/arqaya-intelligence",
+      "https://twitter.com/arqaya_ai"
+    ],
+    "description": "ARQAYAA Intelligence is an industrial-grade AI company building production-ready systems for highly regulated industries.",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "India"
     },
-    "sameAs": [
-      "https://linkedin.com/company/arqaya",
-      "https://twitter.com/arqaya"
-    ]
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "",
+      "contactType": "customer service",
+      "email": "info@arqaya.com",
+      "areaServed": "Global",
+      "availableLanguage": "English"
+    }
   };
 
   return (

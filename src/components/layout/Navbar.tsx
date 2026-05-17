@@ -12,7 +12,11 @@ const CommandPalette = dynamic(() => import("./CommandPalette"), {
   ssr: false,
 });
 
-const Navbar = () => {
+interface NavbarProps {
+  darkMode?: boolean;
+}
+
+const Navbar = ({ darkMode = false }: NavbarProps) => {
   const pathname = usePathname();
   const [isSubsidiaryOpen, setIsSubsidiaryOpen] = React.useState(false);
   const [isWhatWeDoOpen, setIsWhatWeDoOpen] = React.useState(false);
@@ -22,6 +26,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "ABOUT US", href: "/about" },
     { name: "WHAT WE DO", href: "/what-we-do" },
+    { name: "OUR STORY", href: "/video" },
     { name: "SUBSIDIARIES", href: "/subsidiaries" },
     { name: "INDUSTRIES", href: "/industries" },
     { name: "CAREERS", href: "/careers" },
@@ -48,12 +53,18 @@ const Navbar = () => {
       </div>
 
       {/* Main Nav Bar */}
-      <nav className="h-16 bg-white border-b border-[#E0DDD6] flex items-center justify-between px-6 md:px-12 relative">
+      <nav className={cn(
+        "h-16 border-b flex items-center justify-between px-6 md:px-12 relative transition-colors duration-300",
+        darkMode ? "bg-[#060608]/80 backdrop-blur-md border-white/10" : "bg-white border-[#E0DDD6]"
+      )}>
         {/* Left: Search icon */}
         <div className="flex-1 lg:flex-none">
           <button 
             onClick={() => setIsSearchOpen(true)}
-            className="w-9 h-9 border border-[#E0DDD6] rounded-full flex items-center justify-center text-text-dark hover:bg-gray-light transition-colors cursor-pointer group"
+            className={cn(
+              "w-9 h-9 border rounded-full flex items-center justify-center transition-colors cursor-pointer group",
+              darkMode ? "border-white/10 text-white hover:bg-white/5" : "border-[#E0DDD6] text-text-dark hover:bg-gray-light"
+            )}
           >
             <Search size={18} className="group-hover:text-gold transition-colors" />
           </button>
@@ -79,8 +90,8 @@ const Navbar = () => {
                 className={cn(
                   "font-sans text-[14px] font-medium tracking-wide transition-colors cursor-pointer h-full border-b-2 flex items-center",
                   pathname === link.href
-                    ? "text-text-black border-gold"
-                    : "text-text-mid border-transparent hover:text-text-black"
+                    ? "text-gold border-gold"
+                    : (darkMode ? "text-white/60 border-transparent hover:text-white" : "text-text-mid border-transparent hover:text-text-black")
                 )}
               >
                 {link.name}
@@ -90,20 +101,20 @@ const Navbar = () => {
               {/* Mega Dropdown for What We Do */}
               {link.name === "WHAT WE DO" && isWhatWeDoOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-[240px] bg-white border border-border shadow-xl p-6 animate-fade-up">
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-4 text-text-black">
                     <Link href="/what-we-do" className="text-[14px] text-text-mid hover:text-gold transition-colors">Our Solutions</Link>
                     <Link href="/what-we-do#process" className="text-[14px] text-text-mid hover:text-gold transition-colors">Our Process</Link>
-                    <Link href="/what-we-do#why" className="text-[14px] text-text-mid hover:text-gold transition-colors">Why ARQAYAA</Link>
+                    <Link href="/about" className="text-[14px] text-text-mid hover:text-gold transition-colors">Why ARQAYAA</Link>
                   </div>
                 </div>
               )}
 
               {/* Mega Dropdown for Subsidiaries */}
               {link.name === "SUBSIDIARIES" && isSubsidiaryOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white border border-border shadow-xl p-8 animate-fade-up">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white border border-border shadow-xl p-8 animate-fade-up text-text-black">
                   <div className="grid grid-cols-2 gap-10">
                     <Link href="/subsidiaries/tenetx" className="group cursor-pointer block">
-                      <div className="text-[11px] font-rajdhani font-bold text-tenetx-primary tracking-widest uppercase mb-1">TENETX</div>
+                      <div className="text-[11px] font-bebas text-tenetx-primary tracking-widest uppercase mb-1">TENETX</div>
                       <div className="text-[15px] font-medium text-text-black mb-2">Industrial Oil & Gas AI</div>
                       <div className="text-gold font-sans text-[13px] flex items-center gap-2 group-hover:gap-3 transition-all">
                         Learn more <span className="text-[18px]">→</span>
@@ -132,8 +143,11 @@ const Navbar = () => {
         <div className="flex-1 lg:flex-none flex justify-end items-center gap-4">
           <Link href="/" className="flex items-center gap-3">
             <div className="flex flex-col items-end hidden sm:flex">
-              <span className="font-serif font-bold text-[20px] leading-tight text-text-black">ARQAYAA</span>
-              <span className="font-rajdhani text-[9px] font-semibold tracking-[0.2em] text-gold -mt-0.5">INTELLIGENCE</span>
+              <span className={cn(
+                "font-serif font-bold text-[20px] leading-tight transition-colors",
+                darkMode ? "text-white" : "text-text-black"
+              )}>ARQAYAA</span>
+              <span className="font-rajdhani text-[9px] font-semibold tracking-[0.2em] text-gold -mt-0.5 uppercase">Intelligence</span>
             </div>
             <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">
                <div className="w-4 h-4 bg-white rounded-full opacity-80" />
@@ -141,7 +155,10 @@ const Navbar = () => {
           </Link>
           
           <button 
-            className="lg:hidden p-2 text-text-dark"
+            className={cn(
+              "lg:hidden p-2 transition-colors",
+              darkMode ? "text-white" : "text-text-dark"
+            )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -156,7 +173,7 @@ const Navbar = () => {
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
-            className="fixed inset-0 bg-white z-[150] pt-24 px-8 lg:hidden"
+            className="fixed inset-0 bg-white z-[150] pt-24 px-8 lg:hidden text-text-black"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (

@@ -43,6 +43,7 @@ const Footer = () => {
             <h4 className="font-rajdhani font-bold text-[11px] text-white tracking-[0.2em] uppercase mb-8">COMPANY</h4>
             <ul className="space-y-4 font-sans text-[14px]">
               <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/video" className="hover:text-white transition-colors">Our Story (Film)</Link></li>
               <li><Link href="/what-we-do" className="hover:text-white transition-colors">What We Do</Link></li>
               <li><Link href="/industries" className="hover:text-white transition-colors">Industries</Link></li>
               <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
