@@ -9,7 +9,7 @@ const domains = [
   {
     id: "mineral-extraction",
     title: "Mineral Extraction",
-    img: "https://images.unsplash.com/photo-1576233334104-c16604107962?w=1200&q=85&fit=crop",
+    img: "https://images.unsplash.com/photo-1578308818056-17983679809c?w=1200&q=85&fit=crop",
     desc: "Optimizing the extraction of critical minerals through sensor fusion and real-time AI monitoring. Our systems increase yield while reducing environmental impact.",
     bullets: ["Yield optimization models", "Real-time extraction monitoring", "Predictive maintenance for heavy machinery"],
     color: "var(--gold)"
