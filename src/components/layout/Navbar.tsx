@@ -20,17 +20,30 @@ const Navbar = ({ darkMode = false }: NavbarProps) => {
   const pathname = usePathname();
   const [isSubsidiaryOpen, setIsSubsidiaryOpen] = React.useState(false);
   const [isWhatWeDoOpen, setIsWhatWeDoOpen] = React.useState(false);
+  const [isAppliedDomainsOpen, setIsAppliedDomainsOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   const navLinks = [
     { name: "ABOUT US", href: "/about" },
     { name: "WHAT WE DO", href: "/what-we-do" },
+    { name: "APPLIED DOMAINS", href: "/applied-domains" },
     { name: "OUR STORY", href: "/video" },
     { name: "SUBSIDIARIES", href: "/subsidiaries" },
     { name: "INDUSTRIES", href: "/industries" },
     { name: "CAREERS", href: "/careers" },
     { name: "CONTACT", href: "/contact" },
+  ];
+
+  const appliedDomains = [
+    { name: "Mineral Extraction", href: "/applied-domains#mineral-extraction" },
+    { name: "Thermal Management", href: "/applied-domains#thermal-management" },
+    { name: "Battery Fabrication", href: "/applied-domains#battery-fabrication" },
+    { name: "Cell Fabrication", href: "/applied-domains#cell-fabrication" },
+    { name: "Semiconductor Synthesis", href: "/applied-domains#semiconductor-synthesis" },
+    { name: "Pharmaceutical API", href: "/applied-domains#pharmaceutical-api" },
+    { name: "Speciality Chemicals", href: "/applied-domains#speciality-chemicals" },
+    { name: "Agricultural App Dev", href: "/applied-domains#agricultural-app-dev" },
   ];
 
   return (
@@ -79,10 +92,12 @@ const Navbar = ({ darkMode = false }: NavbarProps) => {
               onMouseEnter={() => {
                 if (link.name === "SUBSIDIARIES") setIsSubsidiaryOpen(true);
                 if (link.name === "WHAT WE DO") setIsWhatWeDoOpen(true);
+                if (link.name === "APPLIED DOMAINS") setIsAppliedDomainsOpen(true);
               }}
               onMouseLeave={() => {
                 if (link.name === "SUBSIDIARIES") setIsSubsidiaryOpen(false);
                 if (link.name === "WHAT WE DO") setIsWhatWeDoOpen(false);
+                if (link.name === "APPLIED DOMAINS") setIsAppliedDomainsOpen(false);
               }}
             >
               <Link
@@ -95,7 +110,7 @@ const Navbar = ({ darkMode = false }: NavbarProps) => {
                 )}
               >
                 {link.name}
-                {(link.name === "SUBSIDIARIES" || link.name === "WHAT WE DO") && <ChevronDown size={14} className="ml-1" />}
+                {(link.name === "SUBSIDIARIES" || link.name === "WHAT WE DO" || link.name === "APPLIED DOMAINS") && <ChevronDown size={14} className="ml-1" />}
               </Link>
 
               {/* Mega Dropdown for What We Do */}
@@ -105,6 +120,29 @@ const Navbar = ({ darkMode = false }: NavbarProps) => {
                     <Link href="/what-we-do" className="text-[14px] text-text-mid hover:text-gold transition-colors">Our Solutions</Link>
                     <Link href="/what-we-do#process" className="text-[14px] text-text-mid hover:text-gold transition-colors">Our Process</Link>
                     <Link href="/about" className="text-[14px] text-text-mid hover:text-gold transition-colors">Why ARQAYAA</Link>
+                  </div>
+                </div>
+              )}
+
+              {/* Mega Dropdown for Applied Domains */}
+              {link.name === "APPLIED DOMAINS" && isAppliedDomainsOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white border border-border shadow-xl p-8 animate-fade-up text-text-black">
+                  <div className="grid grid-cols-2 gap-x-10 gap-y-4">
+                    {appliedDomains.map((domain) => (
+                      <Link 
+                        key={domain.name} 
+                        href={domain.href}
+                        className="text-[14px] text-text-mid hover:text-gold transition-colors border-b border-gray-light pb-2 flex justify-between items-center group"
+                      >
+                        {domain.name}
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-8 pt-6 border-t border-border">
+                    <Link href="/applied-domains" className="text-text-muted hover:text-gold text-[13px] font-medium transition-colors">
+                      View All Applied Domains →
+                    </Link>
                   </div>
                 </div>
               )}
