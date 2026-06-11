@@ -2,12 +2,14 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const CompanyVideo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
   const [showControls, setShowControls] = useState(true);
+  const [showEnding, setShowEnding] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const controlsTimeoutRef = useRef<NodeJS.Timeout>(null);
 
@@ -16,6 +18,10 @@ const CompanyVideo = () => {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
+        if (showEnding) {
+          videoRef.current.currentTime = 0;
+          setShowEnding(false);
+        }
         videoRef.current.play();
       }
       setIsPlaying(!isPlaying);
@@ -31,8 +37,17 @@ const CompanyVideo = () => {
 
   const handleProgress = () => {
     if (videoRef.current) {
-      const currentProgress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+      const current = videoRef.current.currentTime;
+      const duration = videoRef.current.duration;
+      const currentProgress = (current / duration) * 100;
       setProgress(currentProgress);
+
+      // Show branded ending overlay 3.5 seconds before the video ends to hide old branding
+      if (duration > 5 && current > duration - 3.5) {
+        setShowEnding(true);
+      } else {
+        setShowEnding(false);
+      }
     }
   };
 
@@ -41,6 +56,10 @@ const CompanyVideo = () => {
       const seekTime = (parseFloat(e.target.value) / 100) * videoRef.current.duration;
       videoRef.current.currentTime = seekTime;
       setProgress(parseFloat(e.target.value));
+      
+      if (seekTime < videoRef.current.duration - 3.5) {
+        setShowEnding(false);
+      }
     }
   };
 
@@ -83,17 +102,66 @@ const CompanyVideo = () => {
         ref={videoRef}
         className="w-full h-full object-cover"
         onTimeUpdate={handleProgress}
-        onEnded={() => setIsPlaying(false)}
+        onEnded={() => {
+          setIsPlaying(false);
+          setShowEnding(true);
+        }}
         playsInline
         muted={isMuted}
         poster="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1280&q=80&fit=crop"
       >
-        <source src="/arqayaa_film.mp4" type="video/mp4" />
+        <source src="/dpulseai_film.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
+      {/* Branded Ending Overlay (Covers old arqaya logo at end of video) */}
+      <AnimatePresence>
+        {showEnding && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-30 bg-black flex flex-col items-center justify-center"
+          >
+             <motion.div 
+               initial={{ scale: 0.9, opacity: 0 }}
+               animate={{ scale: 1, opacity: 1 }}
+               transition={{ delay: 0.2, duration: 0.8 }}
+               className="text-center"
+             >
+                <div className="mb-4 flex flex-col items-center">
+                  <div className="w-16 h-16 bg-gold rounded-sm flex items-center justify-center mb-6 shadow-2xl">
+                    <div className="w-8 h-8 bg-white rounded-full opacity-80" />
+                  </div>
+                  <h2 className="font-serif font-bold text-[32px] md:text-[48px] text-white leading-tight">Dpulseai</h2>
+                  <p className="font-rajdhani font-bold text-[12px] md:text-[14px] tracking-[0.4em] text-gold uppercase mt-2">Intelligence</p>
+                </div>
+                
+                <div className="mt-12 flex gap-4 justify-center">
+                  <button 
+                    onClick={() => {
+                      if (videoRef.current) {
+                        videoRef.current.currentTime = 0;
+                        videoRef.current.play();
+                        setIsPlaying(true);
+                        setShowEnding(false);
+                      }
+                    }}
+                    className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full transition-all border border-white/20"
+                  >
+                    <RotateCcw size={16} /> Replay
+                  </button>
+                  <a href="/book-call" className="bg-gold hover:bg-gold-light text-white px-8 py-3 rounded-full font-rajdhani font-bold tracking-widest uppercase transition-all">
+                    Book A Call
+                  </a>
+                </div>
+             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Overlay: Branding & Play Button */}
-      {!isPlaying && (
+      {!isPlaying && !showEnding && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-10 transition-opacity duration-500">
            <div className="mb-4 md:mb-6 flex flex-col items-center">
             <p className="font-rajdhani font-bold text-[10px] tracking-[0.3em] text-gold uppercase">DPULSEAI</p>
