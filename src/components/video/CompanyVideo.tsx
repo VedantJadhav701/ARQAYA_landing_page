@@ -13,6 +13,9 @@ const CompanyVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const controlsTimeoutRef = useRef<NodeJS.Timeout>(null);
 
+  // Hard trim the video playback at 4:35 (275 seconds)
+  const MAX_DURATION = 275;
+
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
@@ -38,12 +41,22 @@ const CompanyVideo = () => {
   const handleProgress = () => {
     if (videoRef.current) {
       const current = videoRef.current.currentTime;
-      const duration = videoRef.current.duration;
-      const currentProgress = (current / duration) * 100;
+      
+      // Stop and show ending if we reach the trim limit
+      if (current >= MAX_DURATION) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = MAX_DURATION;
+        setIsPlaying(false);
+        setShowEnding(true);
+        setProgress(100);
+        return;
+      }
+
+      const currentProgress = (current / MAX_DURATION) * 100;
       setProgress(currentProgress);
 
-      // Show branded ending overlay 3.5 seconds before the video ends to hide old branding
-      if (duration > 5 && current > duration - 3.5) {
+      // Show branded ending overlay slightly before the trim point
+      if (current > MAX_DURATION - 3.5) {
         setShowEnding(true);
       } else {
         setShowEnding(false);
@@ -53,11 +66,11 @@ const CompanyVideo = () => {
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (videoRef.current) {
-      const seekTime = (parseFloat(e.target.value) / 100) * videoRef.current.duration;
+      const seekTime = (parseFloat(e.target.value) / 100) * MAX_DURATION;
       videoRef.current.currentTime = seekTime;
       setProgress(parseFloat(e.target.value));
       
-      if (seekTime < videoRef.current.duration - 3.5) {
+      if (seekTime < MAX_DURATION - 3.5) {
         setShowEnding(false);
       }
     }
@@ -114,7 +127,7 @@ const CompanyVideo = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Branded Ending Overlay (Covers old arqaya logo at end of video) */}
+      {/* Branded Ending Overlay (Covers old branding at end of video) */}
       <AnimatePresence>
         {showEnding && (
           <motion.div 
@@ -206,7 +219,7 @@ const CompanyVideo = () => {
             <span className="font-sans text-[12px] text-white/70 hidden sm:block">
               {videoRef.current ? Math.floor(videoRef.current.currentTime / 60) + ":" + ("0" + Math.floor(videoRef.current.currentTime % 60)).slice(-2) : "0:00"} 
               {" / "} 
-              {videoRef.current ? Math.floor(videoRef.current.duration / 60) + ":" + ("0" + Math.floor(videoRef.current.duration % 60)).slice(-2) : "0:00"}
+              {Math.floor(MAX_DURATION / 60) + ":" + ("0" + Math.floor(MAX_DURATION % 60)).slice(-2)}
             </span>
           </div>
 
