@@ -4,8 +4,8 @@ import Footer from "@/sections/Footer";
 import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
-  title: "Contact Us | ARQAYAA Intelligence",
-  description: "Get in touch with ARQAYAA Intelligence. Book a free consultation, request a demo, or ask about our AI solutions for your industry.",
+  title: "Contact Us | Dpulseai",
+  description: "Get in touch with Dpulseai. Book a free consultation, request a demo, or ask about our AI solutions for your industry.",
 };
 
 export default function ContactPage() {

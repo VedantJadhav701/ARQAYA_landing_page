@@ -50,7 +50,7 @@ const domains = [
     id: "pharmaceutical-api",
     title: "Pharmaceutical API & Formulation",
     img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=85&fit=crop",
-    desc: "Ensuring batch consistency and regulatory compliance through intelligent monitoring. ARQAYAA helps accelerate drug development with AI-driven formulation.",
+    desc: "Ensuring batch consistency and regulatory compliance through intelligent monitoring. Dpulseai helps accelerate drug development with AI-driven formulation.",
     bullets: ["Batch consistency AI", "Compliance monitoring", "Formulation development"],
     color: "var(--tenetx-primary)"
   },
@@ -87,7 +87,7 @@ export default function AppliedDomainsClient() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-serif text-[36px] md:text-[48px] text-text-black mb-6 italic">Transforming physical domains with digital intelligence.</h2>
             <p className="font-sans text-text-mid text-[18px] leading-relaxed">
-              ARQAYAA&apos;s AI solutions are not limited to the cloud. We build systems that interface with the physical world, 
+              Dpulseai&apos;s AI solutions are not limited to the cloud. We build systems that interface with the physical world, 
               optimizing everything from mineral extraction to pharmaceutical formulation. Our mission is to apply 
               advanced intelligence to the industries that form the backbone of global society.
             </p>

@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import { Gavel, Users, BarChart, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Corporate Governance | ARQAYAA Intelligence",
+  title: "Corporate Governance | Dpulseai",
   description: "Our framework for scientific rigor, institutional accountability, and technical governance.",
 };
 

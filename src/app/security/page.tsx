@@ -4,7 +4,7 @@ import Footer from "@/sections/Footer";
 import SecurityClient from "./SecurityClient";
 
 export const metadata: Metadata = {
-  title: "Security & Trust | ARQAYAA Intelligence",
+  title: "Security & Trust | Dpulseai",
   description: "Enterprise-grade security infrastructure. AES-256 encryption, air-gapped deployment, and zero-trust architecture.",
 };
 

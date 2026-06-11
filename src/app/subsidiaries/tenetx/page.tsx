@@ -4,7 +4,7 @@ import Footer from "@/sections/Footer";
 import TenetxClient from "./TenetxClient";
 
 export const metadata: Metadata = {
-  title: "TENETX | Oil & Gas Intelligence | ARQAYAA",
+  title: "TENETX | Oil & Gas Intelligence | Dpulseai",
   description: "Physics-Native AI for Drilling Operations. TENETX provides 100% air-gapped, sub-second inference AI for the oil and gas industry.",
 };
 

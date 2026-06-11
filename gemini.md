@@ -1,4 +1,4 @@
-# ARQAYAA INTELLIGENCE PVT LTD — Gemini Design Document
+# Dpulseai — Gemini Design Document
 ### Theme: Professional White & Cream | Aramco-Style Cinematic Enterprise
 ### Builder Target: Lovable / Gemini / Bolt
 
@@ -20,7 +20,7 @@ sections, and editorial articles. Clean, editorial, authoritative. NOT a dark te
 - Circular arrow CTAs (like Aramco's → inside a circle)
 - Very generous white space — sections breathe
 
-**Applied to ARQAYAA:**
+**Applied to Dpulseai:**
 - Primary company: white/cream authority with gold accent
 - TENETX subsidiary: industrial steel-blue accent, darker cards
 - TEXFLOW subsidiary: clean academic teal/green accent, paper-white aesthetic
@@ -43,7 +43,7 @@ sections, and editorial articles. Clean, editorial, authoritative. NOT a dark te
 --text-mid:         #555550    /* secondary body */
 --text-muted:       #888880    /* labels, captions */
 
-/* ARQAYAA Brand Gold */
+/* Dpulseai Brand Gold */
 --gold:             #B8922A    /* refined corporate gold */
 --gold-light:       #D4A843    /* hover states, links */
 --gold-rule:        #C9A84C    /* thin accent lines */
@@ -105,7 +105,7 @@ Bebas+Neue
 - Left: Search icon (circular)
 - Center nav links (Plus Jakarta Sans 500, 14px, dark gray):
   `ABOUT US` | `WHAT WE DO` | `SUBSIDIARIES` | `CAREERS` | `CONTACT`
-- Right: `ARQAYAA` wordmark in Cormorant Garamond bold + flame/circuit icon
+- Right: `Dpulseai` wordmark in Cormorant Garamond bold + flame/circuit icon
 - Active nav item: underline rule in gold
 - On hover: dropdown slides down with sub-links (Aramco mega-menu style)
 - Bottom: 1px `--border` separator
@@ -146,7 +146,7 @@ Bebas+Neue
 
 **4 Slides:**
 
-**Slide 1 — Main ARQAYAA**
+**Slide 1 — Main Dpulseai**
 - Label: `AI INTELLIGENCE`
 - Headline: `Unlock the Power of AI for Your Business.`
 - Body: `Automating, analyzing, and accelerating workflows across industries.`
@@ -172,7 +172,7 @@ Bebas+Neue
 
 **Bottom tab strip (exactly like Aramco):**
 ```
-[ARQAYAA INTELLIGENCE] | [TENETX OIL & GAS] | [TEXFLOW RESEARCH] | [OUR IMPACT]
+[DPULSEAI] | [TENETX OIL & GAS] | [TEXFLOW RESEARCH] | [OUR IMPACT]
          ▔▔▔▔▔▔ (active gold underline rule)
 ```
 Each tab: ALL CAPS, small, Rajdhani, white on dark overlay.
@@ -182,12 +182,12 @@ Clicking a tab jumps to that slide.
 
 ---
 
-## 6. "DISCOVER ARQAYAA" — Editorial Section
+## 6. "DISCOVER DPULSEAI" — Editorial Section
 
 **Direct copy of Aramco's "Discover Aramco" section.**
 
 - Background: `--white`
-- Top: Small label `DISCOVER ARQAYAA` (Rajdhani, 11px, gold, ALL CAPS, with thin gold underline rule)
+- Top: Small label `DISCOVER DPULSEAI` (Rajdhani, 11px, gold, ALL CAPS, with thin gold underline rule)
 - Below: Large body statement in Cormorant Garamond 400, 36px, dark:
   ```
   "We are an AI intelligence company building
@@ -358,19 +358,17 @@ Researchers  |  PhD Scholars  |  Professors  |  University Departments
 
 ---
 
-## 14. BOARD OF DIRECTORS
-
-**Exactly like Aramco's "Our Corporate Management Team" section:**
+## 14. LEADERSHIP TEAM
 
 - Background: `--gray-light`
 - Label: `OUR LEADERSHIP`
-- Heading: "The Team Behind ARQAYAA" (Cormorant Garamond 42px)
-- Body: "Our founding team brings expertise across AI systems, petroleum engineering, academic research, and strategic leadership."
+- Heading: "The Team Behind Dpulseai" (Cormorant Garamond 42px)
+- Body: "Our team brings expertise across AI systems, petroleum engineering, academic research, and strategic leadership."
 
-**4 board member cards (horizontal row):**
+**4 team member cards (horizontal row):**
 
 Each card (white, rounded 12px, shadow):
-- Top: Square portrait photo (placeholder — user will provide)
+- Top: Square portrait placeholder
   - Photo area: 100% width, aspect-ratio 1:1, object-fit cover, rounded top
 - Below (card body, padded):
   - Name: Cormorant Garamond 600, 22px, dark
@@ -378,26 +376,13 @@ Each card (white, rounded 12px, shadow):
   - 1-line bio (Plus Jakarta Sans 14px, muted)
   - `→ Read more` link (gold)
 
-**Board Members:**
-```
-┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│   [PHOTO]       │  │   [PHOTO]       │  │   [PHOTO]       │  │   [PHOTO]       │
-│                 │  │                 │  │                 │  │                 │
-│ Neel Khairnar   │  │ Vedant Jadhav   │  │ Pritam Lalvani  │  │ Dr. Bharat Kale │
-│ FOUNDER         │  │ CO-FOUNDER      │  │ DIRECTOR,       │  │ DIRECTOR,       │
-│                 │  │                 │  │ STRATEGIC LEAD  │  │ ADVISOR         │
-└─────────────────┘  └─────────────────┘  └─────────────────┘  └─────────────────┘
-```
-
-*Note: Board member photos and bios to be added when provided.*
-
 ---
 
-## 15. "WHY ARQAYAA" — Differentiators
+## 15. "WHY DPULSEAI" — Differentiators
 
 - Background: `--white`
 - Two-column:
-  - Left: Label + heading "Why ARQAYAA?" + 4 differentiator rows
+  - Left: Label + heading "Why Dpulseai?" + 4 differentiator rows
     Each: small gold `—` dash + bold title + description
     1. Production-First Mindset
     2. Domain Intelligence
@@ -418,7 +403,7 @@ Each card (white, rounded 12px, shadow):
 - Heading: "Ready to Transform Your Business with AI?" (Cormorant Garamond 52px)
 - Subline: "Let's build something powerful together." (Plus Jakarta Sans 18px, muted)
 - CTA button: `Book A Free Call` — gold filled, Rajdhani 600 ALL CAPS
-  Link: `https://arqaya.vercel.app/book-call`
+  Link: `https://dpulseai.vercel.app/book-call`
 
 ---
 
@@ -433,8 +418,8 @@ Each card (white, rounded 12px, shadow):
 **4-column layout:**
 
 Col 1: Brand
-- `ARQAYAA` wordmark (white, Cormorant Garamond)
-- `Intelligence Pvt Ltd` (Rajdhani, small)
+- `Dpulseai` wordmark (white, Cormorant Garamond)
+- `Intelligence` (Rajdhani, small)
 - Tagline: "Building the future of autonomous enterprise."
 - Subsidiary badges (pill chips):
   - [TENETX] steel-blue pill
@@ -451,12 +436,12 @@ Col 3: Subsidiaries
 - TEXFLOW — Research Platform
 
 Col 4: Contact
-- info@arqaya.com
+- info@dpulseai.com
 - India
 - Book A Free Call →
 
 **Bottom bar:**
-- Left: `© 2026 ARQAYA Intelligence Pvt Ltd. All rights reserved.`
+- Left: `© 2026 Dpulseai. All rights reserved.`
 - Right: Social icons — LinkedIn · Twitter/X
 - Separated by thin `rgba(255,255,255,0.1)` top border
 
@@ -589,7 +574,7 @@ Col 4: Contact
 5. **Tab-controlled hero slideshow** — Not a generic carousel — tabs are labeled content anchors
 6. **Generous negative space** — Sections don't fight each other; every element has room
 7. **3-column stats in gray** — The "At a glance" pattern is immediately recognizable
-8. **Board section like Aramco leadership** — Photo + role + name, professional grid
+8. **Leadership section like Aramco** — Photo + role + name, professional grid
 9. **Two distinct subsidiary sections** — Each has its own color identity within the system
 10. **Footer utility bar + main footer** — Two-tier footer exactly like Aramco
 
@@ -597,10 +582,10 @@ Col 4: Contact
 
 ## 22. Company Information Reference
 
-**ARQAYAA INTELLIGENCE PVT LTD**
-- Email: info@arqaya.com
+**Dpulseai**
+- Email: info@dpulseai.com
 - Country: India
-- Booking: https://arqaya.vercel.app/book-call
+- Booking: https://dpulseai.vercel.app/book-call
 - Mission: AI solutions for industries and society
 
 **TENETX — Subsidiary 1 (Oil & Gas)**
@@ -618,15 +603,7 @@ Col 4: Contact
 - Pricing: Freemium | ₹299–499/paper | ₹999–1499/year | B2B institutional
 - Audience: Researchers, PhD Scholars, Professors (India-first)
 
-**Board of Directors:**
-- **Neel Khairnar** — Founder
-- **Vedant Jadhav** — Co-Founder
-- **Pritam Lalvani** — Director, Strategic Lead
-- **Dr. Bharat Kale** — Director, Advisor
-
-*(Photos and detailed bios to be provided by client for insertion into board section)*
-
 ---
 
-*ARQAYAA Intelligence Pvt Ltd — Gemini Design Document v1 — © 2026*
+*Dpulseai — Gemini Design Document v1 — © 2026*
 *Professional White & Cream Edition | Aramco-Inspired Editorial Enterprise*

@@ -15,7 +15,7 @@ const Differentiators = () => {
     <section className="py-24 bg-white px-6 md:px-24">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
         <div className="lg:w-[55%]">
-          <div className="section-label mb-8">WHY ARQAYAA?</div>
+          <div className="section-label mb-8">WHY DPULSEAI?</div>
           <h2 className="font-serif text-3xl md:text-[42px] leading-tight text-text-black mb-12">
             Designed for Reliability at Scale
           </h2>

@@ -4,8 +4,8 @@ import Footer from "@/sections/Footer";
 import SubsidiariesClient from "./SubsidiariesClient";
 
 export const metadata: Metadata = {
-  title: "Our Subsidiaries | ARQAYAA Intelligence",
-  description: "Explore ARQAYAA's specialized subsidiaries: TENETX for Oil & Gas intelligence, and TEXFLOW for academic research typesetting.",
+  title: "Our Subsidiaries | Dpulseai",
+  description: "Explore Dpulseai's specialized subsidiaries: TENETX for Oil & Gas intelligence, and TEXFLOW for academic research typesetting.",
 };
 
 export default function SubsidiariesPage() {

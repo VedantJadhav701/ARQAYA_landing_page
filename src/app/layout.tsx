@@ -39,9 +39,9 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "ARQAYAA Intelligence Pvt Ltd | AI Solutions for Enterprise",
+  title: "Dpulseai | AI Solutions for Enterprise",
   description: "We build agentic AI systems, domain-specific models, and intelligent automation platforms. Subsidiaries: TENETX (Oil & Gas AI) and TEXFLOW (Research Typesetting).",
-  keywords: ["AI", "machine learning", "oil and gas", "research", "typesetting", "ARQAYAA", "TENETX", "TEXFLOW"],
+  keywords: ["AI", "machine learning", "oil and gas", "research", "typesetting", "Dpulseai", "TENETX", "TEXFLOW"],
 };
 
 export default function RootLayout({

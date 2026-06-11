@@ -36,7 +36,7 @@ export default function ContactClient() {
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <h3 className="font-serif text-[32px] text-text-black mb-4">Message Sent</h3>
-                <p className="font-sans text-text-mid text-[16px] mb-8">Thank you for contacting ARQAYAA. We will review your inquiry and respond within 24 hours.</p>
+                <p className="font-sans text-text-mid text-[16px] mb-8">Thank you for contacting Dpulseai. We will review your inquiry and respond within 24 hours.</p>
                 <button onClick={() => setFormState('idle')} className="text-gold font-bold hover:underline font-sans">Send another message</button>
               </div>
             ) : (
@@ -107,7 +107,7 @@ export default function ContactClient() {
                   </div>
                   <div>
                     <div className="font-sans font-bold text-[13px] text-text-muted uppercase tracking-wider mb-1">Email</div>
-                    <a href="mailto:info@arqaya.com" className="font-sans text-[16px] text-text-black hover:text-gold transition-colors font-medium">info@arqaya.com</a>
+                    <a href="mailto:info@dpulseai.com" className="font-sans text-[16px] text-text-black hover:text-gold transition-colors font-medium">info@dpulseai.com</a>
                   </div>
                 </div>
                 
@@ -145,7 +145,7 @@ export default function ContactClient() {
 
               <hr className="my-8 border-gray-mid" />
 
-              <a href="https://arqaya.vercel.app/book-call" target="_blank" rel="noopener noreferrer" className="block w-full bg-black text-white text-center font-rajdhani font-bold tracking-widest uppercase py-4 rounded hover:bg-gold transition-colors">
+              <a href="https://dpulseai.vercel.app/book-call" target="_blank" rel="noopener noreferrer" className="block w-full bg-black text-white text-center font-rajdhani font-bold tracking-widest uppercase py-4 rounded hover:bg-gold transition-colors">
                 Book A Free Call
               </a>
             </div>

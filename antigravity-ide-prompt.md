@@ -1,10 +1,10 @@
-# ANTIGRAVITY IDE PROMPT — ARQAYAA INTELLIGENCE PVT LTD
+# ANTIGRAVITY IDE PROMPT — Dpulseai
 # Multi-Page | Big Four Quality | Fully Functional | Real Images
 # Paste this entire prompt into Antigravity IDE
 
 ---
 
-Build a COMPLETE multi-page professional website for ARQAYAA INTELLIGENCE PVT LTD.
+Build a COMPLETE multi-page professional website for Dpulseai.
 Quality target: McKinsey.com meets Saudi Aramco.com — editorial, cinematic, authoritative.
 
 This is a white/cream professional theme. NOT dark. NOT purple gradients.
@@ -118,7 +118,7 @@ Build <Navbar /> with:
 
 TOP BAR (32px height, bg #1A1A1A):
 - Left: Globe icon + "India"
-- Right: "info@arqaya.com" as <a href="mailto:info@arqaya.com">
+- Right: "info@dpulseai.com" as <a href="mailto:info@dpulseai.com">
 
 MAIN NAV (64px height, bg white):
 - Left: Search icon button — onClick opens a search modal overlay
@@ -131,7 +131,7 @@ MAIN NAV (64px height, bg white):
   CONTACT → /contact
 
 - WHAT WE DO — on mouseEnter, show dropdown:
-  Our Solutions | Our Process | Why ARQAYAA
+  Our Solutions | Our Process | Why Dpulseai
   All link to /what-we-do (with scroll to section via state)
 
 - SUBSIDIARIES — on mouseEnter, show MEGA-MENU (full-width panel):
@@ -139,7 +139,7 @@ MAIN NAV (64px height, bg white):
   Right block: TEXFLOW logo/name + 1-line desc → /subsidiaries/texflow
   Bottom: View All → /subsidiaries
 
-- Right: "ARQAYAA" wordmark (Cormorant Garamond bold) as <Link to="/">
+- Right: "Dpulseai" wordmark (Cormorant Garamond bold) as <Link to="/">
 
 MOBILE (< 768px):
 - Hide center links, show hamburger icon
@@ -163,7 +163,7 @@ Build as <SlideShow /> with slides array:
 
 const slides = [
   {
-    label: "ARQAYAA INTELLIGENCE",
+    label: "Dpulseai INTELLIGENCE",
     headline: "Unlock the Power of AI for Your Business.",
     sub: "Automating, analyzing, and accelerating workflows across industries.",
     cta: { text: "What We Do", link: "/what-we-do" },
@@ -197,9 +197,9 @@ Content: bottom-left, 10vw left padding, white text.
 Tab strip: bg rgba(0,0,0,0.65), 4 tabs, active = 3px gold top border.
 Circular CTA arrow button: 48px, white outline circle, → icon inside.
 
-[B] DISCOVER ARQAYAA
+[B] DISCOVER Dpulseai
 Background: --white
-Label: "DISCOVER ARQAYAA"
+Label: "DISCOVER Dpulseai"
 Heading (36px Cormorant): "We are an AI intelligence company building systems that make industries smarter."
 
 4 tall image cards (3:4 ratio, rounded 16px) in a horizontal 4-col grid:
@@ -258,7 +258,7 @@ Label: "INSIGHTS"
 3 article cards (horizontal):
 { category: "AI SYSTEMS", title: "The Future of AI in Oil & Gas Operations", date: "May 2026", link: "/about" }
 { category: "RESEARCH", title: "Why Deterministic AI Wins in Academic Publishing", date: "April 2026", link: "/about" }
-{ category: "COMPANY", title: "ARQAYAA: Building India's AI Infrastructure", date: "March 2026", link: "/about" }
+{ category: "COMPANY", title: "Dpulseai: Building India's AI Infrastructure", date: "March 2026", link: "/about" }
 Each card: border-top 2px gold, category label, title, date, "Read more →" link
 
 [G] CTA BANNER
@@ -266,23 +266,23 @@ Background: --cream-dark, thin gold top rule
 Center layout:
 "Ready to Transform Your Business with AI?" (Cormorant 52px)
 "Let's build something powerful together."
-[Book A Free Call] → opens https://arqaya.vercel.app/book-call in new tab (_blank, rel noopener)
+[Book A Free Call] → opens https://dpulseai.vercel.app/book-call in new tab (_blank, rel noopener)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PART 6 — ABOUT PAGE (/about)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-PageHero: "About ARQAYAA" | img: https://source.unsplash.com/1920x600/?corporate,office,professional,modern
+PageHero: "About Dpulseai" | img: https://source.unsplash.com/1920x600/?corporate,office,professional,modern
 
 WHO WE ARE: 2-col text section with key facts sidebar
 MISSION & VISION: 2-col split with gold divider line
 BOARD OF DIRECTORS: 2×2 grid of BoardCard components
   Each BoardCard: avatar img + name (Cormorant 600 22px) + role (Rajdhani gold ALL CAPS 11px) + bio
 
-  Neel Khairnar | Founder | img: https://ui-avatars.com/api/?name=Neel+Khairnar&size=300&background=B8922A&color=fff&bold=true&rounded=true
-  Vedant Jadhav | Co-Founder | img: https://ui-avatars.com/api/?name=Vedant+Jadhav&size=300&background=1B5FA8&color=fff&bold=true&rounded=true
-  Pritam Lalvani | Director, Strategic Lead | img: https://ui-avatars.com/api/?name=Pritam+Lalvani&size=300&background=1A7A6E&color=fff&bold=true&rounded=true
-  Dr. Bharat Kale | Director, Advisor | img: https://ui-avatars.com/api/?name=Bharat+Kale&size=300&background=2C2C2C&color=fff&bold=true&rounded=true
+  Dpulseai Team | Founder | img: https://ui-avatars.com/api/?name=Neel+Khairnar&size=300&background=B8922A&color=fff&bold=true&rounded=true
+  Dpulseai Team | Co-Founder | img: https://ui-avatars.com/api/?name=Vedant+Jadhav&size=300&background=1B5FA8&color=fff&bold=true&rounded=true
+  Dpulseai Team | Director, Strategic Lead | img: https://ui-avatars.com/api/?name=Pritam+Lalvani&size=300&background=1A7A6E&color=fff&bold=true&rounded=true
+  Dpulseai Team | Director, Advisor | img: https://ui-avatars.com/api/?name=Bharat+Kale&size=300&background=2C2C2C&color=fff&bold=true&rounded=true
 
 OUR VALUES: 4 cards (2×2)
   Production-First | Domain Intelligence | Data Sovereignty | Ethical AI
@@ -304,7 +304,7 @@ img: https://source.unsplash.com/1920x600/?data-center,servers,technology,blue
 THE CHALLENGE: 2-col (left = heading + italic quote, right = 4 problem cards)
 OUR SOLUTIONS: 4 large cards with faded bg numbers (01–04)
 OUR PROCESS: horizontal 3-step timeline with animated connecting line
-WHY ARQAYAA: 2-col (differentiators left, large quote right)
+WHY Dpulseai: 2-col (differentiators left, large quote right)
 STATS STRIP: 60% | 3× | Across Teams
 CTA: Book A Free Call
 
@@ -397,14 +397,14 @@ img: https://source.unsplash.com/1920x600/?team,office,collaboration,startup,div
 WHY JOIN: 3 value prop cards (Mission | Tech | Growth)
 
 OPEN POSITIONS — 5 job cards, each with:
-  Role title | Team badge (TENETX/TEXFLOW/ARQAYAA) | Location | Type
+  Role title | Team badge (TENETX/TEXFLOW/Dpulseai) | Location | Type
   Expandable description (accordion open/close)
   [Apply Now] button → opens <ApplicationModal />
 
 Jobs:
 1. ML Engineer — Physics-Informed Neural Networks | TENETX | India Remote | Full-time
 2. LaTeX / Document Engineering Specialist | TEXFLOW | India Remote | Full-time
-3. Agentic AI Systems Developer | ARQAYAA Core | India Remote | Full-time
+3. Agentic AI Systems Developer | Dpulseai Core | India Remote | Full-time
 4. Business Development Manager | Strategy | India | Full-time
 5. AI Research Intern | R&D | India | Internship (6 months)
 
@@ -415,7 +415,7 @@ APPLICATION MODAL (full functional form):
   [Submit Application] → Formspree POST
   Success: "Application submitted! We'll review and be in touch."
 
-LIFE AT ARQAYAA: 3 photos from Unsplash + culture text
+LIFE AT Dpulseai: 3 photos from Unsplash + culture text
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PART 12 — CONTACT PAGE (/contact)
@@ -437,17 +437,17 @@ Form behavior:
   - Submit button: loading spinner state
   - POST to Formspree (https://formspree.io/f/placeholder)
   - On success: animated checkmark + "Thank you! We'll respond within 24 hours."
-  - On error: "Something went wrong. Email us directly at info@arqaya.com"
+  - On error: "Something went wrong. Email us directly at info@dpulseai.com"
 
 RIGHT — Info Panel:
-  Email: info@arqaya.com (mailto link, gold)
+  Email: info@dpulseai.com (mailto link, gold)
   Country: India
   Response: Within 24 business hours
   ——————
   TENETX Inquiries → /subsidiaries/tenetx (Link)
   TEXFLOW Inquiries → /subsidiaries/texflow (Link)
   ——————
-  [Book A Free Call] → https://arqaya.vercel.app/book-call (external, new tab)
+  [Book A Free Call] → https://dpulseai.vercel.app/book-call (external, new tab)
   LinkedIn | Twitter (placeholder URLs, open new tab)
 
 PRESENCE: "Headquartered in India | Serving clients globally" — centered text strip
@@ -461,7 +461,7 @@ Top: 1px solid var(--gold)
 
 4 columns:
 
-Col 1 — ARQAYAA (Cormorant Garamond, white, 32px)
+Col 1 — Dpulseai (Cormorant Garamond, white, 32px)
   Intelligence Pvt Ltd (Rajdhani 13px #888880)
   "Building the future of autonomous enterprise."
   [TENETX] badge (bg --tenetx, white pill, → /subsidiaries/tenetx)
@@ -479,12 +479,12 @@ Col 3 — Subsidiaries:
   All Subsidiaries → /subsidiaries
 
 Col 4 — Contact:
-  info@arqaya.com (mailto:)
+  info@dpulseai.com (mailto:)
   India
   Book A Free Call (→ external)
 
 Bottom bar (border-top 1px rgba white 0.1):
-  Left: © 2026 ARQAYA Intelligence Pvt Ltd. All rights reserved.
+  Left: © 2026 Dpulseai Intelligence Pvt Ltd. All rights reserved.
   Right: LinkedIn | Twitter (icon links)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -580,10 +580,10 @@ Industry Images:
   https://source.unsplash.com/900x500/?law,legal,court,documents
 
 Board Avatars (ui-avatars.com):
-  Neel Khairnar:  https://ui-avatars.com/api/?name=Neel+Khairnar&size=300&background=B8922A&color=fff&bold=true&rounded=true
-  Vedant Jadhav:  https://ui-avatars.com/api/?name=Vedant+Jadhav&size=300&background=1B5FA8&color=fff&bold=true&rounded=true
-  Pritam Lalvani: https://ui-avatars.com/api/?name=Pritam+Lalvani&size=300&background=1A7A6E&color=fff&bold=true&rounded=true
-  Dr. Bharat Kale:https://ui-avatars.com/api/?name=Bharat+Kale&size=300&background=2C2C2C&color=fff&bold=true&rounded=true
+  Dpulseai Team:  https://ui-avatars.com/api/?name=Neel+Khairnar&size=300&background=B8922A&color=fff&bold=true&rounded=true
+  Dpulseai Team:  https://ui-avatars.com/api/?name=Vedant+Jadhav&size=300&background=1B5FA8&color=fff&bold=true&rounded=true
+  Dpulseai Team: https://ui-avatars.com/api/?name=Pritam+Lalvani&size=300&background=1A7A6E&color=fff&bold=true&rounded=true
+  Dpulseai Team:https://ui-avatars.com/api/?name=Bharat+Kale&size=300&background=2C2C2C&color=fff&bold=true&rounded=true
 
 Image rules:
   object-fit: cover | object-position: center | loading="lazy" (except hero slide 1)

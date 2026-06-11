@@ -1,241 +1,164 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause, Maximize, Volume2, VolumeX, RotateCcw, Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import React, { useState, useRef, useEffect } from "react";
+import { Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from "lucide-react";
 
-interface CompanyVideoProps {
-  previewMode?: boolean;
-}
-
-const CompanyVideo: React.FC<CompanyVideoProps> = ({ previewMode = false }) => {
+const CompanyVideo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [hasStarted, setHasStarted] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const [isMuted, setIsMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [showControls, setShowControls] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const controlsTimeoutRef = useRef<NodeJS.Timeout>(null);
 
-  // Sync state with video element
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleProgress = () => {
+    if (videoRef.current) {
+      const currentProgress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+      setProgress(currentProgress);
+    }
+  };
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (videoRef.current) {
+      const seekTime = (parseFloat(e.target.value) / 100) * videoRef.current.duration;
+      videoRef.current.currentTime = seekTime;
+      setProgress(parseFloat(e.target.value));
+    }
+  };
+
+  const toggleFullscreen = () => {
+    if (videoRef.current) {
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen();
+      }
+    }
+  };
+
+  const handleMouseMove = () => {
+    setShowControls(true);
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    controlsTimeoutRef.current = setTimeout(() => {
+      if (isPlaying) {
+        setShowControls(false);
+      }
+    }, 3000);
+  };
+
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleTimeUpdate = () => setCurrentTime(video.currentTime);
-    const handleLoadedMetadata = () => {
-      setDuration(video.duration);
-      setIsLoading(false);
-    };
-    const handleWaiting = () => setIsLoading(true);
-    const handlePlaying = () => {
-      setIsLoading(false);
-      setIsPlaying(true);
-      setHasStarted(true);
-    };
-    const handlePause = () => setIsPlaying(false);
-    const handleEnded = () => {
-      setIsPlaying(false);
-      setHasStarted(false);
-    };
-
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    video.addEventListener("loadedmetadata", handleLoadedMetadata);
-    video.addEventListener("waiting", handleWaiting);
-    video.addEventListener("playing", handlePlaying);
-    video.addEventListener("pause", handlePause);
-    video.addEventListener("ended", handleEnded);
-
-    // Initial check in case it loaded before listener attached
-    if (video.readyState >= 2) {
-      setDuration(video.duration);
-      setIsLoading(false);
-    }
-
     return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      video.removeEventListener("waiting", handleWaiting);
-      video.removeEventListener("playing", handlePlaying);
-      video.removeEventListener("pause", handlePause);
-      video.removeEventListener("ended", handleEnded);
+      if (controlsTimeoutRef.current) {
+        clearTimeout(controlsTimeoutRef.current);
+      }
     };
-  }, []);
-
-  const togglePlay = (e?: React.MouseEvent | React.TouchEvent) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    if (previewMode) return;
-    
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isPlaying) {
-      video.pause();
-    } else {
-      // Force user gesture context
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          setIsPlaying(true);
-          setHasStarted(true);
-        }).catch(err => {
-          console.error("Playback failed:", err);
-          // Fallback: try muted play if audio is the blocker
-          video.muted = true;
-          setIsMuted(true);
-          video.play().then(() => {
-             setHasStarted(true);
-          });
-        });
-      }
-    }
-  };
-
-  const toggleFullscreen = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!containerRef.current) return;
-    
-    if (!document.fullscreenElement) {
-      if (containerRef.current.requestFullscreen) {
-        containerRef.current.requestFullscreen();
-      } else if ((containerRef.current as any).webkitRequestFullscreen) { /* Safari */
-        (containerRef.current as any).webkitRequestFullscreen();
-      } else if ((containerRef.current as any).msRequestFullscreen) { /* IE11 */
-        (containerRef.current as any).msRequestFullscreen();
-      }
-      setIsFullscreen(true);
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if ((document as any).webkitExitFullscreen) {
-        (document as any).webkitExitFullscreen();
-      }
-      setIsFullscreen(false);
-    }
-  };
-
-  const formatTime = (time: number) => {
-    const mins = Math.floor(time / 60);
-    const secs = Math.floor(time % 60);
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
-
-  if (previewMode) {
-    return (
-      <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-gold/30 group cursor-pointer shadow-2xl bg-black">
-        <video 
-          className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-          muted 
-          playsInline 
-          src="/arqayaa_film.mp4"
-        />
-        <div className="absolute inset-0 bg-[#000000]/40 flex items-center justify-center">
-          <div className="text-center z-10 p-4">
-            <h3 className="font-serif font-bold text-2xl md:text-4xl text-white mb-2 tracking-tight">OUR STORY</h3>
-            <p className="font-rajdhani font-bold text-[10px] tracking-[0.3em] text-gold uppercase">ARQAYAA INTELLIGENCE</p>
-          </div>
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-gold/50 flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-white transition-all duration-500 z-20">
-            <Play fill="currentColor" className="ml-1" size={24} />
-          </div>
-        </div>
-      </div>
-    );
-  }
+  }, [isPlaying]);
 
   return (
     <div 
-      ref={containerRef}
-      className={cn(
-        "relative aspect-video w-full bg-black overflow-hidden group shadow-2xl touch-action-none",
-        isFullscreen ? "h-screen aspect-auto" : "rounded-2xl"
-      )}
-      onClick={() => togglePlay()}
+      className="relative w-full aspect-video bg-black rounded-xl overflow-hidden group shadow-2xl"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => isPlaying && setShowControls(false)}
     >
-      <video 
+      {/* Video Element */}
+      <video
         ref={videoRef}
-        src="/arqayaa_film.mp4"
-        className="w-full h-full object-contain"
+        className="w-full h-full object-cover"
+        onTimeUpdate={handleProgress}
+        onEnded={() => setIsPlaying(false)}
         playsInline
-        webkit-playsinline="true"
-        preload="auto"
         muted={isMuted}
-      />
-
-      {/* Loading Spinner */}
-      {isLoading && hasStarted && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px] z-[65]">
-           <Loader2 className="text-gold animate-spin" size={48} />
-        </div>
-      )}
-
-      {/* OVERLAY BEFORE START */}
-      {!hasStarted && (
-        <div 
-          className="absolute inset-0 z-[70] flex items-center justify-center cursor-pointer group/overlay bg-black/60 backdrop-blur-sm"
-          onClick={(e) => togglePlay(e)}
-        >
-          <div className="relative text-center flex flex-col items-center p-6">
-            <div className="mb-4 md:mb-6 font-serif font-bold text-3xl md:text-4xl text-white tracking-tight">ARQAYAA</div>
-            <div className="mb-8 md:mb-10 font-rajdhani font-bold text-xs md:text-sm tracking-[0.3em] text-gold uppercase text-center">Watch Full Film</div>
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-gold flex items-center justify-center text-gold group-hover/overlay:bg-gold group-hover/overlay:text-white transition-all duration-300 shadow-[0_0_20px_rgba(201,168,76,0.3)]">
-               <Play fill="currentColor" className="ml-1" size={28} />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* CONTROLS */}
-      <div 
-        className={cn(
-          "absolute bottom-0 left-0 w-full p-4 md:p-6 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity z-[80]",
-          "lg:opacity-0 lg:group-hover:opacity-100",
-          (hasStarted) ? "opacity-100" : "opacity-0"
-        )}
-        onClick={(e) => e.stopPropagation()}
+        poster="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1280&q=80&fit=crop"
       >
-        <div className="flex flex-col gap-3 md:gap-4">
-          {/* Progress Bar */}
-          <div className="relative w-full h-1.5 bg-white/20 cursor-pointer rounded-full overflow-hidden" onClick={(e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            const pos = (e.clientX - rect.left) / rect.width;
-            if (videoRef.current) videoRef.current.currentTime = pos * duration;
-          }}>
-            <motion.div className="absolute left-0 top-0 h-full bg-gold shadow-[0_0_10px_rgba(201,168,76,0.8)]" style={{ width: `${(currentTime / duration) * 100}%` }} />
-          </div>
-          
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <button 
-                onClick={(e) => togglePlay(e)}
-                className="text-white hover:text-gold transition-colors p-1"
-              >
-                {isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}
-              </button>
-              <button onClick={(e) => { e.stopPropagation(); setIsMuted(!isMuted); }} className="text-white hover:text-gold transition-colors p-1">
+        <source src="/arqayaa_film.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay: Branding & Play Button */}
+      {!isPlaying && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-10 transition-opacity duration-500">
+           <div className="mb-4 md:mb-6 flex flex-col items-center">
+            <p className="font-rajdhani font-bold text-[10px] tracking-[0.3em] text-gold uppercase">DPULSEAI</p>
+            <div className="w-12 h-[1px] bg-gold/50 mt-2" />
+           </div>
+           
+           <button 
+             onClick={togglePlay}
+             className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:border-gold transition-all duration-300 group/play"
+           >
+             <Play fill="currentColor" size={32} className="ml-1 group-hover:scale-110 transition-transform" />
+           </button>
+           
+           <p className="mt-8 font-serif text-white text-xl md:text-2xl tracking-wide">Watch the Film</p>
+        </div>
+      )}
+
+      {/* Custom Controls */}
+      <div className={`absolute bottom-0 left-0 w-full p-4 md:p-8 bg-gradient-to-t from-black/80 to-transparent transition-opacity duration-300 z-20 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+        {/* Progress Bar */}
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={progress}
+          onChange={handleSeek}
+          className="w-full h-1 mb-6 bg-white/20 rounded-lg appearance-none cursor-pointer accent-gold"
+        />
+
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <button onClick={togglePlay} className="text-white hover:text-gold transition-colors">
+              {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+            </button>
+            
+            <div className="flex items-center gap-3 group/volume">
+              <button onClick={toggleMute} className="text-white hover:text-gold transition-colors">
                 {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
               </button>
-              <span className="font-rajdhani text-[11px] md:text-[12px] text-white font-medium tabular-nums tracking-widest">
-                {formatTime(currentTime)} / {formatTime(duration)}
-              </span>
             </div>
             
-            <div className="flex items-center gap-3">
-              <button onClick={(e) => { e.stopPropagation(); if (videoRef.current) videoRef.current.currentTime = 0; }} className="text-white/60 hover:text-white transition-colors p-1">
-                <RotateCcw size={16} />
-              </button>
-              <button onClick={toggleFullscreen} className="text-white hover:text-gold transition-colors p-1">
-                <Maximize size={20} />
-              </button>
-            </div>
+            <span className="font-sans text-[12px] text-white/70 hidden sm:block">
+              {videoRef.current ? Math.floor(videoRef.current.currentTime / 60) + ":" + ("0" + Math.floor(videoRef.current.currentTime % 60)).slice(-2) : "0:00"} 
+              {" / "} 
+              {videoRef.current ? Math.floor(videoRef.current.duration / 60) + ":" + ("0" + Math.floor(videoRef.current.duration % 60)).slice(-2) : "0:00"}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-6">
+            <button onClick={() => videoRef.current && (videoRef.current.currentTime = 0)} className="text-white hover:text-gold transition-colors">
+              <RotateCcw size={18} />
+            </button>
+            <button onClick={toggleFullscreen} className="text-white hover:text-gold transition-colors">
+              <Maximize size={18} />
+            </button>
           </div>
         </div>
+      </div>
+
+      {/* Branding Wordmark (Bottom Right when playing) */}
+      <div className={`absolute top-8 right-8 transition-opacity duration-500 z-10 ${isPlaying && !showControls ? 'opacity-30' : 'opacity-0'}`}>
+         <div className="flex flex-col items-end">
+            <div className="mb-4 md:mb-6 font-serif font-bold text-3xl md:text-4xl text-white tracking-tight">Dpulseai</div>
+            <div className="w-8 h-1 bg-gold" />
+         </div>
       </div>
     </div>
   );

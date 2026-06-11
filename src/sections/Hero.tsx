@@ -101,7 +101,7 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 w-full bg-black/20 backdrop-blur-sm border-t border-white/10 z-20">
         <div className="flex px-4 md:px-24 overflow-x-auto no-scrollbar">
           {[
-            "ARQAYAA INTELLIGENCE",
+            "DPULSEAI",
             "TENETX OIL & GAS",
             "TEXFLOW RESEARCH",
             "OUR IMPACT",

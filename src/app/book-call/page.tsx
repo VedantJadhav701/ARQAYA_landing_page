@@ -7,7 +7,7 @@ export default function BookCallPage() {
   const router = useRouter();
 
   useEffect(() => {
-    window.open("https://arqaya.vercel.app/book-call", "_blank");
+    window.open("https://dpulseai.vercel.app/book-call", "_blank");
     router.back();
   }, [router]);
 

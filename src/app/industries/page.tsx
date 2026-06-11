@@ -4,8 +4,8 @@ import Footer from "@/sections/Footer";
 import IndustriesClient from "./IndustriesClient";
 
 export const metadata: Metadata = {
-  title: "Industries We Serve | ARQAYAA Intelligence",
-  description: "Designed for high-impact industries. See how ARQAYAA transforms E-Commerce, Healthcare, Real Estate, and Legal sectors with AI.",
+  title: "Industries We Serve | Dpulseai",
+  description: "Designed for high-impact industries. See how Dpulseai transforms E-Commerce, Healthcare, Real Estate, and Legal sectors with AI.",
 };
 
 export default function IndustriesPage() {

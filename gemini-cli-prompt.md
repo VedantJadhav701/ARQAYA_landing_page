@@ -1,11 +1,11 @@
-# GEMINI CLI PROMPT — ARQAYAA INTELLIGENCE PVT LTD
+# GEMINI CLI PROMPT — Dpulseai
 # Full Multi-Page Website | Big Four Quality | Fully Functional
 # Paste this entire prompt into Gemini CLI
 
 ---
 
 You are a senior full-stack engineer and UI/UX designer at a world-class agency.
-Build a COMPLETE, MULTI-PAGE, FULLY FUNCTIONAL website for ARQAYAA INTELLIGENCE PVT LTD.
+Build a COMPLETE, MULTI-PAGE, FULLY FUNCTIONAL website for Dpulseai.
 
 This must look and function like a Big Four consulting firm website (McKinsey, Deloitte,
 Accenture, BCG) combined with the editorial quality of Saudi Aramco's website.
@@ -30,10 +30,10 @@ State:         React useState / useContext (no Redux needed)
 COMPANY DATA — USE EXACTLY
 ════════════════════════════════════════════════════════════
 
-MAIN COMPANY: ARQAYAA INTELLIGENCE PVT LTD
-Email: info@arqaya.com
+MAIN COMPANY: Dpulseai
+Email: info@dpulseai.com
 Country: India
-Booking URL: https://arqaya.vercel.app/book-call
+Booking URL: https://dpulseai.vercel.app/book-call
 Mission: AI solutions for industries and for society
 
 SUBSIDIARY 1 — TENETX (Oil & Gas AI)
@@ -53,10 +53,10 @@ Pricing: Free (1/month) | ₹299–499/paper | ₹999/6mo | ₹1499/year | B2B i
 Audience: Researchers, PhD Scholars, Professors (India-first)
 
 BOARD OF DIRECTORS:
-- Neel Khairnar — Founder
-- Vedant Jadhav — Co-Founder
-- Pritam Lalvani — Director, Strategic Lead
-- Dr. Bharat Kale — Director, Advisor
+- Dpulseai Team — Founder
+- Dpulseai Team — Co-Founder
+- Dpulseai Team — Director, Strategic Lead
+- Dpulseai Team — Director, Advisor
 
 ════════════════════════════════════════════════════════════
 DESIGN SYSTEM — STRICTLY FOLLOW
@@ -110,7 +110,7 @@ Router structure:
 /industries           → IndustriesPage
 /careers              → CareersPage
 /contact              → ContactPage
-/book-call            → BookCallPage (redirects to https://arqaya.vercel.app/book-call)
+/book-call            → BookCallPage (redirects to https://dpulseai.vercel.app/book-call)
 
 SHARED COMPONENTS (used on every page):
 - <Navbar /> — sticky, with mega-menu dropdowns
@@ -140,8 +140,8 @@ Each slide has:
 - 1-line subtext (Plus Jakarta Sans, rgba white 0.75)
 - Circular arrow CTA → links to relevant page
 
-SECTION B — DISCOVER ARQAYAA
-- Label: "DISCOVER ARQAYAA"
+SECTION B — DISCOVER Dpulseai
+- Label: "DISCOVER Dpulseai"
 - Heading: "We are an AI intelligence company building systems that make industries smarter."
 - 4 editorial full-bleed image cards (3:4 aspect), rounded 16px
   Card 1: Our Solutions → /what-we-do
@@ -180,24 +180,24 @@ SECTION G — LATEST NEWS / INSIGHTS (fake but realistic)
 - 3 article cards, horizontal:
   Article 1: "The Future of AI in Oil & Gas Operations"
   Article 2: "Why Deterministic AI Wins in Academic Publishing"
-  Article 3: "ARQAYAA: Building India's AI Infrastructure"
+  Article 3: "Dpulseai: Building India's AI Infrastructure"
   Each card: category label, headline, date, "Read more →" link (links to /about for now)
 
 SECTION H — CTA BANNER
 - Heading: "Ready to Transform Your Business with AI?"
 - Subline: "Let's build something powerful together."
-- Button: [Book A Free Call] → https://arqaya.vercel.app/book-call (opens in new tab)
+- Button: [Book A Free Call] → https://dpulseai.vercel.app/book-call (opens in new tab)
 
 ════════════════════════════════════════════════════════════
 PAGE 2 — ABOUT US (/about)
 ════════════════════════════════════════════════════════════
 
-HERO: Full-bleed image (team/office), "About ARQAYAA" headline
+HERO: Full-bleed image (team/office), "About Dpulseai" headline
 Image: https://source.unsplash.com/1920x600/?modern-office,boardroom,professional
 
 SECTION: WHO WE ARE
 - 2-col: left = large text paragraph, right = key facts
-- Text: "ARQAYAA Intelligence Pvt Ltd is an AI systems company headquartered in India, building production-grade artificial intelligence solutions for regulated industries and solving real societal challenges through intelligent automation."
+- Text: "Dpulseai Intelligence Pvt Ltd is an AI systems company headquartered in India, building production-grade artificial intelligence solutions for regulated industries and solving real societal challenges through intelligent automation."
 - Key facts right col:
   Founded: 2024 | HQ: India | Subsidiaries: 2 | Sector: AI/ML, Oil & Gas, EdTech
 
@@ -208,13 +208,13 @@ SECTION: OUR MISSION & VISION
 
 SECTION: BOARD OF DIRECTORS
 - Label: "OUR LEADERSHIP"
-- Heading: "The Team Behind ARQAYAA"
+- Heading: "The Team Behind Dpulseai"
 - 4 board member cards (2×2 grid on desktop, stacked on mobile):
   Each card: avatar image (from ui-avatars.com), name (Cormorant Garamond 600), role (Rajdhani gold ALL CAPS), placeholder bio
 
   Neel Khairnar — Founder
   Avatar: https://ui-avatars.com/api/?name=Neel+Khairnar&size=300&background=B8922A&color=fff&bold=true
-  Bio: "Visionary founder driving ARQAYAA's strategic AI architecture and product direction."
+  Bio: "Visionary founder driving Dpulseai's strategic AI architecture and product direction."
 
   Vedant Jadhav — Co-Founder
   Avatar: https://ui-avatars.com/api/?name=Vedant+Jadhav&size=300&background=1B5FA8&color=fff&bold=true
@@ -224,9 +224,9 @@ SECTION: BOARD OF DIRECTORS
   Avatar: https://ui-avatars.com/api/?name=Pritam+Lalvani&size=300&background=1A7A6E&color=fff&bold=true
   Bio: "Drives strategic partnerships and market expansion across industrial sectors."
 
-  Dr. Bharat Kale — Director, Advisor
+  Dr. Dpulseai Team — Director, Advisor
   Avatar: https://ui-avatars.com/api/?name=Bharat+Kale&size=300&background=2C2C2C&color=fff&bold=true
-  Bio: "Academic advisor and research lead, guiding scientific rigor across ARQAYAA's platforms."
+  Bio: "Academic advisor and research lead, guiding scientific rigor across Dpulseai's platforms."
 
 SECTION: OUR VALUES
 - 4 values in a clean 2×2 grid (white cards):
@@ -238,7 +238,7 @@ SECTION: OUR VALUES
 SECTION: COMPANY TIMELINE
 - Vertical timeline (alternating left/right)
 - Milestones (realistic):
-  2024: Company Founded — ARQAYAA Intelligence Pvt Ltd incorporated in India
+  2024: Company Founded — Dpulseai Intelligence Pvt Ltd incorporated in India
   2024: TENETX Launched — Physics-native AI for oil & gas drilling operations
   2025: TEXFLOW Initiated — Deterministic typesetting platform for researchers
   2025: First Industry Partnerships — Engagements with Indian PSU energy sector
@@ -269,7 +269,7 @@ SECTION: OUR PROCESS (horizontal timeline)
 - Step 03: Deployment & Scale
 - Animated line draws between steps on scroll
 
-SECTION: WHY ARQAYAA
+SECTION: WHY Dpulseai
 - Left: 4 differentiators with gold dash bullets
 - Right: Large italic pull quote with gold left border
 - Stats strip: 60% workload reduction | 3× decision speed | Across teams
@@ -456,7 +456,7 @@ PAGE 8 — CAREERS (/careers)
 HERO: "Build the Future of AI with Us"
 Image: https://source.unsplash.com/1920x600/?team,office,collaboration,startup
 
-SECTION: WHY JOIN ARQAYAA
+SECTION: WHY JOIN Dpulseai
 - 3 value props: Mission-Driven Work | Cutting-Edge Tech | Growth Culture
 
 SECTION: OPEN POSITIONS (functional job listings)
@@ -472,7 +472,7 @@ Team: TEXFLOW | Location: India (Remote) | Type: Full-time
 
 Listing 3:
 Role: Agentic AI Systems Developer
-Team: ARQAYAA Core | Location: India (Remote) | Type: Full-time
+Team: Dpulseai Core | Location: India (Remote) | Type: Full-time
 
 Listing 4:
 Role: Business Development Manager
@@ -488,7 +488,7 @@ APPLICATION MODAL (functional):
 Fields: Name, Email, Phone, Role (pre-filled), LinkedIn URL, Upload Resume (file input),
 Cover letter textarea, [Submit Application] button → Formspree
 
-SECTION: LIFE AT ARQAYAA
+SECTION: LIFE AT Dpulseai
 - 3 editorial photos (from Unsplash)
 - Short culture descriptions
 
@@ -512,11 +512,11 @@ Left (60%) — Contact Form:
 - Form validation: required fields, email format
 - On submit: POST to Formspree (https://formspree.io/f/xyzabcde)
 - Success state: "Thank you! We'll be in touch within 24 hours." (animated check)
-- Error state: "Something went wrong. Please try info@arqaya.com directly."
+- Error state: "Something went wrong. Please try info@dpulseai.com directly."
 
 Right (40%) — Contact Info:
 - Heading: "Contact Information"
-- Email: info@arqaya.com (clickable mailto:)
+- Email: info@dpulseai.com (clickable mailto:)
 - Country: India
 - Response time: Within 24 business hours
 - Divider
@@ -525,7 +525,7 @@ Right (40%) — Contact Info:
   TEXFLOW Inquiries → /subsidiaries/texflow
 - Divider
 - Social links (LinkedIn, Twitter — placeholder URLs)
-- CTA: [Book a Free Call] → https://arqaya.vercel.app/book-call (external, new tab)
+- CTA: [Book a Free Call] → https://dpulseai.vercel.app/book-call (external, new tab)
 
 SECTION: OFFICE / PRESENCE MAP (static)
 - Simple India outline SVG with a dot on location
@@ -537,7 +537,7 @@ SHARED COMPONENT — NAVBAR (on every page)
 
 TOP UTILITY BAR (32px, dark #1A1A1A):
 - Left: "India" + globe icon
-- Right: "info@arqaya.com" (mailto link)
+- Right: "info@dpulseai.com" (mailto link)
 
 MAIN NAV (64px, white bg, border-bottom on scroll):
 - Left: search icon button (opens search modal)
@@ -548,12 +548,12 @@ MAIN NAV (64px, white bg, border-bottom on scroll):
   INDUSTRIES → /industries
   CAREERS → /careers
   CONTACT → /contact
-- Right: ARQAYAA wordmark (→ /)
+- Right: Dpulseai wordmark (→ /)
 
 WHAT WE DO DROPDOWN (on hover):
   Our Solutions → /what-we-do
   Our Process → /what-we-do#process
-  Why ARQAYAA → /what-we-do#why
+  Why Dpulseai → /what-we-do#why
 
 SUBSIDIARIES MEGA-MENU (on hover, full-width panel):
   Left: TENETX — description + → /subsidiaries/tenetx
@@ -574,7 +574,7 @@ Top: 1px gold rule
 4-column layout:
 
 Col 1 — Brand:
-ARQAYAA (Cormorant Garamond, white, large)
+Dpulseai (Cormorant Garamond, white, large)
 Intelligence Pvt Ltd (Rajdhani small)
 "Building the future of autonomous enterprise."
 Subsidiary badges: [TENETX] [TEXFLOW]
@@ -591,12 +591,12 @@ TEXFLOW — Research Platform → /subsidiaries/texflow
 Overview → /subsidiaries
 
 Col 4 — Contact:
-info@arqaya.com (mailto link)
+info@dpulseai.com (mailto link)
 India
-Book A Free Call → https://arqaya.vercel.app/book-call
+Book A Free Call → https://dpulseai.vercel.app/book-call
 
 Bottom bar:
-Left: © 2026 ARQAYA Intelligence Pvt Ltd. All rights reserved.
+Left: © 2026 Dpulseai. All rights reserved.
 Right: LinkedIn icon | Twitter/X icon (placeholder URLs)
 
 ════════════════════════════════════════════════════════════
@@ -710,4 +710,6 @@ FINAL CHECKLIST — VERIFY BEFORE DONE
 
 This is a complete production-grade website. Do not cut corners.
 Every section must be built. Every button must work.
+```
+ust work.
 ```

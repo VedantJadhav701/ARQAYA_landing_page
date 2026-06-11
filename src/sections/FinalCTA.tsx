@@ -35,7 +35,7 @@ const FinalCTA = () => {
             Let&apos;s build something powerful together.
           </p>
           <a
-            href="https://arqaya.vercel.app/book-call"
+            href="https://dpulseai.vercel.app/book-call"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary inline-block"

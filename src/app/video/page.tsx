@@ -11,24 +11,24 @@ export default function VideoPage() {
   const [linkCopied, setLinkCopied] = useState(false);
 
   const copyLink = () => {
-    navigator.clipboard.writeText("https://arqaya.com/video");
+    navigator.clipboard.writeText("https://dpulseai.com/video");
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 2000);
   };
 
   const downloadScript = () => {
-    const scriptText = `ARQAYAA INTELLIGENCE PVT LTD - COMPANY FILM SCRIPT
+    const scriptText = `Dpulseai - COMPANY FILM SCRIPT
 
 "Intelligence by Design."
 A 90-second cinematic look into our mission, our technology, and the industrial systems we are building for the future.
 
-ARQAYAA INTELLIGENCE PVT LTD. Building the AI systems that actually work. For industries. For society. For India.
+Dpulseai. Building the AI systems that actually work. For industries. For society. For India.
 `;
     const blob = new Blob([scriptText], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "arqayaa_film_script.txt";
+    a.download = "dpulseai_film_script.txt";
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -55,7 +55,7 @@ ARQAYAA INTELLIGENCE PVT LTD. Building the AI systems that actually work. For in
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
              <div>
-                <h2 className="font-serif text-[32px] text-text-black mb-6 border-b border-gray-mid pb-4 inline-block">ARQAYAA Intelligence</h2>
+                <h2 className="font-serif text-[32px] text-text-black mb-6 border-b border-gray-mid pb-4 inline-block">Dpulseai</h2>
                 <p className="font-sans text-text-mid text-[17px] leading-relaxed mb-10">
                   We bridge the gap between AI hype and industrial reality. From physics-native 
                   modeling in energy to deterministic compliance in research, we build 
@@ -63,7 +63,7 @@ ARQAYAA INTELLIGENCE PVT LTD. Building the AI systems that actually work. For in
                 </p>
                 
                 <div className="flex flex-wrap gap-4">
-                   <a href="https://arqaya.vercel.app/book-call" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                   <a href="https://dpulseai.vercel.app/book-call" target="_blank" rel="noopener noreferrer" className="btn-primary">
                       Book A Free Call
                    </a>
                    <Link href="/what-we-do" className="px-10 py-4 border border-border rounded font-rajdhani font-bold text-[13px] tracking-widest uppercase hover:bg-cream-dark transition-colors text-text-black">
@@ -87,7 +87,7 @@ ARQAYAA INTELLIGENCE PVT LTD. Building the AI systems that actually work. For in
                    </button>
 
                    <a 
-                     href="https://www.linkedin.com/sharing/share-offsite/?url=https://arqaya.com/video"
+                     href="https://www.linkedin.com/sharing/share-offsite/?url=https://dpulseai.com/video"
                      target="_blank"
                      rel="noopener noreferrer"
                      className="w-full flex items-center gap-4 p-4 bg-white border border-border rounded-xl hover:border-gold transition-all group"

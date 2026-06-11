@@ -128,7 +128,7 @@ class DeterministicEngine {
             
             <h2 id="deployment" className="text-[32px] mt-16 mb-6">Deployment & Scale</h2>
             <p>
-              Beyond the model architecture, true enterprise AI requires rethinking deployment topology. The ARQAYAA deployment philosophy mandates 100% data sovereignty. This is achieved through air-gapped, on-premise rack installations that execute full inference without a single outbound internet request.
+              Beyond the model architecture, true enterprise AI requires rethinking deployment topology. The Dpulseai deployment philosophy mandates 100% data sovereignty. This is achieved through air-gapped, on-premise rack installations that execute full inference without a single outbound internet request.
             </p>
             
             <h2 id="conclusion" className="text-[32px] mt-16 mb-6">Conclusion</h2>

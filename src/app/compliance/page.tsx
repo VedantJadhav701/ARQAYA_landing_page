@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import { ShieldCheck, Scale, FileText, Landmark } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Compliance & Standards | ARQAYAA Intelligence",
+  title: "Compliance & Standards | Dpulseai",
   description: "Our institutional commitment to regulatory compliance, data standards, and ethical AI deployment.",
 };
 

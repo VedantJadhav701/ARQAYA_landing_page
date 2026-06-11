@@ -24,7 +24,7 @@ const jobs = [
   {
     id: 3,
     title: "Agentic AI Systems Developer",
-    team: "ARQAYAA Core",
+    team: "Dpulseai Core",
     location: "India Remote",
     type: "Full-time",
     desc: "Develop our core autonomous agent framework that powers our enterprise solutions. Experience with LangChain, LangGraph, and tool-use is essential."
@@ -43,7 +43,7 @@ const jobs = [
     team: "R&D",
     location: "India",
     type: "Internship (6 months)",
-    desc: "Work with our founding team on experimental agentic architectures. Final year CS/AI students preferred."
+    desc: "Work with our team on experimental agentic architectures. Final year CS/AI students preferred."
   }
 ];
 
@@ -80,7 +80,7 @@ export default function CareersClient() {
       <section className="py-24 bg-white px-6 md:px-24">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="section-label justify-center mb-6">WHY ARQAYAA?</div>
+            <div className="section-label justify-center mb-6">WHY DPULSEAI?</div>
             <h2 className="font-serif text-3xl md:text-[42px] leading-tight text-text-black">The Place for Builders</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -97,7 +97,7 @@ export default function CareersClient() {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="bg-cream p-8 rounded-lg border border-gray-mid text-center">
               <div className="w-12 h-12 rounded-full bg-texflow-primary/20 text-texflow-primary flex items-center justify-center text-xl mx-auto mb-6">📈</div>
               <h3 className="font-sans font-bold text-[18px] text-text-black mb-3">Accelerated Growth</h3>
-              <p className="font-sans text-text-mid text-[15px]">Early-stage equity, high autonomy, and direct collaboration with the founding team.</p>
+              <p className="font-sans text-text-mid text-[15px]">Early-stage equity, high autonomy, and direct collaboration with the team.</p>
             </motion.div>
           </div>
         </div>
@@ -181,7 +181,7 @@ export default function CareersClient() {
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   </div>
                   <h3 className="font-serif text-3xl text-text-black mb-3">Application Submitted</h3>
-                  <p className="font-sans text-text-mid mb-8">Thank you for your interest in joining ARQAYAA. We&apos;ll review your profile and be in touch soon.</p>
+                  <p className="font-sans text-text-mid mb-8">Thank you for your interest in joining Dpulseai. We&apos;ll review your profile and be in touch soon.</p>
                   <button onClick={() => setModalOpen(false)} className="bg-black text-white px-6 py-2 rounded font-sans text-sm">Close</button>
                 </div>
               ) : (

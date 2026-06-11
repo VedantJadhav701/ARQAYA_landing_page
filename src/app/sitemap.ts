@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://arqaya.com';
+  const baseUrl = 'https://dpulseai.com';
 
   const routes = [
     '',

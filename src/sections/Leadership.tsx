@@ -6,35 +6,35 @@ import { X } from "lucide-react";
 
 const members = [
   { 
-    name: "Neel Khairnar", 
-    role: "Founder | Applied AI/ML Strategist", 
-    bio: "As an Applied AI/ML undergraduate with a deeply execution-driven vision, Neel operates at the intersection of frontier intelligence systems, scalable engineering, and commercialization-first innovation.",
-    fullBio: "As an Applied AI/ML undergraduate with a deeply execution-driven vision, Neel operates at the intersection of frontier intelligence systems, scalable engineering, and commercialization-first innovation. At the core of his leadership lies a systems architecture mindset — the belief that every intelligent pipeline, from data ingestion to deployment, must optimize precision, adaptability, and operational efficiency. He approaches innovation through modular intelligence design, where RAG pipelines, LLM ecosystems, and AgenticOps frameworks are engineered not merely as technical assets, but as scalable business infrastructure.\n\nWith a rapidly expanding foundation across Deep Learning, MLOps, CI/CD pipelines, MCP servers, SLMs, and enterprise-grade AI deployment, Neel specializes in building future-resilient systems that transform raw models into production-capable strategic solutions. As an LLM geek with a forward-engineering philosophy, he focuses on integrating retrieval intelligence, autonomous agent systems, and deployment discipline to create sovereign, high-performance AI architectures.\n\nAs Founder, he drives the organization’s long-term technological blueprint — architecting scalable AI ecosystems that bridge cutting-edge machine learning with executional realism. His vision is rooted in converting advanced computational intelligence into commercially defensible, operationally efficient, and globally relevant systems, ensuring the company remains positioned at the forefront of next-generation AI transformation.",
-    avatar: "/images/leadership/neel.jpeg", 
+    name: "Dpulseai Expert", 
+    role: "AI/ML Strategy", 
+    bio: "Specializing in the intersection of frontier intelligence systems, scalable engineering, and commercialization-first innovation.",
+    fullBio: "Operating at the intersection of frontier intelligence systems, scalable engineering, and commercialization-first innovation. Expertise lies in systems architecture — the belief that every intelligent pipeline, from data ingestion to deployment, must optimize precision, adaptability, and operational efficiency. Approaching innovation through modular intelligence design, where RAG pipelines, LLM ecosystems, and AgenticOps frameworks are engineered as scalable business infrastructure.",
+    avatar: "https://ui-avatars.com/api/?name=Dpulseai+Expert&background=B8922A&color=fff", 
     accentColor: "#B8922A" 
   },
   { 
-    name: "Vedant Jadhav", 
-    role: "Co-Founder | AI Platform Engineer & Frontend Lead", 
-    bio: "As an Applied AI/ML engineer with a research-driven and execution-focused mindset, Vedant specializes in building scalable AI platforms.",
-    fullBio: "As an Applied AI/ML engineer with a research-driven and execution-focused mindset, Vedant specializes in building scalable AI platforms that bridge intelligent systems, production engineering, and modern digital experiences. His work focuses on transforming advanced AI research into deployment-ready infrastructure capable of operating reliably in real-world environments.\n\nWith growing expertise across LLMs, Agentic AI, RAG architectures, Multi-Agent Systems, MLOps, and deployment automation, he engineers modular AI ecosystems designed for scalability, operational efficiency, and long-term adaptability. His approach combines backend intelligence architecture with frontend product execution, ensuring that complex AI systems are translated into intuitive, high-performance user experiences.\n\nAs Co-Founder, Vedant leads the organization’s platform engineering and frontend execution — architecting enterprise-grade AI systems, intelligent workflows, and modern digital interfaces that align cutting-edge machine learning with commercially scalable product development.",
-    avatar: "/images/leadership/vedant.jpeg", 
+    name: "Dpulseai Expert", 
+    role: "Platform Engineering", 
+    bio: "Focusing on building scalable AI platforms that bridge intelligent systems, production engineering, and modern digital experiences.",
+    fullBio: "Specializing in building scalable AI platforms that bridge intelligent systems, production engineering, and modern digital experiences. Work focuses on transforming advanced AI research into deployment-ready infrastructure capable of operating reliably in real-world environments.",
+    avatar: "https://ui-avatars.com/api/?name=Dpulseai+Expert&background=1B5FA8&color=fff", 
     accentColor: "#1B5FA8" 
   },
   { 
-    name: "Pritam N. Lalwani", 
-    role: "Director, Strategic Lead", 
-    bio: "With over 16 years of transformative experience, the core of Pritam’s leadership lies in the principle of energy and mass balance.",
-    fullBio: "With over 16 years of transformative experience, the core of Pritam’s leadership lies in the principle of energy and mass balance — a systems-thinking approach he applies to strategy, data, and growth. He believes every scalable solution, whether a molecule or a machine learning model, must respect input-output efficiency, minimize waste, and maximize value. This first‑principles mindset de‑risks innovation, protects intellectual property, and ensures decisions are transparent, measurable, and sustainable.\n\nWith the transformative experience across pharmaceutical R&D, green chemistry, nanotechnology, and circular economy, Pritam also commercialized FDA‑approved products, filed multiple patents, and secured 10+ trademarks. As our Director & Strategic Lead, he architects future‑ready AI‑ML roadmaps that bridge deep technology with commercial reality, inspiring trust and confidence among investors and partners.",
-    avatar: "/images/leadership/pritam.jpeg", 
+    name: "Dpulseai Expert", 
+    role: "Strategic Operations", 
+    bio: "Applying first-principles thinking to strategy, data, and growth to ensure every scalable solution respects input-output efficiency.",
+    fullBio: "Leadership rooted in the principle of energy and mass balance — a systems-thinking approach applied to strategy, data, and growth. Believing every scalable solution, whether a molecule or a machine learning model, must respect input-output efficiency, minimize waste, and maximize value.",
+    avatar: "https://ui-avatars.com/api/?name=Dpulseai+Expert&background=1A7A6E&color=fff", 
     accentColor: "#1A7A6E" 
   },
   { 
-    name: "Dr. Bharat Kale", 
-    role: "Director & Strategic Advisor", 
-    bio: "With decades of distinguished leadership across advanced materials science, national R&D ecosystems, and industrial innovation.",
-    fullBio: "With decades of distinguished leadership across advanced materials science, national R&D ecosystems, industrial innovation, and translational technology strategy, Dr. Bharat Kale brings a rare combination of scientific depth, commercialization foresight, and institutional credibility to the organization. His experience spans frontier research, scientific administration, innovation governance, and strategic technology development, with recognized contributions across nanomaterials, applied sciences, and scalable industrial frameworks. \n\nHis broader advisory perspective also strengthens the company’s strategic alignment toward high-impact sectors including oil & gas, where scientific precision, infrastructure resilience, and deep-technology integration are critical to operational transformation. As Strategic Advisor, Dr. Kale provides high-level guidance in scientific validation, research governance, institutional partnerships, and long-horizon commercialization strategy—ensuring that advanced AI-ML systems are developed with technical rigor, sectoral relevance, and sustainable industrial applicability. His role reinforces the organization’s capacity to bridge deep science with commercially viable innovation, while strengthening trust among academia, energy stakeholders, strategic partners, and national-scale technology ecosystems.",
-    avatar: "/images/leadership/bharat-kale.png", 
+    name: "Dpulseai Expert", 
+    role: "Scientific Advisory", 
+    bio: "Providing distinguished leadership across advanced science, national R&D ecosystems, and industrial innovation.",
+    fullBio: "Bringing a combination of scientific depth, commercialization foresight, and institutional credibility to the organization. Experience spans frontier research, scientific administration, innovation governance, and strategic technology development, with recognized contributions across scalable industrial frameworks.",
+    avatar: "https://ui-avatars.com/api/?name=Dpulseai+Expert&background=2C2C2C&color=fff", 
     accentColor: "#2C2C2C" 
   },
 ];
@@ -53,7 +53,7 @@ const Leadership = () => {
         >
           <div className="section-label mb-8 text-gold after:bg-gold-rule">OUR LEADERSHIP</div>
           <h2 className="font-serif text-3xl md:text-[42px] leading-tight text-text-black mb-6">
-            The Team Behind ARQAYAA
+            The Team Behind Dpulseai
           </h2>
           <p className="font-sans text-text-mid text-[17px] max-w-2xl">
             Our founding team brings expertise across AI systems, petroleum engineering, academic research, and strategic leadership.
@@ -74,7 +74,7 @@ const Leadership = () => {
               <div className="aspect-[4/5] relative overflow-hidden bg-gray-100">
                 <img
                   src={member.avatar}
-                  alt={`${member.name} — ${member.role} at ARQAYAA Intelligence`}
+                  alt={`${member.name} — ${member.role} at Dpulseai`}
                   loading="lazy"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
@@ -147,3 +147,4 @@ const Leadership = () => {
 };
 
 export default Leadership;
+ Leadership;

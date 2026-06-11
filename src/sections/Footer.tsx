@@ -26,7 +26,7 @@ const Footer = () => {
           {/* Col 1: Brand */}
           <div className="flex flex-col lg:col-span-1">
             <Link href="/" className="mb-6 inline-block">
-              <div className="font-serif font-bold text-[24px] text-white leading-tight">ARQAYAA</div>
+              <div className="font-serif font-bold text-[24px] text-white leading-tight">Dpulseai</div>
               <div className="font-rajdhani text-[11px] font-bold tracking-[0.2em] text-gold -mt-1 uppercase">Intelligence</div>
             </Link>
             <p className="font-sans text-[14px] leading-relaxed mb-8">
@@ -78,7 +78,7 @@ const Footer = () => {
             <ul className="space-y-4 font-sans text-[14px]">
               <li className="flex items-center gap-3">
                 <Mail size={16} />
-                <a href="mailto:info@arqaya.com" className="hover:text-white transition-colors">info@arqaya.com</a>
+                <a href="mailto:info@dpulseai.com" className="hover:text-white transition-colors">info@dpulseai.com</a>
               </li>
               <li>India</li>
               <li>
@@ -93,7 +93,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-[12px]">
-            © 2026 ARQAYAA Intelligence Pvt Ltd. All rights reserved.
+            © 2026 Dpulseai. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-white transition-colors"><LinkedInIcon /></a>
@@ -106,3 +106,4 @@ const Footer = () => {
 };
 
 export default Footer;
+port default Footer;

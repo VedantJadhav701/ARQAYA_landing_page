@@ -54,7 +54,7 @@ const Navbar = ({ darkMode = false }: NavbarProps) => {
           <span>India</span>
         </div>
         <div className="flex items-center gap-6">
-          <a href="mailto:info@arqaya.com" className="hover:text-white transition-colors">info@arqaya.com</a>
+          <a href="mailto:info@dpulseai.com" className="hover:text-white transition-colors">info@dpulseai.com</a>
           <button className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
             <Globe size={14} />
             <span>English</span>
@@ -119,7 +119,7 @@ const Navbar = ({ darkMode = false }: NavbarProps) => {
                   <div className="flex flex-col gap-4 text-text-black">
                     <Link href="/what-we-do" className="text-[14px] text-text-mid hover:text-gold transition-colors">Our Solutions</Link>
                     <Link href="/what-we-do#process" className="text-[14px] text-text-mid hover:text-gold transition-colors">Our Process</Link>
-                    <Link href="/about" className="text-[14px] text-text-mid hover:text-gold transition-colors">Why ARQAYAA</Link>
+                    <Link href="/about" className="text-[14px] text-text-mid hover:text-gold transition-colors">Why Dpulseai</Link>
                   </div>
                 </div>
               )}
@@ -184,7 +184,7 @@ const Navbar = ({ darkMode = false }: NavbarProps) => {
               <span className={cn(
                 "font-serif font-bold text-[20px] leading-tight transition-colors",
                 darkMode ? "text-white" : "text-text-black"
-              )}>ARQAYAA</span>
+              )}>Dpulseai</span>
               <span className="font-rajdhani text-[9px] font-semibold tracking-[0.2em] text-gold -mt-0.5 uppercase">Intelligence</span>
             </div>
             <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">

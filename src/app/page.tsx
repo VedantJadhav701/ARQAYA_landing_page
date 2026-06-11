@@ -17,65 +17,62 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-cream selection:bg-gold/20 selection:text-text-black">
-      <Navbar />
-      
-      {/* 1. Hero Section */}
+    <main className="min-h-screen bg-white">
+      {/* 1. Navigation & Hero */}
+      <Navbar darkMode={false} />
       <Hero />
 
-      {/* 1.5 COMPANY FILM PREVIEW */}
-      <section className="py-24 bg-cream-dark px-6 md:px-24 overflow-hidden border-y border-gray-mid">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 md:gap-24">
-          <div className="lg:w-[45%]">
+      {/* 2. Discover Dpulseai */}
+      <div id="discover">
+        <Discover />
+      </div>
+
+      {/* 3. Company Film Section — Aramco Style */}
+      <section className="py-24 bg-white px-6 md:px-24 border-t border-gray-mid">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+          <div className="lg:w-1/2">
             <div className="section-label mb-8 text-gold after:bg-gold-rule">COMPANY FILM</div>
             <h2 className="font-serif text-[42px] md:text-[52px] leading-tight text-text-black mb-8">
               See What We're Building.
             </h2>
             <p className="font-sans text-text-mid text-[18px] leading-relaxed mb-10 max-w-xl">
-              A 90-second look at ARQAYAA Intelligence — our mission, 
+              A 90-second look at Dpulseai — our mission, 
               our subsidiaries, and the AI systems we're building for India and beyond.
             </p>
             <Link href="/video" className="inline-flex items-center gap-4 text-gold font-rajdhani font-bold tracking-[0.2em] text-[13px] uppercase group border border-gold px-8 py-4 rounded-full hover:bg-gold hover:text-white transition-all">
                Watch Full Film 
                <div className="w-8 h-8 border border-current rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform">
-                 →
+                  →
                </div>
             </Link>
           </div>
-          <div className="lg:w-[55%] w-full">
-            <Link href="/video" className="block relative group shadow-2xl">
-               <CompanyVideo previewMode={true} />
-            </Link>
+          <div className="lg:w-1/2 w-full">
+            <CompanyVideo />
           </div>
         </div>
       </section>
 
-      {/* 2. Discover ARQAYAA */}
-      <Discover />
-
-      {/* 3. What We Believe */}
+      {/* 4. Believe */}
       <Believe />
 
-      {/* 4. At A Glance (Stats) */}
+      {/* 5. Stats */}
       <Stats />
 
-      {/* 5. TENETX Deep-Dive */}
-      <div id="tenetx">
+      {/* 6. Subsidiaries (TENETX & TEXFLOW) */}
+      <div id="subsidiaries">
         <Tenetx />
-      </div>
-
-      {/* 6. TEXFLOW Deep-Dive */}
-      <div id="texflow">
         <Texflow />
       </div>
 
-      {/* 7. Our Solutions */}
+      {/* 7. Solutions */}
       <div id="solutions">
         <Solutions />
       </div>
 
-      {/* 8. Industries We Serve */}
-      <Industries />
+      {/* 8. Industries */}
+      <div id="industries">
+        <Industries />
+      </div>
 
       {/* 9. Our Process */}
       <div id="process">
@@ -85,7 +82,7 @@ export default function Home() {
       {/* 10. Leadership */}
       <Leadership />
 
-      {/* 11. Why ARQAYAA (Differentiators) */}
+      {/* 11. Why Dpulseai (Differentiators) */}
       <Differentiators />
 
       {/* 12. Final CTA & Footer */}

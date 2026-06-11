@@ -6,8 +6,8 @@ import { mockArticles } from "@/data/mockData";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Publications | ARQAYAA Intelligence",
-  description: "Official releases, technical whitepapers, and corporate reports from ARQAYAA Intelligence Pvt Ltd.",
+  title: "Publications | Dpulseai",
+  description: "Official releases, technical whitepapers, and corporate reports from Dpulseai.",
 };
 
 export default function PublicationsPage() {

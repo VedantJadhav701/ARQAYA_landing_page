@@ -6,7 +6,7 @@ export const mockArticles = [
     excerpt: "Why stochastic probabilistic models (LLMs) fail in environments where accuracy cannot be compromised, and how hybrid deterministic systems bridge the gap.",
     date: "May 12, 2026",
     readTime: "8 min read",
-    author: "Vedant Jadhav",
+    author: "Dpulseai Team",
     image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=1200&q=85&fit=crop"
   },
   {
@@ -16,7 +16,7 @@ export const mockArticles = [
     excerpt: "Exploring how embedding Navier-Stokes equations into model architecture reduces data dependency by 90% in drilling optimization.",
     date: "April 28, 2026",
     readTime: "12 min read",
-    author: "Neel Khairnar",
+    author: "Dpulseai Team",
     image: "https://www.sterlingtt.com/wp-content/themes/yootheme/cache/61/oil-rig-61463d65.jpeg"
   },
   {
@@ -26,7 +26,7 @@ export const mockArticles = [
     excerpt: "An analysis of the millions of hours lost annually by researchers formatting documents, and the computational approach to solving it.",
     date: "March 15, 2026",
     readTime: "6 min read",
-    author: "Dr. Bharat Kale",
+    author: "Dpulseai Team",
     image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=1200&q=85&fit=crop"
   },
   {
@@ -36,7 +36,7 @@ export const mockArticles = [
     excerpt: "Designing stateful, recoverable, and auditable multi-agent systems for enterprise deployment.",
     date: "February 04, 2026",
     readTime: "15 min read",
-    author: "Vedant Jadhav",
+    author: "Dpulseai Team",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85&fit=crop"
   }
 ];

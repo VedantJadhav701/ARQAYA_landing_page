@@ -94,7 +94,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
               The client operates a fleet of deepwater rigs where drilling anomalies (like stuck pipes or kicks) can cost upwards of $1M per day in non-productive time (NPT). Previous attempts to use generic machine learning models failed because the models hallucinated physical states that violated the laws of thermodynamics, leading to zero operator trust.
             </p>
             
-            <h2 className="text-[32px] mt-16 mb-6">The ARQAYAA Approach</h2>
+            <h2 className="text-[32px] mt-16 mb-6">The Dpulseai Approach</h2>
             <p>
               We deployed the TENETX architecture, a physics-informed neural network (PINN) that embeds fluid dynamics equations directly into its loss function. 
             </p>

@@ -4,8 +4,8 @@ import Footer from "@/sections/Footer";
 import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
-  title: "About Us | ARQAYAA Intelligence Pvt Ltd",
-  description: "Learn about ARQAYAA Intelligence — our mission, vision, board of directors, and company values. Building India's AI infrastructure.",
+  title: "About Us | Dpulseai",
+  description: "Learn about Dpulseai — our mission, vision, and company values. Building India's AI infrastructure.",
 };
 
 export default function AboutPage() {

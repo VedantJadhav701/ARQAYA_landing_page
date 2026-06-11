@@ -6,7 +6,7 @@ import { mockArticles } from "@/data/mockData";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Research & Development | ARQAYAA Intelligence",
+  title: "Research & Development | Dpulseai",
   description: "Exploring the technical frontiers of physics-native AI, deterministic systems, and autonomous industrial logic.",
 };
 

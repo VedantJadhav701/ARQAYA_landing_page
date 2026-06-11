@@ -4,7 +4,7 @@ import Footer from "@/sections/Footer";
 import TexflowClient from "./TexflowClient";
 
 export const metadata: Metadata = {
-  title: "TEXFLOW | Research Typesetting | ARQAYAA",
+  title: "TEXFLOW | Research Typesetting | Dpulseai",
   description: "Deterministic typesetting for the academic community. Convert Word to publisher-ready PDF instantly without AI hallucinations.",
 };
 

@@ -41,7 +41,7 @@ const Discover = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="section-label mb-8">DISCOVER ARQAYAA</div>
+          <div className="section-label mb-8">DISCOVER DPULSEAI</div>
           <h2 className="font-serif text-3xl md:text-[42px] leading-tight text-text-black max-w-3xl">
             &ldquo;We are an AI intelligence company building the systems that make industries smarter, workflows faster, and societies better.&rdquo;
           </h2>

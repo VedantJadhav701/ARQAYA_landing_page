@@ -4,8 +4,8 @@ import Footer from "@/sections/Footer";
 import CaseStudiesClient from "./CaseStudiesClient";
 
 export const metadata: Metadata = {
-  title: "Case Studies | ARQAYAA Intelligence",
-  description: "Explore how ARQAYAA Intelligence transforms industries with production-grade AI deployments.",
+  title: "Case Studies | Dpulseai",
+  description: "Explore how Dpulseai transforms industries with production-grade AI deployments.",
 };
 
 export default function CaseStudiesPage() {

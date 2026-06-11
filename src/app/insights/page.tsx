@@ -4,10 +4,10 @@ import Footer from "@/sections/Footer";
 import InsightsClient from "./InsightsClient";
 
 export const metadata: Metadata = {
-  title: "Insights & Research | ARQAYAA Intelligence",
+  title: "Insights & Research | Dpulseai",
   description: "Editorial research, technical papers, and industry insights on the future of production-grade AI systems.",
   openGraph: {
-    title: "Insights & Research | ARQAYAA Intelligence",
+    title: "Insights & Research | Dpulseai",
     description: "Editorial research, technical papers, and industry insights on the future of production-grade AI systems.",
     type: "website",
   }
