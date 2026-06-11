@@ -41,7 +41,7 @@ export default function InsightDetailPage({ params }: Props) {
   return (
     <main id="main-content" className="min-h-screen bg-white">
       <Navbar />
-      <InsightDetailClient article={article} />
+      <InsightDetailClient slug={params.slug} />
       <Footer />
     </main>
   );
