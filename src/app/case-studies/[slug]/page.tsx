@@ -56,7 +56,7 @@ export default function CaseStudyDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      <CaseStudyDetailClient study={study} />
+      <CaseStudyDetailClient slug={params.slug} />
       <Footer />
     </main>
   );
